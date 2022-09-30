@@ -1,13 +1,10 @@
 var express = require('express');
+require('dotenv').config()
 const port = process.env.PORT;
 var app = express();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
-
-
-console.log(port)
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

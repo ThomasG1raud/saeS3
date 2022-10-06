@@ -5,8 +5,8 @@ const port = process.env.PORT;
 
 var app = express();
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var adminRouter = require('./routes/admin.router');
+var indexRouter = require('./routes/index.router');
 
 
 mysql.createConnection({
@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/admin', adminRouter);
 
 app.listen(port, () => {
     console.log(`Example app listening on port http://localhost:${port}`)

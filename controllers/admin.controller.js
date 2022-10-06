@@ -155,3 +155,68 @@ exports.deleteStands = (req,res) => {
         });
     });
 }
+
+exports.getMap = (req,res) => {
+    adminService.getMap((error, results) => {
+        if (error) {
+            console.log(error);
+            return res.status(400).send({ success: 0, data: error });
+        }
+        return res.status(200).send({
+            success: 1,
+            data: results,
+        });
+    });
+}
+
+exports.idMap = (req,res) => {
+    adminService.idMap((error, results) => {
+        if (error) {
+            console.log(error);
+            return res.status(400).send({ success: 0, data: error });
+        }
+        return res.status(200).send({
+            success: 1,
+            data: results,
+        });
+    });
+}
+
+exports.addMap = (req,res) => {
+    adminService.addMap((error, results) => {
+        if (error) {
+            console.log(error);
+            return res.status(400).send({ success: 0, data: error });
+        }
+        return res.status(200).send({
+            success: 1,
+            data: results,
+        });
+    });
+}
+
+exports.updateMap = (req,res) => {
+    adminService.updateMap((error, results) => {
+        if (error) {
+            console.log(error);
+            return res.status(400).send({ success: 0, data: error });
+        }
+        return res.status(200).send({
+            success: 1,
+            data: results,
+        });
+    });
+}
+
+exports.deleteMap = (req,res) => {
+    adminService.deleteMap((error, results) => {
+        if (error) {
+            console.log(error);
+            return res.status(400).send({ success: 0, data: error });
+        }
+        return res.status(200).send({
+            success: 1,
+            data: results,
+        });
+    });
+}

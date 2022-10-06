@@ -13,3 +13,8 @@ router.get('/stands/:id?', adminController.idStands);
 router.put('/stands/add', adminController.addStands);
 router.post('/stands/:id/update', adminController.updateStands);
 router.delete('/stands/:id/delete', adminController.deleteStands);
+router.get('/map', adminController.getMap)
+router.get('/map/:id', adminController.idMap)
+router.put('/map/add', adminController.addMap)
+router.put('/map/:id/update', adminController.updateMap)
+router.put('/map/:id/delete', adminController.deleteMap) 

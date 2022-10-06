@@ -95,3 +95,43 @@ const deleteStands = (callback) => {
         return callback([])
     }
 }
+
+const getMap = (callback) => {
+    try {
+        return callback();
+    } catch (e) {
+        return callback([])
+    }
+}
+
+const idMap = (callback) => {
+    try {
+        return callback();
+    } catch (e) {
+        return callback([])
+    }
+}
+
+const addMap = (callback) => {
+    try {
+        return callback();
+    } catch (e) {
+        return callback([])
+    }
+}
+
+const updateMap = (callback) => {
+    try {
+        return callback();
+    } catch (e) {
+        return callback([])
+    }
+}
+
+const deleteMap = (callback) => {
+    try {
+        return callback();
+    } catch (e) {
+        return callback([])
+    }
+}

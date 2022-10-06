@@ -22,6 +22,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
 
+app.all("*", (req, res,next) => {
+    throw new AppError(`Requested URL ${req.path} not found !`, 404)
+})
+
 app.listen(port, () => {
     console.log(`Example app listening on port http://localhost:${port}`)
 })

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const db =require("../../connection")
+const db =require("../connection")
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

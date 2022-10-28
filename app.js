@@ -5,8 +5,9 @@ const port = process.env.PORT;
 
 var app = express();
 
-var adminRouter = require('./routes/admin.router');
-var indexRouter = require('./routes/index.router');
+const adminRouter = require('./routes/admin.router');
+const prestataireRouter = require("./routes/pretataire.router");
+const vitrineRouter = require("./routes/vitrine.router");
 
 
 mysql.createConnection({

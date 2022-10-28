@@ -1,11 +1,9 @@
+const adminController = require("../controllers/vitrine.controller");
 var express = require('express');
 var router = express.Router();
-const db =require("../connection")
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express' });
-});
+
+router.get("/", adminController.vitrine)
 
 router.get('/map',(req, res, next) => {
     res.render('index', { title: 'Express' });

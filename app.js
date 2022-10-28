@@ -2,7 +2,6 @@ var express = require('express');
 var mysql = require("mysql2")
 require('dotenv').config()
 const port = process.env.PORT;
-
 var app = express();
 
 const adminRouter = require('./routes/admin.router');
@@ -14,13 +13,6 @@ app.use("/prestataire", prestataireRouter);
 app.use("/", vitrineRouter);
 
 
-mysql.createConnection({
-    host : process.env.HOST,
-    user : process.env.USER,
-    password : process.env.PASSWORD,
-    dataBase : process.env.DATABASE,
-    dialect : mysql
-})
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

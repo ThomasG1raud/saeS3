@@ -1,4 +1,14 @@
 const { Sequelize } = require('sequelize');
+const mysql = require("mysql2");
+
+mysql.createConnection({
+  host : process.env.HOST,
+  user : process.env.NAME,
+  password : process.env.PASSWORD,
+  dataBase : process.env.DATABASE
+})
+
+
 const sequelize = new Sequelize('database', 'username', 'password',{
   host: 'http://localhost:3000/',
   dialect: 'mysql',
@@ -15,3 +25,8 @@ const sequelize = new Sequelize('database', 'username', 'password',{
 // }}
 //
 // def()
+
+module.exports = {
+  mysql:mysql,
+  sequelize:sequelize
+}

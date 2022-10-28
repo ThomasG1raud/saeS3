@@ -2,6 +2,7 @@ const adminController = require("../controllers/admin.controller");
 var express = require('express');
 var router = express.Router();
 
+
 router.get("/", adminController.panel)
 
 router.get('/prestataires', adminController.listPrestataires);

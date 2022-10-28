@@ -9,6 +9,10 @@ const adminRouter = require('./routes/admin.router');
 const prestataireRouter = require("./routes/pretataire.router");
 const vitrineRouter = require("./routes/vitrine.router");
 
+app.use("/admin", adminRouter);
+app.use("/prestataire", prestataireRouter);
+app.use("/", vitrineRouter);
+
 
 mysql.createConnection({
     host : process.env.HOST,

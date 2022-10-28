@@ -1,14 +1,6 @@
 const fs = require('fs')
 
-const getAdmin = (callback) => {
-    try {
-        return callback();
-    } catch (e) {
-        return callback([])
-    }
-}
-
-const deleteAdmin = (callback) => {
+const panel = (callback) => {
     try {
         return callback();
     } catch (e) {
@@ -134,4 +126,23 @@ const deleteMap = (callback) => {
     } catch (e) {
         return callback([])
     }
+}
+
+module.exports = {
+    panel: panel,
+    listPrestataires:listPrestataires,
+    idPrestataires:idPrestataires,
+    addPrestataires:addPrestataires,
+    updatePrestataires:updatePrestataires,
+    deletePrestataires:deletePrestataires,
+    listStands:listStands,
+    idStands:idStands,
+    addStands:addStands,
+    updateStands:updateStands,
+    deleteStands:deleteStands,
+    getMap:getMap,
+    idMap:idMap,
+    addMap:addMap,
+    updateMap:updateMap,
+    deleteMap: deleteMap
 }

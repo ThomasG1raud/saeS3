@@ -1,5 +1,5 @@
 var express = require('express');
-var mysql = require("mysql")
+var mysql = require("mysql2")
 require('dotenv').config()
 const port = process.env.PORT;
 
@@ -18,13 +18,14 @@ mysql.createConnection({
     host : process.env.HOST,
     user : process.env.USER,
     password : process.env.PASSWORD,
-    dataBase : process.env.DATABASE
+    dataBase : process.env.DATABASE,
+    dialect : mysql
 })
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
-app.use('/', indexRouter);
+
 app.use('/admin', adminRouter);
 
 app.all("*", (req, res,next) => {

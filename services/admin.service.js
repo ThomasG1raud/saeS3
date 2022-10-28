@@ -8,11 +8,13 @@ const panel = (callback) => {
     }
 }
 
-const listPrestataires = (callback) => {
+const  listPrestataires = async () => {
     try {
-        return callback();
+        sequelize.authenticate();
+        const allPrestataire = await sequelize.query("SELECT * FROM prestataire");
+        console.log(allPrestataire)
     } catch (e) {
-        return callback([])
+        console.log(error)
     }
 }
 

@@ -1,4 +1,4 @@
-const {mysql,sequalize} = require("../connection")
+
 
 const panel = (callback) => {
     return callback();

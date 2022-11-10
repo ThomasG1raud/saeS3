@@ -1,9 +1,9 @@
 var express = require('express');
-var mysql = require("mysql2")
 require('dotenv').config()
 const port = process.env.PORT;
 var app = express();
 
+const AppError = require("./utils/appError");
 const adminRouter = require('./routes/admin.router');
 const prestataireRouter = require("./routes/prestataire.router");
 const vitrineRouter = require("./routes/vitrine.router");

@@ -1,67 +1,67 @@
 
 
 const panel = (callback) => {
-    return callback();
+    return callback(null, "ok");
 }
 
-const listPrestataires = async () => {
-    return callback();
+const listPrestataires = (callback) => {
+    return callback(null, "ok");
 }
 
 const idPrestataires = (callback) => {
-    return callback();
+    return callback(null, "ok");
 }
 
 const addPrestataires = (callback) => {
-    return callback();
+    return callback(null, "ok");
 }
 
 const updatePrestataires = (callback) => {
-    return callback();
+    return callback(null, "ok");
 }
 
 const deletePrestataires = (callback) => {
-    return callback();
+    return callback(null, "ok");
 }
 
 const listStands = (callback) => {
-    return callback();
+    return callback(null, "ok");
 }
 
 const idStands = (callback) => {
-    return callback();
+    return callback(null, "ok");
 }
 
 const addStands = (callback) => {
-    return callback();
+    return callback(null, "ok");
 }
 
 const updateStands = (callback) => {
-    return callback();
+    return callback(null, "ok");
 }
 
 const deleteStands = (callback) => {
-    return callback();
+    return callback(null, "ok");
 }
 
 const getMap = (callback) => {
-    return callback();
+    return callback(null, "ok");
 }
 
 const idMap = (callback) => {
-    return callback();
+    return callback(null, "ok");
 }
 
 const addMap = (callback) => {
-    return callback();
+    return callback(null, "ok");
 }
 
 const updateMap = (callback) => {
-    return callback();
+    return callback(null, "ok");
 }
 
 const deleteMap = (callback) => {
-    return callback();
+    return callback(null, "ok");
 }
 
 module.exports = {

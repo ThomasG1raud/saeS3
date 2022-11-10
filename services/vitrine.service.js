@@ -1,27 +1,27 @@
 
 
-const vitrine = () => {
-    return callback();
+const vitrine = (callback) => {
+    return callback(null, "ok");
 }
 
-const map = () => {
-    return callback();
+const map = (callback) => {
+    return callback(null, "ok");
 }
 
-const listePrestataire = () => {
-    return callback();
+const listePrestataire = (callback) => {
+    return callback(null, "ok");
 }
 
-const idPrestataire = () => {
-    return callback();
+const idPrestataire = (callback) => {
+    return callback(null, "ok");
 }
 
-const listeStand = () => {
-    return callback();
+const listeStand = (callback) => {
+    return callback(null, "ok");
 }
 
-const idStand = () => {
-    return callback();
+const idStand = (callback) => {
+    return callback(null, "ok");
 }
 
 

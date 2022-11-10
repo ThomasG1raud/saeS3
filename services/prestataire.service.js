@@ -1,15 +1,15 @@
 
 
 const panel = (callback) => {
-    return callback();
+    return callback(null, "ok");
 }
 
 const idStatistiques = (callback) => {
-    return callback();
+    return callback(null, "ok");
 }
 
 const selfEdit = (callback) => {
-    return callback();
+    return callback(null, "ok");
 }
 
 module.exports = {

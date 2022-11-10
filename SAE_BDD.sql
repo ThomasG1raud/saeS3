@@ -24,201 +24,222 @@ DROP TABLE IF EXISTS admin; -- ok
 DROP TABLE IF EXISTS localisation; -- ok
 
 
-CREATE TABLE IF NOT EXISTS localisation(
-   idLocalisation serial,
-   libelleLocalisation VARCHAR(50),
-   PRIMARY KEY(idLocalisation)
+CREATE TABLE IF NOT EXISTS localisation
+(
+    idLocalisation      INT AUTO_INCREMENT,
+    libelleLocalisation VARCHAR(50),
+    PRIMARY KEY (idLocalisation)
 );
 
-CREATE TABLE IF NOT EXISTS admin(
-   idAdmin serial,
-   texteAccueil TEXT,
-   imageAccueil VARCHAR(50),
-   PRIMARY KEY(idAdmin)
+CREATE TABLE IF NOT EXISTS admin
+(
+    idAdmin      INT AUTO_INCREMENT,
+    texteAccueil TEXT,
+    imageAccueil VARCHAR(50),
+    PRIMARY KEY (idAdmin)
 );
 
-CREATE TABLE IF NOT EXISTS client(
-   idClient serial,
-   nom VARCHAR(50),
-   age INT,
-   PRIMARY KEY(idClient)
+CREATE TABLE IF NOT EXISTS client
+(
+    idClient INT AUTO_INCREMENT,
+    nom      VARCHAR(50),
+    age      INT,
+    PRIMARY KEY (idClient)
 );
 
-CREATE TABLE IF NOT EXISTS categoriePrestation(
-   idCategorie serial,
-   libelleCategorie VARCHAR(50),
-   PRIMARY KEY(idCategorie)
+CREATE TABLE IF NOT EXISTS categoriePrestation
+(
+    idCategorie      INT AUTO_INCREMENT,
+    libelleCategorie VARCHAR(50),
+    PRIMARY KEY (idCategorie)
 );
 
-CREATE TABLE IF NOT EXISTS service(
-   idService serial,
-   libelleService VARCHAR(50),
-   PRIMARY KEY(idService)
+CREATE TABLE IF NOT EXISTS service
+(
+    idService      INT AUTO_INCREMENT,
+    libelleService VARCHAR(50),
+    PRIMARY KEY (idService)
 );
 
-CREATE TABLE IF NOT EXISTS statistique(
-   idStatistique serial,
-   libelleStatistique VARCHAR(50),
-   valeur DECIMAL(15,2),
-   PRIMARY KEY(idStatistique)
+CREATE TABLE IF NOT EXISTS statistique
+(
+    idStatistique      INT AUTO_INCREMENT,
+    libelleStatistique VARCHAR(50),
+    valeur             DECIMAL(15, 2),
+    PRIMARY KEY (idStatistique)
 );
 
-CREATE TABLE IF NOT EXISTS besoin(
-   idBesoin serial,
-   libelleBesoin VARCHAR(50),
-   PRIMARY KEY(idBesoin)
+CREATE TABLE IF NOT EXISTS besoin
+(
+    idBesoin      INT AUTO_INCREMENT,
+    libelleBesoin VARCHAR(50),
+    PRIMARY KEY (idBesoin)
 );
 
-CREATE TABLE IF NOT EXISTS caracteristique(
-   idCaracteristique serial,
-   libelleCaracteristique VARCHAR(50),
-   PRIMARY KEY(idCaracteristique)
+CREATE TABLE IF NOT EXISTS caracteristique
+(
+    idCaracteristique      INT AUTO_INCREMENT,
+    libelleCaracteristique VARCHAR(50),
+    PRIMARY KEY (idCaracteristique)
 );
 
-CREATE TABLE IF NOT EXISTS categorieBillet(
-   idCategorie serial,
-   libelleCategorie VARCHAR(50),
-   PRIMARY KEY(idCategorie)
+CREATE TABLE IF NOT EXISTS categorieBillet
+(
+    idCategorie      INT AUTO_INCREMENT,
+    libelleCategorie VARCHAR(50),
+    PRIMARY KEY (idCategorie)
 );
 
-CREATE TABLE IF NOT EXISTS utilisateur(
-   idUtilisateur serial,
-   typeCompte INT,
-   mdp VARCHAR(50),
-   login VARCHAR(50),
-   PRIMARY KEY(idUtilisateur)
+CREATE TABLE IF NOT EXISTS utilisateur
+(
+    idUtilisateur INT AUTO_INCREMENT,
+    typeCompte    INT,
+    mdp           VARCHAR(50),
+    login         VARCHAR(50),
+    PRIMARY KEY (idUtilisateur)
 );
 
-CREATE TABLE IF NOT EXISTS prestataire(
-   idPrestataire serial,
-   nom VARCHAR(50),
-   presenceHoraire VARCHAR(50),
-   textePrestataire TEXT,
-   imagePrestataire VARCHAR(50),
-   idCategorie INT NOT NULL,
-   PRIMARY KEY(idPrestataire),
-   FOREIGN KEY(idCategorie) REFERENCES categoriePrestation(idCategorie)
+CREATE TABLE IF NOT EXISTS prestataire
+(
+    idPrestataire    INT AUTO_INCREMENT,
+    nom              VARCHAR(50),
+    presenceHoraire  VARCHAR(50),
+    textePrestataire TEXT,
+    imagePrestataire VARCHAR(50),
+    idCategorie      INT NOT NULL,
+    PRIMARY KEY (idPrestataire),
+    FOREIGN KEY (idCategorie) REFERENCES categoriePrestation (idCategorie)
 );
 
-CREATE TABLE IF NOT EXISTS emplacement(
-   idEmplacement serial,
-   libelleEmplacement VARCHAR(50),
-   idCaracteristique INT NOT NULL,
-   idLocalisation INT NOT NULL,
-   PRIMARY KEY(idEmplacement),
-   FOREIGN KEY(idCaracteristique) REFERENCES caracteristique(idCaracteristique),
-   FOREIGN KEY(idLocalisation) REFERENCES localisation(idLocalisation)
+CREATE TABLE IF NOT EXISTS emplacement
+(
+    idEmplacement      INT AUTO_INCREMENT,
+    libelleEmplacement VARCHAR(50),
+    idCaracteristique  INT NOT NULL,
+    idLocalisation     INT NOT NULL,
+    PRIMARY KEY (idEmplacement),
+    FOREIGN KEY (idCaracteristique) REFERENCES caracteristique (idCaracteristique),
+    FOREIGN KEY (idLocalisation) REFERENCES localisation (idLocalisation)
 );
 
-CREATE TABLE IF NOT EXISTS billet(
-   idBillet serial,
-   prix DECIMAL(15,2),
-   idClient INT NOT NULL,
-   idCategorie INT NOT NULL,
-   PRIMARY KEY(idBillet),
-   FOREIGN KEY(idClient) REFERENCES client(idClient),
-   FOREIGN KEY(idCategorie) REFERENCES categorieBillet(idCategorie)
+CREATE TABLE IF NOT EXISTS billet
+(
+    idBillet    INT AUTO_INCREMENT,
+    prix        DECIMAL(15, 2),
+    idClient    INT NOT NULL,
+    idCategorie INT NOT NULL,
+    PRIMARY KEY (idBillet),
+    FOREIGN KEY (idClient) REFERENCES client (idClient),
+    FOREIGN KEY (idCategorie) REFERENCES categorieBillet (idCategorie)
 );
 
-CREATE TABLE IF NOT EXISTS produit(
-   idService INT,
-   idStatistique INT,
-   PRIMARY KEY(idService, idStatistique),
-   FOREIGN KEY(idService) REFERENCES service(idService),
-   FOREIGN KEY(idStatistique) REFERENCES statistique(idStatistique)
+CREATE TABLE IF NOT EXISTS produit
+(
+    idService     INT,
+    idStatistique INT,
+    PRIMARY KEY (idService, idStatistique),
+    FOREIGN KEY (idService) REFERENCES service (idService),
+    FOREIGN KEY (idStatistique) REFERENCES statistique (idStatistique)
 );
 
-CREATE TABLE IF NOT EXISTS possede(
-   idPrestataire INT,
-   idBesoin INT,
-   PRIMARY KEY(idPrestataire, idBesoin),
-   FOREIGN KEY(idPrestataire) REFERENCES prestataire(idPrestataire),
-   FOREIGN KEY(idBesoin) REFERENCES besoin(idBesoin)
+CREATE TABLE IF NOT EXISTS possede
+(
+    idPrestataire INT,
+    idBesoin      INT,
+    PRIMARY KEY (idPrestataire, idBesoin),
+    FOREIGN KEY (idPrestataire) REFERENCES prestataire (idPrestataire),
+    FOREIGN KEY (idBesoin) REFERENCES besoin (idBesoin)
 );
 
-CREATE TABLE IF NOT EXISTS modifie(
-   idPrestataire INT,
-   idClient INT,
-   heureVisite TIME,
-   PRIMARY KEY(idPrestataire, idClient),
-   FOREIGN KEY(idPrestataire) REFERENCES prestataire(idPrestataire),
-   FOREIGN KEY(idClient) REFERENCES client(idClient)
+CREATE TABLE IF NOT EXISTS modifie
+(
+    idPrestataire INT,
+    idClient      INT,
+    heureVisite   TIME,
+    PRIMARY KEY (idPrestataire, idClient),
+    FOREIGN KEY (idPrestataire) REFERENCES prestataire (idPrestataire),
+    FOREIGN KEY (idClient) REFERENCES client (idClient)
 );
 
-CREATE TABLE IF NOT EXISTS situe(
-   idEmplacement INT,
-   horaireDebut TIME,
-   horaireFin TIME,
-   idPrestataire INT NOT NULL,
-   PRIMARY KEY(idEmplacement,idPrestataire,horaireDebut),
-   FOREIGN KEY(idEmplacement) REFERENCES emplacement(idEmplacement),
-   FOREIGN KEY(idPrestataire) REFERENCES prestataire(idPrestataire)
+CREATE TABLE IF NOT EXISTS situe
+(
+    idEmplacement INT,
+    horaireDebut  TIME,
+    horaireFin    TIME,
+    idPrestataire INT NOT NULL,
+    PRIMARY KEY (idEmplacement, idPrestataire, horaireDebut),
+    FOREIGN KEY (idEmplacement) REFERENCES emplacement (idEmplacement),
+    FOREIGN KEY (idPrestataire) REFERENCES prestataire (idPrestataire)
 );
 
-CREATE TABLE IF NOT EXISTS accede(
-   idPrestataire serial,
-   idService INT,
-   PRIMARY KEY(idPrestataire, idService),
-   FOREIGN KEY(idPrestataire) REFERENCES prestataire(idPrestataire),
-   FOREIGN KEY(idService) REFERENCES service(idService)
+CREATE TABLE IF NOT EXISTS accede
+(
+    idPrestataire INT AUTO_INCREMENT,
+    idService     INT,
+    PRIMARY KEY (idPrestataire, idService),
+    FOREIGN KEY (idPrestataire) REFERENCES prestataire (idPrestataire),
+    FOREIGN KEY (idService) REFERENCES service (idService)
 );
 
-CREATE TABLE IF NOT EXISTS gere(
-   idPrestataire serial,
-   idAdmin INT,
-   PRIMARY KEY(idPrestataire, idAdmin),
-   FOREIGN KEY(idPrestataire) REFERENCES prestataire(idPrestataire),
-   FOREIGN KEY(idAdmin) REFERENCES admin(idAdmin)
+CREATE TABLE IF NOT EXISTS gere
+(
+    idPrestataire INT AUTO_INCREMENT,
+    idAdmin       INT,
+    PRIMARY KEY (idPrestataire, idAdmin),
+    FOREIGN KEY (idPrestataire) REFERENCES prestataire (idPrestataire),
+    FOREIGN KEY (idAdmin) REFERENCES admin (idAdmin)
 );
 
-CREATE TABLE IF NOT EXISTS visionne(
-   idAdmin INT,
-   idStatistique INT,
-   PRIMARY KEY(idAdmin, idStatistique),
-   FOREIGN KEY(idAdmin) REFERENCES admin(idAdmin),
-   FOREIGN KEY(idStatistique) REFERENCES statistique(idStatistique)
+CREATE TABLE IF NOT EXISTS visionne
+(
+    idAdmin       INT,
+    idStatistique INT,
+    PRIMARY KEY (idAdmin, idStatistique),
+    FOREIGN KEY (idAdmin) REFERENCES admin (idAdmin),
+    FOREIGN KEY (idStatistique) REFERENCES statistique (idStatistique)
 );
 
-CREATE TABLE IF NOT EXISTS repond(
-   idBesoin INT,
-   idCaracteristique INT,
-   PRIMARY KEY(idBesoin, idCaracteristique),
-   FOREIGN KEY(idBesoin) REFERENCES besoin(idBesoin),
-   FOREIGN KEY(idCaracteristique) REFERENCES caracteristique(idCaracteristique)
+CREATE TABLE IF NOT EXISTS repond
+(
+    idBesoin          INT,
+    idCaracteristique INT,
+    PRIMARY KEY (idBesoin, idCaracteristique),
+    FOREIGN KEY (idBesoin) REFERENCES besoin (idBesoin),
+    FOREIGN KEY (idCaracteristique) REFERENCES caracteristique (idCaracteristique)
 );
 
-CREATE TABLE IF NOT EXISTS est_prestataire(
-   idPrestataire INT,
-   idUtilisateur INT,
-   PRIMARY KEY(idPrestataire, idUtilisateur),
-   FOREIGN KEY(idPrestataire) REFERENCES prestataire(idPrestataire),
-   FOREIGN KEY(idUtilisateur) REFERENCES utilisateur(idUtilisateur)
+CREATE TABLE IF NOT EXISTS est_prestataire
+(
+    idPrestataire INT,
+    idUtilisateur INT,
+    PRIMARY KEY (idPrestataire, idUtilisateur),
+    FOREIGN KEY (idPrestataire) REFERENCES prestataire (idPrestataire),
+    FOREIGN KEY (idUtilisateur) REFERENCES utilisateur (idUtilisateur)
 );
 
-CREATE TABLE IF NOT EXISTS est_admin(
-   idAdmin INT,
-   idUtilisateur INT,
-   PRIMARY KEY(idAdmin, idUtilisateur),
-   FOREIGN KEY(idAdmin) REFERENCES admin(idAdmin),
-   FOREIGN KEY(idUtilisateur) REFERENCES utilisateur(idUtilisateur)
+CREATE TABLE IF NOT EXISTS est_admin
+(
+    idAdmin       INT,
+    idUtilisateur INT,
+    PRIMARY KEY (idAdmin, idUtilisateur),
+    FOREIGN KEY (idAdmin) REFERENCES admin (idAdmin),
+    FOREIGN KEY (idUtilisateur) REFERENCES utilisateur (idUtilisateur)
 );
 
-CREATE TABLE IF NOT EXISTS est_client(
-   idClient INT,
-   idUtilisateur INT,
-   PRIMARY KEY(idClient, idUtilisateur),
-   FOREIGN KEY(idClient) REFERENCES client(idClient),
-   FOREIGN KEY(idUtilisateur) REFERENCES utilisateur(idUtilisateur)
+CREATE TABLE IF NOT EXISTS est_client
+(
+    idClient      INT,
+    idUtilisateur INT,
+    PRIMARY KEY (idClient, idUtilisateur),
+    FOREIGN KEY (idClient) REFERENCES client (idClient),
+    FOREIGN KEY (idUtilisateur) REFERENCES utilisateur (idUtilisateur)
 );
 
-INSERT INTO localisation VALUES ('1', 'zinzin');
 
-COPY admin(texteAccueil, imageAccueil)
-    TO './BDD/admin.csv'
-    DELIMITER ','
-    CSV HEADER;
-/*LOAD DATA LOCAL INFILE './BDD/admin.csv' INTO TABLE admin CHARACTER SET utf8 FIELDS TERMINATED BY ',';
-LOAD DATA LOCAL INFILE './BDD/client.csv' INTO TABLE  client CHARACTER SET utf8 FIELDS TERMINATED BY ',';
+INSERT INTO localisation
+VALUES ('1', 'zinzin');
+LOAD DATA LOCAL INFILE './BDD/admin.csv' INTO TABLE admin CHARACTER SET utf8 FIELDS TERMINATED BY ',';
+LOAD DATA LOCAL INFILE './BDD/client.csv' INTO TABLE client CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 LOAD DATA LOCAL INFILE './BDD/categorie.csv' INTO TABLE categoriePrestation CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 LOAD DATA LOCAL INFILE './BDD/service.csv' INTO TABLE service CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 LOAD DATA LOCAL INFILE './BDD/statistique.csv' INTO TABLE statistique CHARACTER SET utf8 FIELDS TERMINATED BY ',';
@@ -240,12 +261,12 @@ LOAD DATA LOCAL INFILE './BDD/repond.csv' INTO TABLE repond CHARACTER SET utf8 F
 LOAD DATA LOCAL INFILE './BDD/est_prestataire.csv' INTO TABLE est_prestataire CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 LOAD DATA LOCAL INFILE './BDD/est_admin.csv' INTO TABLE est_admin CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 LOAD DATA LOCAL INFILE './BDD/est_client.csv' INTO TABLE est_client CHARACTER SET utf8 FIELDS TERMINATED BY ',';
-select * from repond;
-*/
+select *
+from repond;
+
 
 -- situe horaire début primary key
 -- repond besoin et carctristique ?
-
 
 
 

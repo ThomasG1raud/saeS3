@@ -5,7 +5,7 @@ const port = process.env.PORT;
 var app = express();
 
 const adminRouter = require('./routes/admin.router');
-const prestataireRouter = require("./routes/pretataire.router");
+const prestataireRouter = require("./routes/prestataire.router");
 const vitrineRouter = require("./routes/vitrine.router");
 
 app.use("/admin", adminRouter);

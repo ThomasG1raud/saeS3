@@ -25,64 +25,64 @@ DROP TABLE IF EXISTS localisation; -- ok
 
 
 CREATE TABLE IF NOT EXISTS localisation(
-   idLocalisation INT AUTO_INCREMENT,
+   idLocalisation serial,
    libelleLocalisation VARCHAR(50),
    PRIMARY KEY(idLocalisation)
 );
 
 CREATE TABLE IF NOT EXISTS admin(
-   idAdmin INT AUTO_INCREMENT,
+   idAdmin serial,
    texteAccueil TEXT,
    imageAccueil VARCHAR(50),
    PRIMARY KEY(idAdmin)
 );
 
 CREATE TABLE IF NOT EXISTS client(
-   idClient INT AUTO_INCREMENT,
+   idClient serial,
    nom VARCHAR(50),
    age INT,
    PRIMARY KEY(idClient)
 );
 
 CREATE TABLE IF NOT EXISTS categoriePrestation(
-   idCategorie INT AUTO_INCREMENT,
+   idCategorie serial,
    libelleCategorie VARCHAR(50),
    PRIMARY KEY(idCategorie)
 );
 
 CREATE TABLE IF NOT EXISTS service(
-   idService INT AUTO_INCREMENT,
+   idService serial,
    libelleService VARCHAR(50),
    PRIMARY KEY(idService)
 );
 
 CREATE TABLE IF NOT EXISTS statistique(
-   idStatistique INT AUTO_INCREMENT,
+   idStatistique serial,
    libelleStatistique VARCHAR(50),
    valeur DECIMAL(15,2),
    PRIMARY KEY(idStatistique)
 );
 
 CREATE TABLE IF NOT EXISTS besoin(
-   idBesoin INT AUTO_INCREMENT,
+   idBesoin serial,
    libelleBesoin VARCHAR(50),
    PRIMARY KEY(idBesoin)
 );
 
 CREATE TABLE IF NOT EXISTS caracteristique(
-   idCaracteristique INT AUTO_INCREMENT,
+   idCaracteristique serial,
    libelleCaracteristique VARCHAR(50),
    PRIMARY KEY(idCaracteristique)
 );
 
 CREATE TABLE IF NOT EXISTS categorieBillet(
-   idCategorie INT AUTO_INCREMENT,
+   idCategorie serial,
    libelleCategorie VARCHAR(50),
    PRIMARY KEY(idCategorie)
 );
 
 CREATE TABLE IF NOT EXISTS utilisateur(
-   idUtilisateur INT AUTO_INCREMENT,
+   idUtilisateur serial,
    typeCompte INT,
    mdp VARCHAR(50),
    login VARCHAR(50),
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS utilisateur(
 );
 
 CREATE TABLE IF NOT EXISTS prestataire(
-   idPrestataire INT AUTO_INCREMENT,
+   idPrestataire serial,
    nom VARCHAR(50),
    presenceHoraire VARCHAR(50),
    textePrestataire TEXT,
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS prestataire(
 );
 
 CREATE TABLE IF NOT EXISTS emplacement(
-   idEmplacement INT AUTO_INCREMENT,
+   idEmplacement serial,
    libelleEmplacement VARCHAR(50),
    idCaracteristique INT NOT NULL,
    idLocalisation INT NOT NULL,
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS emplacement(
 );
 
 CREATE TABLE IF NOT EXISTS billet(
-   idBillet INT AUTO_INCREMENT,
+   idBillet serial,
    prix DECIMAL(15,2),
    idClient INT NOT NULL,
    idCategorie INT NOT NULL,
@@ -156,7 +156,7 @@ CREATE TABLE IF NOT EXISTS situe(
 );
 
 CREATE TABLE IF NOT EXISTS accede(
-   idPrestataire INT AUTO_INCREMENT,
+   idPrestataire serial,
    idService INT,
    PRIMARY KEY(idPrestataire, idService),
    FOREIGN KEY(idPrestataire) REFERENCES prestataire(idPrestataire),
@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS accede(
 );
 
 CREATE TABLE IF NOT EXISTS gere(
-   idPrestataire INT AUTO_INCREMENT,
+   idPrestataire serial,
    idAdmin INT,
    PRIMARY KEY(idPrestataire, idAdmin),
    FOREIGN KEY(idPrestataire) REFERENCES prestataire(idPrestataire),
@@ -212,7 +212,12 @@ CREATE TABLE IF NOT EXISTS est_client(
 );
 
 INSERT INTO localisation VALUES ('1', 'zinzin');
-LOAD DATA LOCAL INFILE './BDD/admin.csv' INTO TABLE admin CHARACTER SET utf8 FIELDS TERMINATED BY ',';
+
+COPY admin(texteAccueil, imageAccueil)
+    TO './BDD/admin.csv'
+    DELIMITER ','
+    CSV HEADER;
+/*LOAD DATA LOCAL INFILE './BDD/admin.csv' INTO TABLE admin CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 LOAD DATA LOCAL INFILE './BDD/client.csv' INTO TABLE  client CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 LOAD DATA LOCAL INFILE './BDD/categorie.csv' INTO TABLE categoriePrestation CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 LOAD DATA LOCAL INFILE './BDD/service.csv' INTO TABLE service CHARACTER SET utf8 FIELDS TERMINATED BY ',';
@@ -236,10 +241,11 @@ LOAD DATA LOCAL INFILE './BDD/est_prestataire.csv' INTO TABLE est_prestataire CH
 LOAD DATA LOCAL INFILE './BDD/est_admin.csv' INTO TABLE est_admin CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 LOAD DATA LOCAL INFILE './BDD/est_client.csv' INTO TABLE est_client CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 select * from repond;
-
+*/
 
 -- situe horaire début primary key
 -- repond besoin et carctristique ?
+
 
 
 

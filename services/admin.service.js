@@ -2,13 +2,11 @@ const {mysql,sequalize} = require("../connection")
 
 
 const panel = (callback) => {
-return callback();
+    return callback();
 }
 
 const listPrestataires = async () => {
-    connesequelize.authenticate();
-    const allPrestataire = await sequelize.query("SELECT * FROM prestataire");
-    console.log(allPrestataire)
+    return callback();
 }
 
 const idPrestataires = (callback) => {

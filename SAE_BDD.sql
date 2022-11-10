@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS prestataire
     imagePrestataire VARCHAR(50),
     idCategorie      INT NOT NULL,
     PRIMARY KEY (idPrestataire),
-    FOREIGN KEY (idCategorie) REFERENCES categoriePrestation (idCategorie)
+    CONSTRAINT fk_categorie_prestataire FOREIGN KEY (idCategorie) REFERENCES categoriePrestation (idCategorie)
 );
 
 CREATE TABLE IF NOT EXISTS emplacement
@@ -235,9 +235,9 @@ CREATE TABLE IF NOT EXISTS est_client
     FOREIGN KEY (idUtilisateur) REFERENCES utilisateur (idUtilisateur)
 );
 
-
 INSERT INTO localisation
 VALUES ('1', 'zinzin');
+
 LOAD DATA LOCAL INFILE './BDD/admin.csv' INTO TABLE admin CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 LOAD DATA LOCAL INFILE './BDD/client.csv' INTO TABLE client CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 LOAD DATA LOCAL INFILE './BDD/categorie.csv' INTO TABLE categoriePrestation CHARACTER SET utf8 FIELDS TERMINATED BY ',';
@@ -261,14 +261,69 @@ LOAD DATA LOCAL INFILE './BDD/repond.csv' INTO TABLE repond CHARACTER SET utf8 F
 LOAD DATA LOCAL INFILE './BDD/est_prestataire.csv' INTO TABLE est_prestataire CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 LOAD DATA LOCAL INFILE './BDD/est_admin.csv' INTO TABLE est_admin CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 LOAD DATA LOCAL INFILE './BDD/est_client.csv' INTO TABLE est_client CHARACTER SET utf8 FIELDS TERMINATED BY ',';
-select *
-from repond;
-
 
 -- situe horaire début primary key
--- repond besoin et carctristique ?
 
+-- Afficher infos prestataire
+SET @idPrestataire = 1;
+SELECT *
+FROM prestataire
+WHERE idPrestataire = @idPrestataire;
 
+-- Afficher infos admin
+SET @idAdmin = 1;
+SELECT *
+FROM admin
+WHERE idAdmin = @idAdmin;
 
+-- Afficher infos prestataire sur la carte
+SET @idEmplacement = 3;
+SELECT p.nom, p.textePrestataire
+FROM emplacement e
+         INNER JOIN situe s on e.idEmplacement = s.idEmplacement
+         INNER JOIN prestataire p on p.idPrestataire = s.idPrestataire
+WHERE e.idEmplacement = @idEmplacement;
 
+-- Changer le prestataire d'un emplacement
+SET @idEmplacement = 3;
+SET @idPrestataire = 4;
+UPDATE situe
+SET idPrestataire = @idPrestataire
+WHERE idEmplacement = @idEmplacement;
 
+-- Modifier un prestataire
+SET @idPrestataire = 1;
+SET @nomPrestataire = 'Zinzin';
+SET @presenceHoraire = 'ok';
+SET @textePrestataire = 'Zinzin le Fou';
+SET @imagePrestataire = 'image';
+SET @idCategorie = 1;
+
+UPDATE prestataire
+SET nom              = @nomPrestataire,
+    presenceHoraire  = @presenceHoraire,
+    textePrestataire = @presenceHoraire,
+    imagePrestataire = @imagePrestataire,
+    idCategorie      = @idCategorie
+WHERE idPrestataire = @idPrestataire;
+
+-- Ajouter un prestataire (souci id 16)
+
+SET @nomPrestataire = 'Guillaume';
+SET @presenceHoraire = 'feur';
+SET @textePrestataire = 'Guillaume le animateur';
+SET @imagePrestataire = 'image2Guillaume';
+SET @idCategorie = 3;
+
+INSERT INTO prestataire (nom,
+                         presenceHoraire,
+                         textePrestataire,
+                         imagePrestataire,
+                         idCategorie)
+VALUES (@nomPrestataire,
+        @presenceHoraire,
+        @textePrestataire,
+        @imagePrestataire,
+        @idCategorie);
+
+SELECT * FROM prestataire;

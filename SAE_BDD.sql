@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS prestataire
     imagePrestataire VARCHAR(50),
     idCategorie      INT NOT NULL,
     PRIMARY KEY (idPrestataire),
-    CONSTRAINT fk_categorie_prestataire FOREIGN KEY (idCategorie) REFERENCES categoriePrestation (idCategorie)
+    FOREIGN KEY (idCategorie) REFERENCES categoriePrestation (idCategorie)
 );
 
 CREATE TABLE IF NOT EXISTS emplacement

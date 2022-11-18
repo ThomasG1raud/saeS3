@@ -1,12 +1,8 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
-
-
-model.exports = (sequalize,Sequalize) =>{
+module.exports = (sequelize,Sequelize) =>{
     const localisation = sequelize.define('localisation', {
         // Model attributes are defined here
         idLocalisation: {
-            type: Sequalize.INTEGER,
+            type: Sequelize.INTEGER,
             allowNull: false,
             autoIncrement:true,
             unique:true,
@@ -14,11 +10,9 @@ model.exports = (sequalize,Sequalize) =>{
 
         },
         libelleLocalisation: {
-            type: Sequalize.TEXT,
+            type: Sequelize.TEXT,
             allowNull: false
         },
-    }, {
-        // Other model options go here
     });
     return localisation
 }

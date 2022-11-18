@@ -1,8 +1,8 @@
-const  connection = require('./connection');
+const db = require('./model');
 var express = require('express');
 require('dotenv').config()
-const port = process.env.PORT;
 var app = express();
+const {Sequelize} = require('sequelize');
 
 const AppError = require("./utils/appError");
 const adminRouter = require('./routes/admin.router');
@@ -13,9 +13,13 @@ app.use("/admin", adminRouter);
 app.use("/prestataire", prestataireRouter);
 app.use("/", vitrineRouter);
 
-connection.sequelize.sync()
-    .then((console.log("bdd OK")))
-    .catch(error =>console.log(error))
+db.sequelize.sync()
+    .then(() => {
+        (console.log("bdd OK"));
+    })
+    .catch((error) => {
+        console.log(error);
+    });
 
 
 
@@ -29,6 +33,6 @@ app.all("*", (req, res,next) => {
     throw new AppError(`Requested URL ${req.path} not found !`, 404)
 })
 
-app.listen(port, () => {
-    console.log(`Example app listening on port http://localhost:${port}`)
+app.listen(process.env.PORT, () => {
+    console.log(`Example app listening on port http://localhost:${process.env.PORT}`)
 })

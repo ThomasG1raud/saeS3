@@ -1,4 +1,4 @@
-module.exports = (DataTypes,Sequelize) =>{
+module.exports = (sequelize,Sequelize) =>{
     const prestataire = sequelize.define('prestataire', {
         idPrestataire: {
             type: Sequelize.INTEGER,
@@ -15,7 +15,7 @@ module.exports = (DataTypes,Sequelize) =>{
         },
 
         presenceHoraire: {
-            type: DataTypes.DATE,
+            type: Sequelize.DATE,
             allowNull: false
         },
         textePrestataire:{

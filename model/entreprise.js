@@ -1,7 +1,7 @@
 module.exports = (sequelize,Sequelize) =>{
-    const CategorieCompte = sequelize.define('categoriePrestation', {
+    const entreprise = sequelize.define('entreprise', {
         siren: {
-            type: Sequelize.INTERGER,
+            type: Sequelize.INTEGER,
             allowNull: false,
             unique:true,
             primaryKey:true
@@ -13,5 +13,5 @@ module.exports = (sequelize,Sequelize) =>{
             // allowNull defaults to true
         }
     });
-    return CategorieCompte
+    return entreprise
 }

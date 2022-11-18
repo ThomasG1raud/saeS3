@@ -1,5 +1,7 @@
-const { Sequelize } = require('sequelize');
-const mysql = require("mysql2");
+const { Sequelize } =require('sequelize');
+const mysql = require("mysql");
+const postgres = require("postgres");
+
 
 mysql.createConnection({
   host : process.env.HOST,
@@ -8,12 +10,12 @@ mysql.createConnection({
   dataBase : process.env.DATABASE
 })
 
-
-const sequelize = new Sequelize('database', 'username', 'password',{
-  host: 'http://localhost:3000/',
-  dialect: 'mysql',
-  port: '3000',
+const sequelize = new Sequelize('bdd_sae_s3', 'sae_s3', 'bdds3', {
+  host: 'localhost',
+  dialect: 'postgres'
 });
+
+
 // async function def(){
 // try {
 //   sequelize.authenticate();

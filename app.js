@@ -1,3 +1,4 @@
+const  connection = require('./connection');
 var express = require('express');
 require('dotenv').config()
 const port = process.env.PORT;
@@ -11,6 +12,10 @@ const vitrineRouter = require("./routes/vitrine.router");
 app.use("/admin", adminRouter);
 app.use("/prestataire", prestataireRouter);
 app.use("/", vitrineRouter);
+
+connection.sequelize.sync()
+    .then((console.log("bdd OK")))
+    .catch(error =>console.log(error))
 
 
 

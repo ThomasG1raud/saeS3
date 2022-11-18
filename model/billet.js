@@ -4,11 +4,12 @@ module.exports = (sequelize,Sequelize) =>{
             type: Sequelize.INTEGER,
             allowNull: true,
             autoIncrement:true,
+            unique:true,
             primaryKey:true
         },
 
         prix: {
-            type: Sequelize.TEXT,
+            type: Sequelize.DOUBLE,
             allowNull: false
             // allowNull defaults to true
         },

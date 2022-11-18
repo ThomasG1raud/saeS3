@@ -1,9 +1,10 @@
-module.exports = (sequelize,Sequelize) =>{
+module.exports = (DataTypes,Sequelize) =>{
     const prestataire = sequelize.define('prestataire', {
         idPrestataire: {
             type: Sequelize.INTEGER,
             allowNull: false,
             autoIncrement:true,
+            unique:true,
             primaryKey:true
         },
 
@@ -14,7 +15,7 @@ module.exports = (sequelize,Sequelize) =>{
         },
 
         presenceHoraire: {
-            type: Sequelize.STRING,
+            type: DataTypes.DATE,
             allowNull: false
         },
         textePrestataire:{

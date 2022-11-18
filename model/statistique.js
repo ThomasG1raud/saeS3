@@ -4,11 +4,12 @@ module.exports = (sequelize,Sequelize) =>{
             type: Sequelize.INTEGER,
             allowNull: false,
             autoIncrement:true,
+            unique:true,
             primaryKey:true
         },
 
         libelleStatistique: {
-            type: Sequelize.STRING,
+            type: Sequelize.TEXT,
             allowNull: false
             // allowNull defaults to true
         },

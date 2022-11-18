@@ -1,22 +1,18 @@
 module.exports = (sequelize,Sequelize) =>{
-    const admin = sequelize.define('admin', {
-        idAdmin: {
+    const CategorieCompte = sequelize.define('categoriePrestation', {
+        typeCompte: {
             type: Sequelize.INTEGER,
             allowNull: false,
             autoIncrement:true,
+            unique:true,
             primaryKey:true
         },
 
-        texteAccueil: {
+        libelleCompte: {
             type: Sequelize.TEXT,
             allowNull: false
             // allowNull defaults to true
-        },
-
-        imageAccueil: {
-            type: Sequelize.STRING,
-            allowNull: false
         }
     });
-    return admin
+    return CategorieCompte
 }

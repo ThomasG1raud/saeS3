@@ -4,13 +4,8 @@ module.exports = (sequelize,Sequelize) =>{
             type: Sequelize.INTEGER,
             allowNull: false,
             autoIncrement:true,
+            unique:true,
             primaryKey:true
-        },
-
-        typeCompte: {
-            type: Sequelize.INTEGER,
-            allowNull: false
-            // allowNull defaults to true
         },
 
         mdp: {

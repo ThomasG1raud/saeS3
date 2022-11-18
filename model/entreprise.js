@@ -1,18 +1,17 @@
 module.exports = (sequelize,Sequelize) =>{
-    const caracteristique = sequelize.define('caracteristique', {
-        idCaracteristique: {
-            type: Sequelize.INTEGER,
+    const CategorieCompte = sequelize.define('categoriePrestation', {
+        siren: {
+            type: Sequelize.INTERGER,
             allowNull: false,
-            autoIncrement:true,
             unique:true,
             primaryKey:true
         },
 
-        libelleCaracteristique: {
+        nomEntreprise: {
             type: Sequelize.TEXT,
             allowNull: false
             // allowNull defaults to true
         }
     });
-    return caracteristique
+    return CategorieCompte
 }

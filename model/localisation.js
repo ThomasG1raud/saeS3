@@ -8,13 +8,14 @@ model.exports = (sequalize,Sequalize) =>{
         idLocalisation: {
             type: Sequalize.INTEGER,
             allowNull: false,
+            autoIncrement:true,
             unique:true,
             primaryKey:true
 
         },
         libelleLocalisation: {
-            type: Sequalize.STRING,
-            allowNull: fails
+            type: Sequalize.TEXT,
+            allowNull: false
         },
     }, {
         // Other model options go here

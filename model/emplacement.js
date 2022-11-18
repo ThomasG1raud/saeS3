@@ -4,14 +4,16 @@ module.exports = (sequelize,Sequelize) =>{
             type: Sequelize.INTEGER,
             allowNull: false,
             autoIncrement:true,
+            unique:true,
             primaryKey:true
         },
 
         libelleEmplacement: {
-            type: Sequelize.STRING,
+            type: Sequelize.TEXT,
             allowNull: false
             // allowNull defaults to true
         }
     });
+
     return emplacement
 }

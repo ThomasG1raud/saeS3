@@ -2,15 +2,10 @@ const { Sequelize } =require('sequelize');
 
 require('dotenv').config()
 
-// const sequelize = new Sequelize(process.env.DATABASE, process.env.USER, process.env.PASSWORD,{
-//     host: process.env.HOST,
-//     operatorsAliases: false,
-//     dialect: 'postgres',
-//     define: {
-//         timestamps: false
-//     },
-// });
-const sequelize = new Sequelize('postgres:postgresql://localhost:5432/bdd_sae_s3')
+const sequelize = new Sequelize(process.env.DATABASE, process.env.LOGIN, process.env.PASSWORD, {
+    host: process.env.HOST,
+    dialect: process.env.DIALECT
+});
 
 const db = {}
 

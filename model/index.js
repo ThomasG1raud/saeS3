@@ -25,6 +25,8 @@ db.prestataire = require("./prestataire")(sequelize,Sequelize);
 db.service = require("./service")(sequelize,Sequelize);
 db.statistique = require("./statistique")(sequelize,Sequelize);
 db.utilisateur = require("./utilisateur")(sequelize,Sequelize);
+db.mofifie = require("./modifie")(sequelize, Sequelize);
+db.situe = require("./situe")(sequelize, Sequelize);
 
 
 

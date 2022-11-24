@@ -92,6 +92,16 @@ db.emplacement.hasOne(db.localisation, { foreignKey: "fk_idLocalisation" })
 // localisation -> 1,n emplacement
 db.localisation.hasMany(db.emplacement, { foreignKey: "fk_idEmplacement" })
 
+// table situe
+db.utilisateur.belongsToMany(db.prestataire, {through: "situe", foreignKey: "fk_idUtilisateur"});
+db.prestataire.belongsToMany(db.utilisateur, {through: "situe", foreignKey:"fk_idPrestataire"});
+
+
+// table modifie
+db.prestataire.belongsToMany(db.emplacement, {through: "modifie", foreignKey: "fk_idPrestataire"});
+db.emplacement.belongsToMany(db.prestataire, {through: "modifie", foreignKey:"fk_idEmplacement"});
+
+
 
 
 

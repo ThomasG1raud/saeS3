@@ -1,5 +1,5 @@
 module.exports = (sequelize,Sequelize) =>{
-    const service = sequelize.define('service', {
+    const services = sequelize.define('services', {
         idService: {
             type: Sequelize.INTEGER,
             allowNull: false,
@@ -16,5 +16,5 @@ module.exports = (sequelize,Sequelize) =>{
     }, {
         timestamps: false
     });
-    return service
+    return services
 }

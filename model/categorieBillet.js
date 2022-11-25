@@ -1,5 +1,5 @@
 module.exports = (sequelize,Sequelize) =>{
-    const categorieBillet = sequelize.define('categorieBillet', {
+    const categorieBillets = sequelize.define('categorieBillets', {
         idCategorie: {
             type: Sequelize.INTEGER,
             allowNull: false,
@@ -16,5 +16,5 @@ module.exports = (sequelize,Sequelize) =>{
     }, {
         timestamps: false
     });
-    return categorieBillet
+    return categorieBillets
 }

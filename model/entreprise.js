@@ -1,5 +1,5 @@
 module.exports = (sequelize,Sequelize) =>{
-    const entreprise = sequelize.define('entreprise', {
+    const entreprises = sequelize.define('entreprises', {
         siren: {
             type: Sequelize.INTEGER,
             allowNull: false,
@@ -15,5 +15,5 @@ module.exports = (sequelize,Sequelize) =>{
     }, {
         timestamps: false
     });
-    return entreprise
+    return entreprises
 }

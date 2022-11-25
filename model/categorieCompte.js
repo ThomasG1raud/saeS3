@@ -1,5 +1,5 @@
 module.exports = (sequelize,Sequelize) =>{
-    const CategorieCompte = sequelize.define('categoriePrestation', {
+    const CategorieComptes = sequelize.define('CategorieComptes', {
         typeCompte: {
             type: Sequelize.INTEGER,
             allowNull: false,
@@ -16,5 +16,5 @@ module.exports = (sequelize,Sequelize) =>{
     }, {
         timestamps: false
     });
-    return CategorieCompte
+    return CategorieComptes
 }

@@ -1,5 +1,5 @@
 module.exports = (sequelize,Sequelize) =>{
-    const localisation = sequelize.define('localisation', {
+    const localisations = sequelize.define('localisations', {
         // Model attributes are defined here
         idLocalisation: {
             type: Sequelize.INTEGER,
@@ -16,5 +16,5 @@ module.exports = (sequelize,Sequelize) =>{
     }, {
         timestamps: false
     });
-    return localisation
+    return localisations
 }

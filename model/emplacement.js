@@ -1,5 +1,5 @@
 module.exports = (sequelize,Sequelize) =>{
-    const emplacement = sequelize.define('emplacement', {
+    const emplacements = sequelize.define('emplacements', {
         idEmplacement: {
             type: Sequelize.INTEGER,
             allowNull: false,
@@ -17,5 +17,5 @@ module.exports = (sequelize,Sequelize) =>{
         timestamps: false
     });
 
-    return emplacement
+    return emplacements
 }

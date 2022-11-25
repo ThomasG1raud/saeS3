@@ -16,6 +16,7 @@ app.use("/", vitrineRouter);
 db.sequelize.sync()
     .then(() => {
         (console.log("bdd OK"));
+        (console.log("http://localhost:3000/admin/"));
     })
     .catch((error) => {
         console.log(error);

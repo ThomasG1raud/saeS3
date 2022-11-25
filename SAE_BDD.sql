@@ -1,4 +1,3 @@
-
 DROP TABLE IF EXISTS reponds;
 DROP TABLE IF EXISTS comportes;
 DROP TABLE IF EXISTS accedes;
@@ -18,28 +17,28 @@ DROP TABLE IF EXISTS services;
 DROP TABLE IF EXISTS categoriePrestations;
 DROP TABLE IF EXISTS localisations;
 
-CREATE TABLE localisation
+CREATE TABLE localisations
 (
     idLocalisation      SERIAL,
     libelleLocalisation VARCHAR(255),
     PRIMARY KEY (idLocalisation)
 );
 
-CREATE TABLE categoriePrestation
+CREATE TABLE categoriePrestations
 (
     idCategorie      SERIAL,
     libelleCategorie VARCHAR(255),
     PRIMARY KEY (idCategorie)
 );
 
-CREATE TABLE service
+CREATE TABLE services
 (
     idService      SERIAL,
     libelleService VARCHAR(255),
     PRIMARY KEY (idService)
 );
 
-CREATE TABLE statistique
+CREATE TABLE statistiques
 (
     idStatistique      SERIAL,
     libelleStatistique VARCHAR(255),
@@ -47,35 +46,35 @@ CREATE TABLE statistique
     PRIMARY KEY (idStatistique)
 );
 
-CREATE TABLE caracteristique
+CREATE TABLE caracteristiques
 (
     idCaracteristique      SERIAL,
     libelleCaracteristique VARCHAR(255),
     PRIMARY KEY (idCaracteristique)
 );
 
-CREATE TABLE categorieBillet
+CREATE TABLE categorieBillets
 (
     idCategorie      SERIAL,
     libelleCategorie VARCHAR(255),
     PRIMARY KEY (idCategorie)
 );
 
-CREATE TABLE entreprise
+CREATE TABLE entreprises
 (
     siren         SERIAL,
     nomEntreprise VARCHAR(255),
     PRIMARY KEY (siren)
 );
 
-CREATE TABLE categorieCompte
+CREATE TABLE categorieComptes
 (
     typeCompte    SERIAL,
     libelleCompte VARCHAR(58),
     PRIMARY KEY (typeCompte)
 );
 
-CREATE TABLE prestataire
+CREATE TABLE prestataires
 (
     idPrestataire    SERIAL,
     nom              VARCHAR(255),
@@ -85,20 +84,20 @@ CREATE TABLE prestataire
     siren            INT NOT NULL,
     idCategorie      INT NOT NULL,
     PRIMARY KEY (idPrestataire),
-    FOREIGN KEY (siren) REFERENCES entreprise (siren),
-    FOREIGN KEY (idCategorie) REFERENCES categoriePrestation (idCategorie)
+    FOREIGN KEY (siren) REFERENCES entreprises (siren),
+    FOREIGN KEY (idCategorie) REFERENCES categoriePrestations (idCategorie)
 );
 
-CREATE TABLE emplacement
+CREATE TABLE emplacements
 (
     idEmplacement      SERIAL,
     libelleEmplacement VARCHAR(255),
     idLocalisation     INT NOT NULL,
     PRIMARY KEY (idEmplacement),
-    FOREIGN KEY (idLocalisation) REFERENCES localisation (idLocalisation)
+    FOREIGN KEY (idLocalisation) REFERENCES localisations (idLocalisation)
 );
 
-CREATE TABLE utilisateur
+CREATE TABLE utilisateurs
 (
     idUtilisateur SERIAL,
     mdp           VARCHAR(255),
@@ -107,66 +106,66 @@ CREATE TABLE utilisateur
     nom           VARCHAR(255),
     typeCompte    INT NOT NULL,
     PRIMARY KEY (idUtilisateur),
-    FOREIGN KEY (typeCompte) REFERENCES categorieCompte (typeCompte)
+    FOREIGN KEY (typeCompte) REFERENCES categorieComptes (typeCompte)
 );
 
-CREATE TABLE billet
+CREATE TABLE billets
 (
     idBillet      SERIAL,
     prix          DECIMAL(15, 2),
     idUtilisateur INT NOT NULL,
     idCategorie   INT NOT NULL,
     PRIMARY KEY (idBillet),
-    FOREIGN KEY (idUtilisateur) REFERENCES utilisateur (idUtilisateur),
-    FOREIGN KEY (idCategorie) REFERENCES categorieBillet (idCategorie)
+    FOREIGN KEY (idUtilisateur) REFERENCES utilisateurs (idUtilisateur),
+    FOREIGN KEY (idCategorie) REFERENCES categorieBillets (idCategorie)
 );
 
-CREATE TABLE produit
+CREATE TABLE produits
 (
     idService     INT,
     idStatistique INT,
     PRIMARY KEY (idService, idStatistique),
-    FOREIGN KEY (idService) REFERENCES service (idService),
-    FOREIGN KEY (idStatistique) REFERENCES statistique (idStatistique)
+    FOREIGN KEY (idService) REFERENCES services (idService),
+    FOREIGN KEY (idStatistique) REFERENCES statistiques (idStatistique)
 );
 
-CREATE TABLE modifie
+CREATE TABLE modifys
 (
     idPrestataire INT,
     idUtilisateur INT,
     heureVisite   TIMESTAMP,
     PRIMARY KEY (idPrestataire, idUtilisateur),
-    FOREIGN KEY (idPrestataire) REFERENCES prestataire (idPrestataire),
-    FOREIGN KEY (idUtilisateur) REFERENCES utilisateur (idUtilisateur)
+    FOREIGN KEY (idPrestataire) REFERENCES prestataires (idPrestataire),
+    FOREIGN KEY (idUtilisateur) REFERENCES utilisateurs (idUtilisateur)
 );
 
-CREATE TABLE situe
+CREATE TABLE situes
 (
     idEmplacement INT,
     horaireDebut  TIMESTAMP,
     horaireFin    TIMESTAMP,
     idPrestataire INT NOT NULL,
     PRIMARY KEY (idEmplacement),
-    FOREIGN KEY (idEmplacement) REFERENCES emplacement (idEmplacement),
-    FOREIGN KEY (idPrestataire) REFERENCES prestataire (idPrestataire)
+    FOREIGN KEY (idEmplacement) REFERENCES emplacements (idEmplacement),
+    FOREIGN KEY (idPrestataire) REFERENCES prestataires (idPrestataire)
 );
 
-CREATE TABLE accede
+CREATE TABLE accedes
 (
     idPrestataire INT,
     idService     INT,
     PRIMARY KEY (idPrestataire, idService),
-    FOREIGN KEY (idPrestataire) REFERENCES prestataire (idPrestataire),
-    FOREIGN KEY (idService) REFERENCES service (idService)
+    FOREIGN KEY (idPrestataire) REFERENCES prestataires (idPrestataire),
+    FOREIGN KEY (idService) REFERENCES services (idService)
 );
 
-CREATE TABLE comporte
+CREATE TABLE comportes
 (
     idEmplacement     INT,
     idCaracteristique INT,
     PRIMARY KEY (idEmplacement, idCaracteristique),
-    FOREIGN KEY (idEmplacement) REFERENCES emplacement (idEmplacement),
-    FOREIGN KEY (idCaracteristique) REFERENCES caracteristique (idCaracteristique)
+    FOREIGN KEY (idEmplacement) REFERENCES emplacements (idEmplacement),
+    FOREIGN KEY (idCaracteristique) REFERENCES caracteristiques (idCaracteristique)
 );
 
 CREATE TABLE repond
@@ -174,9 +173,10 @@ CREATE TABLE repond
     idPrestataire     INT,
     idCaracteristique INT,
     PRIMARY KEY (idPrestataire, idCaracteristique),
-    FOREIGN KEY (idPrestataire) REFERENCES prestataire (idPrestataire),
-    FOREIGN KEY (idCaracteristique) REFERENCES caracteristique (idCaracteristique)
+    FOREIGN KEY (idPrestataire) REFERENCES prestataires (idPrestataire),
+    FOREIGN KEY (idCaracteristique) REFERENCES caracteristiques (idCaracteristique)
 );
+
 
 -- LOAD DATA LOCAL INFILE './BDD/admin.csv' INTO TABLE admin CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 -- LOAD DATA LOCAL INFILE './BDD/client.csv' INTO TABLE client CHARACTER SET utf8 FIELDS TERMINATED BY ',';
@@ -192,7 +192,7 @@ CREATE TABLE repond
 -- LOAD DATA LOCAL INFILE './BDD/billet.csv' INTO TABLE billet CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 -- LOAD DATA LOCAL INFILE './BDD/produit.csv' INTO TABLE produit CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 -- LOAD DATA LOCAL INFILE './BDD/possede.csv' INTO TABLE possede CHARACTER SET utf8 FIELDS TERMINATED BY ',';
--- LOAD DATA LOCAL INFILE './BDD/modifie.csv' INTO TABLE modifie CHARACTER SET utf8 FIELDS TERMINATED BY ',';
+-- LOAD DATA LOCAL INFILE './BDD/modify.csv' INTO TABLE modify CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 -- LOAD DATA LOCAL INFILE './BDD/situe.csv' INTO TABLE situe CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 -- LOAD DATA LOCAL INFILE './BDD/accede.csv' INTO TABLE accede CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 -- LOAD DATA LOCAL INFILE './BDD/gere.csv' INTO TABLE gere CHARACTER SET utf8 FIELDS TERMINATED BY ',';
@@ -201,4 +201,6 @@ CREATE TABLE repond
 -- LOAD DATA LOCAL INFILE './BDD/est_prestataire.csv' INTO TABLE est_prestataire CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 -- LOAD DATA LOCAL INFILE './BDD/est_admin.csv' INTO TABLE est_admin CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 -- LOAD DATA LOCAL INFILE './BDD/est_client.csv' INTO TABLE est_client CHARACTER SET utf8 FIELDS TERMINATED BY ',';
+
+
 

@@ -1,6 +1,9 @@
-const model = require("../model/index")
+const model = require("../model/index");
+
 const panel = (callback) => {
-    return callback(null, "ok");
+    const billets = model.billet.findAll();
+    return callback(null, billets);
+    // return callback(null, "ok");
 }
 
 const listPrestataires = async (callback) => {

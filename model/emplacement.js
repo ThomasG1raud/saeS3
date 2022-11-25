@@ -13,6 +13,8 @@ module.exports = (sequelize,Sequelize) =>{
             allowNull: false
             // allowNull defaults to true
         }
+    }, {
+        timestamps: false
     });
 
     return emplacement

@@ -1,5 +1,5 @@
 module.exports = (sequelize,Sequelize) =>{
-    const billets = sequelize.define('billetq', {
+    const billets = sequelize.define('billets', {
         idBillet: {
             type: Sequelize.INTEGER,
             allowNull: true,

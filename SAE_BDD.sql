@@ -1,3 +1,23 @@
+
+DROP TABLE IF EXISTS reponds;
+DROP TABLE IF EXISTS comportes;
+DROP TABLE IF EXISTS accedes;
+DROP TABLE IF EXISTS situes;
+DROP TABLE IF EXISTS modifies;
+DROP TABLE IF EXISTS produits;
+DROP TABLE IF EXISTS billets;
+DROP TABLE IF EXISTS utilisateurs;
+DROP TABLE IF EXISTS emplacements;
+DROP TABLE IF EXISTS prestataires;
+DROP TABLE IF EXISTS categorieComptes;
+DROP TABLE IF EXISTS entreprises;
+DROP TABLE IF EXISTS categorieBillets;
+DROP TABLE IF EXISTS caracteristiques;
+DROP TABLE IF EXISTS statistiques;
+DROP TABLE IF EXISTS services;
+DROP TABLE IF EXISTS categoriePrestations;
+DROP TABLE IF EXISTS localisations;
+
 CREATE TABLE localisation
 (
     idLocalisation      SERIAL,
@@ -181,11 +201,4 @@ CREATE TABLE repond
 -- LOAD DATA LOCAL INFILE './BDD/est_prestataire.csv' INTO TABLE est_prestataire CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 -- LOAD DATA LOCAL INFILE './BDD/est_admin.csv' INTO TABLE est_admin CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 -- LOAD DATA LOCAL INFILE './BDD/est_client.csv' INTO TABLE est_client CHARACTER SET utf8 FIELDS TERMINATED BY ',';
-
-
-
-
-
-
-
 

@@ -380,31 +380,31 @@ INSERT INTO `localisation` VALUES (1,'zinzin');
 UNLOCK TABLES;
 
 --
--- Table structure for table `modifie`
+-- Table structure for table `modify`
 --
 
-DROP TABLE IF EXISTS `modifie`;
+DROP TABLE IF EXISTS `modify`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `modifie` (
+CREATE TABLE `modify` (
   `idPrestataire` int(11) NOT NULL,
   `idClient` int(11) NOT NULL,
   `heureVisite` time DEFAULT NULL,
   PRIMARY KEY (`idPrestataire`,`idClient`),
   KEY `idClient` (`idClient`),
-  CONSTRAINT `modifie_ibfk_1` FOREIGN KEY (`idPrestataire`) REFERENCES `prestataire` (`idPrestataire`),
-  CONSTRAINT `modifie_ibfk_2` FOREIGN KEY (`idClient`) REFERENCES `client` (`idClient`)
+  CONSTRAINT `modify_ibfk_1` FOREIGN KEY (`idPrestataire`) REFERENCES `prestataire` (`idPrestataire`),
+  CONSTRAINT `modify_ibfk_2` FOREIGN KEY (`idClient`) REFERENCES `client` (`idClient`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `modifie`
+-- Dumping data for table `modify`
 --
 
-LOCK TABLES `modifie` WRITE;
-/*!40000 ALTER TABLE `modifie` DISABLE KEYS */;
-INSERT INTO `modifie` VALUES (1,1,'17:00:00'),(2,2,'18:00:00'),(3,3,'10:00:00'),(4,4,'18:00:00'),(5,5,'21:00:00'),(6,6,'14:00:00');
-/*!40000 ALTER TABLE `modifie` ENABLE KEYS */;
+LOCK TABLES `modify` WRITE;
+/*!40000 ALTER TABLE `modify` DISABLE KEYS */;
+INSERT INTO `modify` VALUES (1,1,'17:00:00'),(2,2,'18:00:00'),(3,3,'10:00:00'),(4,4,'18:00:00'),(5,5,'21:00:00'),(6,6,'14:00:00');
+/*!40000 ALTER TABLE `modify` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

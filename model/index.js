@@ -25,7 +25,7 @@ db.prestataire = require("./prestataire")(sequelize,Sequelize);
 db.service = require("./service")(sequelize,Sequelize);
 db.statistique = require("./statistique")(sequelize,Sequelize);
 db.utilisateur = require("./utilisateur")(sequelize,Sequelize);
-db.mofifie = require("./modifie")(sequelize, Sequelize);
+db.mofifie = require("./modify")(sequelize, Sequelize);
 db.situe = require("./situe")(sequelize, Sequelize);
 
 
@@ -99,9 +99,9 @@ db.utilisateur.belongsToMany(db.prestataire, {through: "situe", foreignKey: "fk_
 db.prestataire.belongsToMany(db.utilisateur, {through: "situe", foreignKey:"fk_idPrestataire"});
 
 
-// table modifie
-db.prestataire.belongsToMany(db.emplacement, {through: "modifie", foreignKey: "fk_idPrestataire"});
-db.emplacement.belongsToMany(db.prestataire, {through: "modifie", foreignKey:"fk_idEmplacement"});
+// table modify
+db.prestataire.belongsToMany(db.emplacement, {through: "modify", foreignKey: "fk_idPrestataire"});
+db.emplacement.belongsToMany(db.prestataire, {through: "modify", foreignKey:"fk_idEmplacement"});
 
 
 

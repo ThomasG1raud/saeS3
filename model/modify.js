@@ -1,5 +1,5 @@
 module.exports = (sequelize,Sequelize) =>{
-    const modifie = sequelize.define('modifie', {
+    const modify = sequelize.define('modify', {
         heureVisite: {
             type: Sequelize.DATE,
             allowNull: false,
@@ -8,5 +8,5 @@ module.exports = (sequelize,Sequelize) =>{
     }, {
         timestamps: false
     });
-    return modifie
+    return modify
 }

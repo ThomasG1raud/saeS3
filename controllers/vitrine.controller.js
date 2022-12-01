@@ -57,7 +57,7 @@ exports.idPrestataire = (req, res) => {
 }
 
 exports.listeStand = (req, res) => {
-    vitrineService.vitrine((error, results) => {
+    vitrineService.listeStand((error, results) => {
         if (error) {
             console.log(error);
             return res.status(400).send({ success: 0, data: error });
@@ -70,7 +70,8 @@ exports.listeStand = (req, res) => {
 }
 
 exports.idStand = (req, res) => {
-    vitrineService.vitrine((error, results) => {
+    const id = req.params.id;
+    vitrineService.idStand(id,(error, results) => {
         if (error) {
             console.log(error);
             return res.status(400).send({ success: 0, data: error });

@@ -10,8 +10,8 @@ const map = (callback) => {
 }
 
 const listePrestataire = (callback) => {
-    const prestataire = pool.query("SELECT * FROM prestataires");
-    return callback(null, prestataire);
+    const prestataires = pool.query("SELECT * FROM prestataires");
+    return callback(null, prestataires);
 }
 
 const idPrestataire = (callback) => {
@@ -20,11 +20,13 @@ const idPrestataire = (callback) => {
 }
 
 const listeStand = (callback) => {
-    return callback(null, "ok");
+    const stands = pool.query("SELECT * FROM emplacements");
+    return callback(null, stands);
 }
 
 const idStand = (callback) => {
-    return callback(null, "ok");
+    const stand = pool.query("SELECT * FROM prestataires WHERE idprestataire = $1", [id]);
+    return callback(null, stand);
 }
 
 

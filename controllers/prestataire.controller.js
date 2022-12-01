@@ -14,7 +14,8 @@ exports.panel = (req, res) => {
 }
 
 exports.idStatistiques = (req, res) => {
-    prestataireService.idStatistiques((error, results) => {
+    const id = req.params.id;
+    prestataireService.idStatistiques(id,(error, results) => {
         if (error) {
             console.log(error);
             return res.status(400).send({ success: 0, data: error });
@@ -27,7 +28,8 @@ exports.idStatistiques = (req, res) => {
 }
 
 exports.selfEdit = (req, res) => {
-    prestataireService.selfEdit((error, results) => {
+    const news = req.body;
+    prestataireService.selfEdit(news,(error, results) => {
         if (error) {
             console.log(error);
             return res.status(400).send({ success: 0, data: error });

@@ -1,7 +1,9 @@
 const model = require("../model/index")
 const pool = require("../db")
+
+
 const panel = (callback) => {
-    return callback(null, "ok");
+    return callback(null, "Vous êtres bien sur la page d'administrateur");
 }
 
 const listPrestataires = async (callback) => {

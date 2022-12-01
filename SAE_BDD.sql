@@ -1,21 +1,21 @@
-DROP TABLE IF EXISTS reponds;
-DROP TABLE IF EXISTS comportes;
-DROP TABLE IF EXISTS accedes;
-DROP TABLE IF EXISTS situes;
-DROP TABLE IF EXISTS modifies;
-DROP TABLE IF EXISTS produits;
-DROP TABLE IF EXISTS billets;
-DROP TABLE IF EXISTS utilisateurs;
-DROP TABLE IF EXISTS emplacements;
-DROP TABLE IF EXISTS prestataires;
-DROP TABLE IF EXISTS categorieComptes;
+DROP TABLE IF EXISTS repond;
+DROP TABLE IF EXISTS comporte;
+DROP TABLE IF EXISTS accede;
+DROP TABLE IF EXISTS situe;
+DROP TABLE IF EXISTS modifie;
+DROP TABLE IF EXISTS produit;
+DROP TABLE IF EXISTS billet;
+DROP TABLE IF EXISTS utilisateur;
+DROP TABLE IF EXISTS emplacement;
+DROP TABLE IF EXISTS prestataire;
+DROP TABLE IF EXISTS categorieCompte;
 DROP TABLE IF EXISTS entreprises;
-DROP TABLE IF EXISTS categorieBillets;
-DROP TABLE IF EXISTS caracteristiques;
-DROP TABLE IF EXISTS statistiques;
-DROP TABLE IF EXISTS services;
-DROP TABLE IF EXISTS categoriePrestations;
-DROP TABLE IF EXISTS localisations;
+DROP TABLE IF EXISTS categorieBillet;
+DROP TABLE IF EXISTS caracteristique;
+DROP TABLE IF EXISTS statistique;
+DROP TABLE IF EXISTS service;
+DROP TABLE IF EXISTS categoriePrestation;
+DROP TABLE IF EXISTS localisation;
 
 CREATE TABLE localisations
 (

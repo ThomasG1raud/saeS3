@@ -1,4 +1,5 @@
 var Model = require("../model/prestataire");
+const pool = require ("../db");
 
 const vitrine = (callback) => {
     return callback(null, "ok");
@@ -9,11 +10,13 @@ const map = (callback) => {
 }
 
 const listePrestataire = (callback) => {
-    return callback(null, "ok");
+    const prestataire = pool.query("SELECT * FROM prestataires");
+    return callback(null, prestataire);
 }
 
 const idPrestataire = (callback) => {
-    return callback(null, "ok");
+    const prestataire = pool.query("SELECT * FROM prestataires WHERE idprestataire = $1", [id]);
+    return callback(null, prestataire);
 }
 
 const listeStand = (callback) => {

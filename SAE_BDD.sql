@@ -17,28 +17,28 @@ DROP TABLE IF EXISTS services;
 DROP TABLE IF EXISTS categoriePrestations;
 DROP TABLE IF EXISTS localisations;
 
-CREATE TABLE localisations
+CREATE TABLE IF NOT EXISTS localisations
 (
     idLocalisation      SERIAL,
     libelleLocalisation VARCHAR(255),
     PRIMARY KEY (idLocalisation)
 );
 
-CREATE TABLE categoriePrestations
+CREATE TABLE IF NOT EXISTS  categoriePrestations
 (
     idCategorie      SERIAL,
     libelleCategorie VARCHAR(255),
     PRIMARY KEY (idCategorie)
 );
 
-CREATE TABLE services
+CREATE TABLE IF NOT EXISTS  services
 (
     idService      SERIAL,
     libelleService VARCHAR(255),
     PRIMARY KEY (idService)
 );
 
-CREATE TABLE statistiques
+CREATE TABLE IF NOT EXISTS  statistiques
 (
     idStatistique      SERIAL,
     libelleStatistique VARCHAR(255),
@@ -46,39 +46,39 @@ CREATE TABLE statistiques
     PRIMARY KEY (idStatistique)
 );
 
-CREATE TABLE caracteristiques
+CREATE TABLE IF NOT EXISTS  caracteristiques
 (
     idCaracteristique      SERIAL,
     libelleCaracteristique VARCHAR(255),
     PRIMARY KEY (idCaracteristique)
 );
 
-CREATE TABLE categorieBillets
+CREATE TABLE IF NOT EXISTS  categorieBillets
 (
     idCategorie      SERIAL,
     libelleCategorie VARCHAR(255),
     PRIMARY KEY (idCategorie)
 );
 
-CREATE TABLE entreprises
+CREATE TABLE IF NOT EXISTS  entreprises
 (
     siren         SERIAL,
     nomEntreprise VARCHAR(255),
     PRIMARY KEY (siren)
 );
 
-CREATE TABLE categorieComptes
+CREATE TABLE IF NOT EXISTS  categorieComptes
 (
     typeCompte    SERIAL,
     libelleCompte VARCHAR(58),
     PRIMARY KEY (typeCompte)
 );
 
-CREATE TABLE prestataires
+CREATE TABLE IF NOT EXISTS  prestataires
 (
     idPrestataire    SERIAL,
     nom              VARCHAR(255),
-    presenceHoraire  DATE,
+    presenceHoraire  TIMESTAMP,
     textePrestataire TEXT,
     imagePrestataire VARCHAR(255),
     siren            INT NOT NULL,
@@ -88,7 +88,7 @@ CREATE TABLE prestataires
     FOREIGN KEY (idCategorie) REFERENCES categoriePrestations (idCategorie)
 );
 
-CREATE TABLE emplacements
+CREATE TABLE IF NOT EXISTS  emplacements
 (
     idEmplacement      SERIAL,
     libelleEmplacement VARCHAR(255),
@@ -97,7 +97,7 @@ CREATE TABLE emplacements
     FOREIGN KEY (idLocalisation) REFERENCES localisations (idLocalisation)
 );
 
-CREATE TABLE utilisateurs
+CREATE TABLE IF NOT EXISTS  utilisateurs
 (
     idUtilisateur SERIAL,
     mdp           VARCHAR(255),
@@ -109,7 +109,7 @@ CREATE TABLE utilisateurs
     FOREIGN KEY (typeCompte) REFERENCES categorieComptes (typeCompte)
 );
 
-CREATE TABLE billets
+CREATE TABLE IF NOT EXISTS  billets
 (
     idBillet      SERIAL,
     prix          DECIMAL(15, 2),
@@ -120,7 +120,7 @@ CREATE TABLE billets
     FOREIGN KEY (idCategorie) REFERENCES categorieBillets (idCategorie)
 );
 
-CREATE TABLE produits
+CREATE TABLE IF NOT EXISTS  produits
 (
     idService     INT,
     idStatistique INT,
@@ -129,28 +129,28 @@ CREATE TABLE produits
     FOREIGN KEY (idStatistique) REFERENCES statistiques (idStatistique)
 );
 
-CREATE TABLE modifys
+CREATE TABLE IF NOT EXISTS  modifys
 (
     idPrestataire INT,
     idUtilisateur INT,
-    heureVisite   DATE,
+    heureVisite   TIMESTAMP,
     PRIMARY KEY (idPrestataire, idUtilisateur),
     FOREIGN KEY (idPrestataire) REFERENCES prestataires (idPrestataire),
     FOREIGN KEY (idUtilisateur) REFERENCES utilisateurs (idUtilisateur)
 );
 
-CREATE TABLE situes
+CREATE TABLE  IF NOT EXISTS situes
 (
     idEmplacement INT,
-    horaireDebut  DATE,
-    horaireFin    DATE,
+    horaireDebut  TIMESTAMP,
+    horaireFin    TIMESTAMP,
     idPrestataire INT NOT NULL,
     PRIMARY KEY (idEmplacement),
     FOREIGN KEY (idEmplacement) REFERENCES emplacements (idEmplacement),
     FOREIGN KEY (idPrestataire) REFERENCES prestataires (idPrestataire)
 );
 
-CREATE TABLE accedes
+CREATE TABLE  IF NOT EXISTS accedes
 (
     idPrestataire INT,
     idService     INT,
@@ -159,7 +159,7 @@ CREATE TABLE accedes
     FOREIGN KEY (idService) REFERENCES services (idService)
 );
 
-CREATE TABLE comportes
+CREATE TABLE  IF NOT EXISTS comportes
 (
     idEmplacement     INT,
     idCaracteristique INT,
@@ -168,7 +168,7 @@ CREATE TABLE comportes
     FOREIGN KEY (idCaracteristique) REFERENCES caracteristiques (idCaracteristique)
 );
 
-CREATE TABLE reponds
+CREATE TABLE  IF NOT EXISTS repond
 (
     idPrestataire     INT,
     idCaracteristique INT,
@@ -176,134 +176,6 @@ CREATE TABLE reponds
     FOREIGN KEY (idPrestataire) REFERENCES prestataires (idPrestataire),
     FOREIGN KEY (idCaracteristique) REFERENCES caracteristiques (idCaracteristique)
 );
-
-insert into localisations(libelleLocalisation)
-values ('localisation 1');
-insert into localisations(libelleLocalisation)
-values ('localisation 2');
-insert into localisations(libelleLocalisation)
-values ('localisation 3');
-
-insert into categoriePrestations(libelleCategorie)
-values ('categorie 1');
-insert into categoriePrestations(libelleCategorie)
-values ('categorie 2');
-insert into categoriePrestations(libelleCategorie)
-values ('categorie 3');
-
-insert into services(libelleService)
-values ('service 1');
-insert into services(libelleService)
-values ('service 2');
-insert into services(libelleService)
-values ('service 3');
-
-insert into statistiques(libelleStatistique, valeur)
-values ('statistique 1', 1);
-insert into statistiques(libelleStatistique, valeur)
-values ('statistique 2', 2);
-insert into statistiques(libelleStatistique, valeur)
-values ('statistique 3', 3);
-
-insert into caracteristiques(libelleCaracteristique)
-values ('electricite');
-insert into caracteristiques(libelleCaracteristique)
-values ('eau');
-insert into caracteristiques(libelleCaracteristique)
-values ('espace');
-
-insert into categorieBillets(libelleCategorie)
-values ('enfant');
-insert into categorieBillets(libelleCategorie)
-values ('groupe');
-insert into categorieBillets(libelleCategorie)
-values ('adulte');
-
-insert into entreprises(siren, nomEntreprise)
-values (1, 'entreprise 1');
-insert into entreprises(siren, nomEntreprise)
-values (2, 'entreprise 2');
-insert into entreprises(siren, nomEntreprise)
-values (3, 'entreprise 3');
-
-insert into categorieComptes(libelleCompte)
-values ('categorieComptes 1');
-insert into categorieComptes(libelleCompte)
-values ('categorieComptes 3');
-insert into categorieComptes(libelleCompte)
-values ('categorieComptes 2');
-
-insert into prestataires(nom, presenceHoraire, textePrestataire, imagePrestataire, siren, idCategorie)
-values ('prestataires 1', '21/12/2001', 'texte 1', 'image 1', 1, '1');
-insert into prestataires(nom, presenceHoraire, textePrestataire, imagePrestataire, siren, idCategorie)
-values ('prestataires 2', '21/12/2002', 'texte 2', 'image 1', 2, '2');
-insert into prestataires(nom, presenceHoraire, textePrestataire, imagePrestataire, siren, idCategorie)
-values ('prestataires 3', '21/12/2003', 'texte 3', 'image 1', 3, '3');
-
-insert into emplacements(libelleEmplacement, idLocalisation)
-values ('emplacements 1', 1);
-insert into emplacements(libelleEmplacement, idLocalisation)
-values ('emplacements 2', 2);
-insert into emplacements(libelleEmplacement, idLocalisation)
-values ('emplacements 3', 3);
-
-insert into utilisateurs(mdp, login, age, nom, typeCompte)
-values ('mdp 1', 'login 1', 1, 'nom 1', '1');
-insert into utilisateurs(mdp, login, age, nom, typeCompte)
-values ('mdp 2', 'login 2', 2, 'nom 2', '2');
-insert into utilisateurs(mdp, login, age, nom, typeCompte)
-values ('mdp 3', 'login 3', 3, 'nom 3', '3');
-
-insert into billets(prix, idUtilisateur, idCategorie)
-values (32, 1, 1);
-insert into billets(prix, idUtilisateur, idCategorie)
-values (64, 2, 2);
-insert into billets(prix, idUtilisateur, idCategorie)
-values (128, 3, 3);
-
-insert into produits(idService, idStatistique)
-values (1, 1);
-insert into produits(idService, idStatistique)
-values (2, 2);
-insert into produits(idService, idStatistique)
-values (3, 3);
-
-insert into modifys(idPrestataire, idUtilisateur, heureVisite)
-values (1, 1, '23/12/01');
-insert into modifys(idPrestataire, idUtilisateur, heureVisite)
-values (2, 2, '23/12/02');
-insert into modifys(idPrestataire, idUtilisateur, heureVisite)
-values (3, 3, '23/12/03');
-
-insert into situes(idEmplacement, horaireDebut, horaireFin, idPrestataire)
-values (1, '15/01/2001', '16/12/2001', 1);
-insert into situes(idEmplacement, horaireDebut, horaireFin, idPrestataire)
-values (2, '15/01/2002', '16/12/2002', 2);
-insert into situes(idEmplacement, horaireDebut, horaireFin, idPrestataire)
-values (3, '15/01/2003', '16/12/2003', 3);
-
-
-insert into accedes(idPrestataire, idService)
-values (1, 1);
-insert into accedes(idPrestataire, idService)
-values (2, 2);
-insert into accedes(idPrestataire, idService)
-values (3, 3);
-
-insert into comportes(idEmplacement, idCaracteristique)
-values (1, 1);
-insert into comportes(idEmplacement, idCaracteristique)
-values (2, 2);
-insert into comportes(idEmplacement, idCaracteristique)
-values (3, 3);
-
-insert into reponds(idPrestataire, idCaracteristique)
-values (1, 1);
-insert into reponds(idPrestataire, idCaracteristique)
-values (2, 2);
-insert into reponds(idPrestataire, idCaracteristique)
-values (3, 3);
-
 
 
 -- LOAD DATA LOCAL INFILE './BDD/admin.csv' INTO TABLE admin CHARACTER SET utf8 FIELDS TERMINATED BY ',';

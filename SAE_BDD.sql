@@ -168,7 +168,7 @@ CREATE TABLE  IF NOT EXISTS comportes
     FOREIGN KEY (idCaracteristique) REFERENCES caracteristiques (idCaracteristique)
 );
 
-CREATE TABLE  IF NOT EXISTS repond
+CREATE TABLE  IF NOT EXISTS reponds
 (
     idPrestataire     INT,
     idCaracteristique INT,
@@ -177,6 +177,132 @@ CREATE TABLE  IF NOT EXISTS repond
     FOREIGN KEY (idCaracteristique) REFERENCES caracteristiques (idCaracteristique)
 );
 
+insert into localisations(libelleLocalisation)
+values ('localisation 1');
+insert into localisations(libelleLocalisation)
+values ('localisation 2');
+insert into localisations(libelleLocalisation)
+values ('localisation 3');
+
+insert into categoriePrestations(libelleCategorie)
+values ('categorie 1');
+insert into categoriePrestations(libelleCategorie)
+values ('categorie 2');
+insert into categoriePrestations(libelleCategorie)
+values ('categorie 3');
+
+insert into services(libelleService)
+values ('service 1');
+insert into services(libelleService)
+values ('service 2');
+insert into services(libelleService)
+values ('service 3');
+
+insert into statistiques(libelleStatistique, valeur)
+values ('statistique 1', 1);
+insert into statistiques(libelleStatistique, valeur)
+values ('statistique 2', 2);
+insert into statistiques(libelleStatistique, valeur)
+values ('statistique 3', 3);
+
+insert into caracteristiques(libelleCaracteristique)
+values ('electricite');
+insert into caracteristiques(libelleCaracteristique)
+values ('eau');
+insert into caracteristiques(libelleCaracteristique)
+values ('espace');
+
+insert into categorieBillets(libelleCategorie)
+values ('enfant');
+insert into categorieBillets(libelleCategorie)
+values ('groupe');
+insert into categorieBillets(libelleCategorie)
+values ('adulte');
+
+insert into entreprises(siren, nomEntreprise)
+values (1, 'entreprise 1');
+insert into entreprises(siren, nomEntreprise)
+values (2, 'entreprise 2');
+insert into entreprises(siren, nomEntreprise)
+values (3, 'entreprise 3');
+
+insert into categorieComptes(libelleCompte)
+values ('categorieComptes 1');
+insert into categorieComptes(libelleCompte)
+values ('categorieComptes 3');
+insert into categorieComptes(libelleCompte)
+values ('categorieComptes 2');
+
+insert into prestataires(nom, presenceHoraire, textePrestataire, imagePrestataire, siren, idCategorie)
+values ('prestataires 1', '21/12/2001', 'texte 1', 'image 1', 1, '1');
+insert into prestataires(nom, presenceHoraire, textePrestataire, imagePrestataire, siren, idCategorie)
+values ('prestataires 2', '21/12/2002', 'texte 2', 'image 1', 2, '2');
+insert into prestataires(nom, presenceHoraire, textePrestataire, imagePrestataire, siren, idCategorie)
+values ('prestataires 3', '21/12/2003', 'texte 3', 'image 1', 3, '3');
+
+insert into emplacements(libelleEmplacement, idLocalisation)
+values ('emplacements 1', 1);
+insert into emplacements(libelleEmplacement, idLocalisation)
+values ('emplacements 2', 2);
+insert into emplacements(libelleEmplacement, idLocalisation)
+values ('emplacements 3', 3);
+
+insert into utilisateurs(mdp, login, age, nom, typeCompte)
+values ('mdp 1', 'login 1', 1, 'nom 1', '1');
+insert into utilisateurs(mdp, login, age, nom, typeCompte)
+values ('mdp 2', 'login 2', 2, 'nom 2', '2');
+insert into utilisateurs(mdp, login, age, nom, typeCompte)
+values ('mdp 3', 'login 3', 3, 'nom 3', '3');
+
+insert into billets(prix, idUtilisateur, idCategorie)
+values (32, 1, 1);
+insert into billets(prix, idUtilisateur, idCategorie)
+values (64, 2, 2);
+insert into billets(prix, idUtilisateur, idCategorie)
+values (128, 3, 3);
+
+insert into produits(idService, idStatistique)
+values (1, 1);
+insert into produits(idService, idStatistique)
+values (2, 2);
+insert into produits(idService, idStatistique)
+values (3, 3);
+
+insert into modifys(idPrestataire, idUtilisateur, heureVisite)
+values (1, 1, '23/12/01');
+insert into modifys(idPrestataire, idUtilisateur, heureVisite)
+values (2, 2, '23/12/02');
+insert into modifys(idPrestataire, idUtilisateur, heureVisite)
+values (3, 3, '23/12/03');
+
+insert into situes(idEmplacement, horaireDebut, horaireFin, idPrestataire)
+values (1, '15/01/2001', '16/12/2001', 1);
+insert into situes(idEmplacement, horaireDebut, horaireFin, idPrestataire)
+values (2, '15/01/2002', '16/12/2002', 2);
+insert into situes(idEmplacement, horaireDebut, horaireFin, idPrestataire)
+values (3, '15/01/2003', '16/12/2003', 3);
+
+
+insert into accedes(idPrestataire, idService)
+values (1, 1);
+insert into accedes(idPrestataire, idService)
+values (2, 2);
+insert into accedes(idPrestataire, idService)
+values (3, 3);
+
+insert into comportes(idEmplacement, idCaracteristique)
+values (1, 1);
+insert into comportes(idEmplacement, idCaracteristique)
+values (2, 2);
+insert into comportes(idEmplacement, idCaracteristique)
+values (3, 3);
+
+insert into reponds(idPrestataire, idCaracteristique)
+values (1, 1);
+insert into reponds(idPrestataire, idCaracteristique)
+values (2, 2);
+insert into reponds(idPrestataire, idCaracteristique)
+values (3, 3);
 
 -- LOAD DATA LOCAL INFILE './BDD/admin.csv' INTO TABLE admin CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 -- LOAD DATA LOCAL INFILE './BDD/client.csv' INTO TABLE client CHARACTER SET utf8 FIELDS TERMINATED BY ',';

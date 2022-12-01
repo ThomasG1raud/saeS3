@@ -12,7 +12,7 @@ const selfEdit = (news,callback) => {
     const texte = news.textePrestataire;
     const image = news.imagePrestaire;
     const id = news.idPrestataire;
-    return callback(null, pool.query("UPDATE prestataire SET textePrestataire = $1, imagePrestataire = $2 WHERE idPrestataire = $3",[texte, image, id]));
+    return callback(null, pool.query("UPDATE prestataires SET textePrestataire = $1, imagePrestataire = $2 WHERE idPrestataire = $3",[texte, image, id]));
 }
 
 module.exports = {

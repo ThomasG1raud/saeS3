@@ -65,11 +65,25 @@ const addStands = (news, callback) => {
 }
 
 const updateStands = (news, callback) => {
-    return callback(null, "ok");
+    const emplacement = news.idEmplacement;
+    const debut = news.horaireDebut;
+    const fin = news.horaireFin;
+    const prestataire = news.idPrestataire;
+    return callback(null, pool.query("UPDATE situe SET idEmplacement = $1, horaireDebut = $2, horaireFin = $3, idPrestataire = $4",[emplacement, debut, fin, prestataire]));
 }
 
-const deleteStands = (callback) => {
-    return callback(null, "ok");
+const deleteStands = (id,callback) => {
+    if(pool.query("SELECT * FROM situes WHERE idPrestataire = $1", [id], (error, results)=>{
+        if(results.rows.length){
+            pool.query("DELETE * FROM situes WHERE idPrestataire = $1", [id]);
+        }
+    }));
+    if(pool.query("SELECT * FROM comportes WHERE idPrestataire = $1", [id], (error, results)=>{
+        if(results.rows.length){
+            pool.query("DELETE * FROM comportes WHERE idPrestataire = $1", [id]);
+        }
+    }));
+    return callback(null, pool.query("DELETE FROM emplacements WHERE idPrestataire = $1",[id]));
 }
 
 const getMap = (callback) => {

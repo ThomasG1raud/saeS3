@@ -1,4 +1,4 @@
-
+var Model = require("../model/prestataire");
 
 const vitrine = (callback) => {
     return callback(null, "ok");

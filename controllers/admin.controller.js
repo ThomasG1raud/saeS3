@@ -27,7 +27,8 @@ exports.listPrestataires = (req,res) => {
 }
 
 exports.idPrestataires = (req,res) => {
-    adminService.idPrestataires((error, results) => {
+    const id = req.params.id;
+    adminService.idPrestataires(id,(error, results) => {
         if (error) {
             console.log(error);
             return res.status(400).send({ success: 0, data: error });
@@ -40,7 +41,8 @@ exports.idPrestataires = (req,res) => {
 }
 
 exports.addPrestataires = (req,res) => {
-    adminService.addPrestataires((error, results) => {
+    const news = req.body;
+    adminService.addPrestataires(news,(error, results) => {
         if (error) {
             console.log(error);
             return res.status(400).send({ success: 0, data: error });
@@ -53,7 +55,8 @@ exports.addPrestataires = (req,res) => {
 }
 
 exports.updatePrestataires = (req,res) => {
-    adminService.updatePrestataires((error, results) => {
+    const news = req.body;
+    adminService.updatePrestataires(news,(error, results) => {
         if (error) {
             console.log(error);
             return res.status(400).send({ success: 0, data: error });
@@ -66,7 +69,8 @@ exports.updatePrestataires = (req,res) => {
 }
 
 exports.deletePrestataires = (req,res) => {
-    adminService.deletePrestataires((error, results) => {
+    const id = req.params.id;
+    adminService.deletePrestataires(id,(error, results) => {
         if (error) {
             console.log(error);
             return res.status(400).send({ success: 0, data: error });
@@ -92,7 +96,8 @@ exports.listStands = (req,res) => {
 }
 
 exports.idStands = (req,res) => {
-    adminService.idStands((error, results) => {
+    const id = req.params.id;
+    adminService.idStands(id,(error, results) => {
         if (error) {
             console.log(error);
             return res.status(400).send({ success: 0, data: error });
@@ -105,7 +110,8 @@ exports.idStands = (req,res) => {
 }
 
 exports.addStands = (req,res) => {
-    adminService.addStands((error, results) => {
+    const news = req.body;
+    adminService.addStands(news,(error, results) => {
         if (error) {
             console.log(error);
             return res.status(400).send({ success: 0, data: error });
@@ -118,7 +124,8 @@ exports.addStands = (req,res) => {
 }
 
 exports.updateStands = (req,res) => {
-    adminService.updateStands((error, results) => {
+    const news = req.body;
+    adminService.updateStands(news,(error, results) => {
         if (error) {
             console.log(error);
             return res.status(400).send({ success: 0, data: error });
@@ -131,7 +138,8 @@ exports.updateStands = (req,res) => {
 }
 
 exports.deleteStands = (req,res) => {
-    adminService.deleteStands((error, results) => {
+    const id = req.params.id;
+    adminService.deleteStands(id,(error, results) => {
         if (error) {
             console.log(error);
             return res.status(400).send({ success: 0, data: error });

@@ -5,14 +5,26 @@ const panel = (callback) => {
 }
 
 const idStatistiques = (id,callback) => {
-    return callback(null, pool.query("SELECT * FROM statistique WHERE id = $1",[id]));
+    pool.query("SELECT * FROM statistique WHERE id = $1",[id])
+        .then(results=>{
+            return callback(null, results.rows)
+        })
+        .catch(error=>{
+            return callback(error, null)
+        })
 }
 
-const selfEdit = (news,callback) => {
+const selfEdit = async (news,callback) => {
     const texte = news.textePrestataire;
     const image = news.imagePrestaire;
     const id = news.idPrestataire;
-    return callback(null, pool.query("UPDATE prestataires SET textePrestataire = $1, imagePrestataire = $2 WHERE idPrestataire = $3",[texte, image, id]));
+    await pool.query("UPDATE prestataires SET textePrestataire = $1, imagePrestataire = $2 WHERE idPrestataire = $3",[texte, image, id])
+        .then(results=>{
+            return(callback(null, results.rows))
+        })
+        .catch(error=>{
+            return(callback(error, null))
+        })
 }
 
 module.exports = {

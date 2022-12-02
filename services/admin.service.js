@@ -7,33 +7,55 @@ const panel = (callback) => {
 }
 
 const listPrestataires = async (callback) => {
-    const prestataires = pool.query("SELECT * FROM prestataires");
-    console.log(prestataires);
-    return callback(null, prestataires);
+    await pool.query("SELECT * FROM prestataires")
+        .then(results=>{
+            return callback(null, results.rows)
+        })
+        .catch(error=>{
+            return callback(error, null)
+        })
 }
 
-const idPrestataires = (id, callback) => {
-    return callback(null, (pool.query("SELECT * FROM prestataires WHERE id=$1"), [id]));
+const idPrestataires = async (id, callback) => {
+    await pool.query("SELECT * FROM prestataires WHERE id=$1", [id])
+        .then(results=>{
+            return callback(null, results.rows)
+        })
+        .catch(error=>{
+            return callback(error, null)
+        })
+
 }
 
-const addPrestataires = (news,callback) => {
+const addPrestataires = async (news,callback) => {
     const nom = news.nom;
     const texte = news.texte;
     const image = image;
     const siren = image;
     const idCat = news.idCategory
-    return callback(null, pool.query("INSERT INTO prestataires (nom, textePrestataire, imagePrestataire, siren, idCategory) VALUES ($1,$2,$3,$4,$5)",[nom, texte, image, siren, idCat]));
+    await pool.query("INSERT INTO prestataires (nom, textePrestataire, imagePrestataire, siren, idCategory) VALUES ($1,$2,$3,$4,$5)",[nom, texte, image, siren, idCat])
+        .then(results=>{
+            return callback(null, results.rows)
+        })
+        .catch(error=>{
+            return callback(error, null)
+        })
 }
 
-const updatePrestataires = (news,callback) => {
+const updatePrestataires = async (news,callback) => {
     const texte = news.textePrestataire;
     const image = news.imagePrestaire;
     const id = news.idPrestataire;
-    return callback(null, pool.query("UPDATE prestataires SET textePrestataire = $1, imagePrestataire = $2 WHERE idPrestataire = $3",[texte, image, id]));
+    await pool.query("UPDATE prestataires SET textePrestataire = $1, imagePrestataire = $2 WHERE idPrestataire = $3",[texte, image, id])
+        .then(results=>{
+            return callback(null, results.rows)
+        })
+        .catch(error=>{
+            return callback(error, null)
+        })
 }
 
-const deletePrestataires = (id,callback) => {
-    //modifys, accedes, repond,
+const deletePrestataires = async (id,callback) => {
     if(pool.query("SELECT * FROM modifys WHERE idPrestataire = $1", [id], (error, results)=>{
         if(results.rows.length){
             pool.query("DELETE * FROM modifys WHERE idPrestataire = $1", [id]);
@@ -49,32 +71,62 @@ const deletePrestataires = (id,callback) => {
             pool.query("DELETE * FROM reponds WHERE idPrestataire = $1", [id]);
         }
     }));
-    return callback(null, pool.query("DELETE FROM prestataires WHERE idPrestataire = $1",[id]));
+    await pool.query("DELETE FROM prestataires WHERE idPrestataire = $1",[id])
+        .then(results=>{
+            return callback(null, results.rows)
+        })
+        .catch(error=>{
+            return callback(error, null)
+        })
 }
 
-const listStands = (callback) => {
-    return callback(null, pool.query("SELECT * FROM emplacements"));
+const listStands = async (callback) => {
+    await pool.query("SELECT * FROM emplacements")
+        .then(results=>{
+            return callback(null, results.rows)
+        })
+        .catch(error=>{
+            return callback(error, null)
+        })
 }
 
-const idStands = (id,callback) => {
-    return callback(null, pool.query("SELECT * FROM emplacements WHERE idEmplacement = $1",[id]));
+const idStands = async (id,callback) => {
+    await pool.query("SELECT * FROM emplacements WHERE idEmplacement = $1",[id])
+        .then(results=>{
+            return callback(null, results.rows)
+        })
+        .catch(error=>{
+            return callback(error, null)
+        })
 }
 
-const addStands = (news, callback) => {
+const addStands = async (news, callback) => {
     const libelle = news.libelle;
     const idLoc = news.localisation;
-    return callback(null, pool.query("INSERT INTO emplacements(libelleEmplacement, idLocalisation) VALUES ($1,$2)",[libelle, idLoc]));
+    await pool.query("INSERT INTO emplacements(libelleEmplacement, idLocalisation) VALUES ($1,$2)",[libelle, idLoc])
+        .then(results=>{
+            return callback(null, results.rows)
+        })
+        .catch(error=>{
+            return callback(error, null)
+        })
 }
 
-const updateStands = (news, callback) => {
+const updateStands = async (news, callback) => {
     const emplacement = news.idEmplacement;
     const debut = news.horaireDebut;
     const fin = news.horaireFin;
     const prestataire = news.idPrestataire;
-    return callback(null, pool.query("UPDATE situes SET idEmplacement = $1, horaireDebut = $2, horaireFin = $3, idPrestataire = $4",[emplacement, debut, fin, prestataire]));
+    await pool.query("UPDATE situes SET idEmplacement = $1, horaireDebut = $2, horaireFin = $3, idPrestataire = $4",[emplacement, debut, fin, prestataire])
+        .then(results=>{
+            return callback(null, results.rows)
+        })
+        .catch(error=>{
+            return callback(error, null)
+        })
 }
 
-const deleteStands = (id,callback) => {
+const deleteStands = async (id,callback) => {
     if(pool.query("SELECT * FROM situes WHERE idPrestataire = $1", [id], (error, results)=>{
         if(results.rows.length){
             pool.query("DELETE * FROM situes WHERE idPrestataire = $1", [id]);
@@ -85,7 +137,13 @@ const deleteStands = (id,callback) => {
             pool.query("DELETE * FROM comportes WHERE idPrestataire = $1", [id]);
         }
     }));
-    return callback(null, pool.query("DELETE FROM emplacements WHERE idPrestataire = $1",[id]));
+    await pool.query("DELETE FROM emplacements WHERE idPrestataire = $1",[id])
+        .then(results=>{
+            return callback(null, results.rows)
+        })
+        .catch(error=>{
+            return callback(error, null)
+        })
 }
 
 const getMap = (callback) => {

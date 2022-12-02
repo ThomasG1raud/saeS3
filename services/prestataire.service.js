@@ -105,5 +105,11 @@ const buyGoodies = async(news, callback)=>{
 module.exports = {
     panel: panel,
     idStatistiques : idStatistiques,
-    selfEdit : selfEdit
+    selfEdit : selfEdit,
+    compteVisisteurs: compteVisisteurs,
+    buyGoodies: buyGoodies,
+    selectGoodies: selectGoodies,
+    showGoodies: showGoodies,
+    achatBillet: achatBillet,
+    livreDOr: livreDOr
 }

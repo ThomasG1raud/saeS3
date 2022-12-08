@@ -1,4 +1,5 @@
 const model = require("../model/index")
+const adminQuery = require("../Query/admin.query")
 const pool = require("../db")
 
 
@@ -7,7 +8,7 @@ const panel = (callback) => {
 }
 
 const listPrestataires = async (callback) => {
-    await pool.query("SELECT * FROM prestataires")
+    await pool.query(adminQuery.selectPrestataire)
         .then(results=>{
             return callback(null, results.rows)
         })
@@ -17,7 +18,7 @@ const listPrestataires = async (callback) => {
 }
 
 const idPrestataires = async (id, callback) => {
-    await pool.query("SELECT * FROM prestataires WHERE id=$1", [id])
+    await pool.query(adminQuery.selectById, [id])
         .then(results=>{
             return callback(null, results.rows)
         })
@@ -33,7 +34,7 @@ const addPrestataires = async (news,callback) => {
     const image = image;
     const siren = image;
     const idCat = news.idCategory
-    await pool.query("INSERT INTO prestataires (nom, textePrestataire, imagePrestataire, siren, idCategory) VALUES ($1,$2,$3,$4,$5)",[nom, texte, image, siren, idCat])
+    await pool.query(adminQuery.addPrestataire,[nom, texte, image, siren, idCat])
         .then(results=>{
             return callback(null, results.rows)
         })
@@ -46,7 +47,7 @@ const updatePrestataires = async (news,callback) => {
     const texte = news.textePrestataire;
     const image = news.imagePrestaire;
     const id = news.idPrestataire;
-    await pool.query("UPDATE prestataires SET textePrestataire = $1, imagePrestataire = $2 WHERE idPrestataire = $3",[texte, image, id])
+    await pool.query(adminQuery.updatePrestataires,[texte, image, id])
         .then(results=>{
             return callback(null, results.rows)
         })
@@ -56,22 +57,22 @@ const updatePrestataires = async (news,callback) => {
 }
 
 const deletePrestataires = async (id,callback) => {
-    if(pool.query("SELECT * FROM modifys WHERE idPrestataire = $1", [id], (error, results)=>{
+    if(pool.query(adminQuery.selectModify, [id], (error, results)=>{
         if(results.rows.length){
-            pool.query("DELETE * FROM modifys WHERE idPrestataire = $1", [id]);
+            pool.query(adminQuery.deleteModify, [id]);
         }
     }));
-    if(pool.query("SELECT * FROM accedes WHERE idPrestataire = $1", [id], (error, results)=>{
+    if(pool.query(adminQuery.selectAccede, [id], (error, results)=>{
         if(results.rows.length){
-            pool.query("DELETE * FROM accedes WHERE idPrestataire = $1", [id]);
+            pool.query(adminQuery.deleteAccede, [id]);
         }
     }));
-    if(pool.query("SELECT * FROM reponds WHERE idPrestataire = $1", [id], (error, results)=>{
+    if(pool.query(adminQuery.selectRepond, [id], (error, results)=>{
         if(results.rows.length){
-            pool.query("DELETE * FROM reponds WHERE idPrestataire = $1", [id]);
+            pool.query(adminQuery.deleteRepond, [id]);
         }
     }));
-    await pool.query("DELETE FROM prestataires WHERE idPrestataire = $1",[id])
+    await pool.query(adminQuery.deletePrestataire,[id])
         .then(results=>{
             return callback(null, results.rows)
         })
@@ -81,7 +82,7 @@ const deletePrestataires = async (id,callback) => {
 }
 
 const listStands = async (callback) => {
-    await pool.query("SELECT * FROM emplacements")
+    await pool.query(adminQuery.listStand)
         .then(results=>{
             return callback(null, results.rows)
         })
@@ -91,7 +92,7 @@ const listStands = async (callback) => {
 }
 
 const idStands = async (id,callback) => {
-    await pool.query("SELECT * FROM emplacements WHERE idEmplacement = $1",[id])
+    await pool.query(adminQuery.selectStand,[id])
         .then(results=>{
             return callback(null, results.rows)
         })
@@ -103,7 +104,7 @@ const idStands = async (id,callback) => {
 const addStands = async (news, callback) => {
     const libelle = news.libelle;
     const idLoc = news.localisation;
-    await pool.query("INSERT INTO emplacements(libelleEmplacement, idLocalisation) VALUES ($1,$2)",[libelle, idLoc])
+    await pool.query(adminQuery.addStand,[libelle, idLoc])
         .then(results=>{
             return callback(null, results.rows)
         })
@@ -117,7 +118,7 @@ const updateStands = async (news, callback) => {
     const debut = news.horaireDebut;
     const fin = news.horaireFin;
     const prestataire = news.idPrestataire;
-    await pool.query("UPDATE situes SET idEmplacement = $1, horaireDebut = $2, horaireFin = $3, idPrestataire = $4",[emplacement, debut, fin, prestataire])
+    await pool.query(adminQuery.updateStand,[emplacement, debut, fin, prestataire])
         .then(results=>{
             return callback(null, results.rows)
         })
@@ -127,17 +128,17 @@ const updateStands = async (news, callback) => {
 }
 
 const deleteStands = async (id,callback) => {
-    if(pool.query("SELECT * FROM situes WHERE idPrestataire = $1", [id], (error, results)=>{
+    if(pool.query(adminQuery.selectSitue, [id], (error, results)=>{
         if(results.rows.length){
-            pool.query("DELETE * FROM situes WHERE idPrestataire = $1", [id]);
+            pool.query(adminQuery.deleteSitue, [id]);
         }
     }));
-    if(pool.query("SELECT * FROM comportes WHERE idPrestataire = $1", [id], (error, results)=>{
+    if(pool.query(adminQuery.selectEmplacement, [id], (error, results)=>{
         if(results.rows.length){
-            pool.query("DELETE * FROM comportes WHERE idPrestataire = $1", [id]);
+            pool.query(adminQuery.deleteEmplacement, [id]);
         }
     }));
-    await pool.query("DELETE FROM emplacements WHERE idPrestataire = $1",[id])
+    await pool.query(adminQuery.deleteStand,[id])
         .then(results=>{
             return callback(null, results.rows)
         })

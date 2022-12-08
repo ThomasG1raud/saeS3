@@ -1,11 +1,12 @@
-const pool = require("../db")
+const pool = require("../db");
+const prestataireQuery = require("../Query/prestataire.query");
 
 const panel = (callback) => {
     return callback(null, "ok");
 }
 
 const idStatistiques = (id,callback) => {
-    pool.query("SELECT * FROM statistique WHERE id = $1",[id])
+    pool.query(prestataireQuery.selectById)
         .then(results=>{
             return callback(null, results.rows)
         })
@@ -18,7 +19,7 @@ const selfEdit = async (news,callback) => {
     const texte = news.textePrestataire;
     const image = news.imagePrestaire;
     const id = news.idPrestataire;
-    await pool.query("UPDATE prestataires SET textePrestataire = $1, imagePrestataire = $2 WHERE idPrestataire = $3",[texte, image, id])
+    await pool.query(prestataireQuery.editPrestataire ,[texte, image, id])
         .then(results=>{
             return(callback(null, results.rows))
         })
@@ -28,7 +29,7 @@ const selfEdit = async (news,callback) => {
 }
 
 const compteVisisteurs = async (callback) =>{
-    await pool.query("SELECT * FROM client WHERE state = connecte")
+    await pool.query(prestataireQuery.compteClient)
         .then(results=>{
             return (callback(null, results.rows))
         })
@@ -38,7 +39,7 @@ const compteVisisteurs = async (callback) =>{
 }
 
 const livreDOr = async (news, callback) =>{
-    await pool.query("INSERT INTO livreDOr (nomClient, commentaire) VALUES ($1, $2)", [news[0], news[1]])
+    await pool.query(prestataireQuery.livreDor, [news[0], news[1]])
         .then(results=>{
             return callback(null, results.rows)
         })
@@ -48,9 +49,9 @@ const livreDOr = async (news, callback) =>{
 }
 
 const achatBillet = async (news, callback)=>{
-    await pool.query("SELECT * FROM utilisateur WHERE nom = $1", [news[0]], (error, results)=>{
+    await pool.query(prestataireQuery.utilisateurNom, [news[0]], (error, results)=>{
         if(results.rows.length){
-            pool.query("INSERT INTO billet(prix,idUtilsateur, idCategory) VALUES ($1, $2, $3)", [news[1],results.rows[0], news[2]])
+            pool.query(prestataireQuery.ajouterBillet, [news[1],results.rows[0], news[2]])
                 .then(results=>{
                     return callback(null, results.rows)
                 })
@@ -59,8 +60,8 @@ const achatBillet = async (news, callback)=>{
                 })
         }
         else{
-            pool.query("INSERT INTO utilisateur(nom) VALUES ($1) RETURNING idUtilisateur", [news[0]], (erreur, results)=>{
-                pool.query("INSERT INTO billet(prix,idUtilsateur, idCategory) VALUES ($1, $2, $3)", [news[1],results.rows[0], news[2]])
+            pool.query(prestataireQuery.ajouterUtilisateur, [news[0]], (erreur, results)=>{
+                pool.query(prestataireQuery.ajouterBillet, [news[1],results.rows[0], news[2]])
                     .then(results=>{
                         return callback(null, results.rows)
                     })
@@ -73,7 +74,7 @@ const achatBillet = async (news, callback)=>{
 }
 
 const showGoodies = async (idPrestataire, callback)=>{
-    await pool.query("SELECT * FROM goodies WHERE idPrestataire = $1", [idPrestataire])
+    await pool.query(prestataireQuery.showGoodies, [idPrestataire])
         .then(results=>{
             return callback(null, results.rows)
         })
@@ -83,7 +84,7 @@ const showGoodies = async (idPrestataire, callback)=>{
 }
 
 const selectGoodies = async(news, callback)=>{
-    await pool.query("INSERT INTO panier(idGoodies, idUtilisateur) VALUES ($1, $2)", [news[0], news[1]])
+    await pool.query(prestataireQuery.addToCart, [news[0], news[1]])
         .then(results=>{
             return callback(null, results.rows)
         })
@@ -93,7 +94,7 @@ const selectGoodies = async(news, callback)=>{
 }
 
 const buyGoodies = async(news, callback)=>{
-    await pool.query("SELECT * FROM panier WHERE idUtilisateur = $1", [news[0]])
+    await pool.query(prestataireQuery.showCart, [news[0]])
         .then(results=>{
             return callback(null, results.rows)
         })

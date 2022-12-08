@@ -1,4 +1,4 @@
-var Model = require("../model/prestataire");
+const model = require("../model/prestataire");
 const vitrineQuery = require("../Query/vitrine.query")
 const pool = require ("../db");
 

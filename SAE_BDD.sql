@@ -1,10 +1,13 @@
-DROP TABLE IF EXISTS repond;
+DROP TABLE IF EXISTS reponds;
 DROP TABLE IF EXISTS comportes;
 DROP TABLE IF EXISTS accedes;
 DROP TABLE IF EXISTS situes;
 DROP TABLE IF EXISTS modifys;
 DROP TABLE IF EXISTS produits;
 DROP TABLE IF EXISTS billets;
+DROP TABLE IF EXISTS panier;
+DROP TABLE IF EXISTS goodies;
+DROP TABLE IF EXISTS livreDOr;
 DROP TABLE IF EXISTS utilisateurs;
 DROP TABLE IF EXISTS emplacements;
 DROP TABLE IF EXISTS prestataires;
@@ -175,6 +178,32 @@ CREATE TABLE  IF NOT EXISTS reponds
     PRIMARY KEY (idPrestataire, idCaracteristique),
     FOREIGN KEY (idPrestataire) REFERENCES prestataires (idPrestataire),
     FOREIGN KEY (idCaracteristique) REFERENCES caracteristiques (idCaracteristique)
+);
+
+CREATE TABLE IF NOT EXISTS livreDOr(
+    idCommentaire SERIAL PRIMARY KEY ,
+    commentaire VARCHAR,
+    idUtilisateur INT,
+    FOREIGN KEY (idUtilisateur) REFERENCES utilisateurs(idUtilisateur)
+);
+
+CREATE TABLE IF NOT EXISTS goodies(
+    idGoodies SERIAL PRIMARY KEY ,
+    libelleGoodies VARCHAR,
+    prixGoodies FLOAT,
+    imageGoodies VARCHAR,
+    stock INT,
+    idPrestataire INT,
+    FOREIGN KEY (idPrestataire) REFERENCES prestataires(idPrestataire)
+);
+
+CREATE TABLE IF NOT EXISTS panier(
+    idGoodies INT,
+    idUtilisateur INT,
+    quantite INT,
+    PRIMARY KEY (idGoodies, idUtilisateur),
+    FOREIGN KEY (idGoodies) REFERENCES goodies(idGoodies),
+    FOREIGN KEY (idUtilisateur) REFERENCES utilisateurs(idUtilisateur)
 );
 
 insert into localisations(libelleLocalisation)

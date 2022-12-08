@@ -1,4 +1,5 @@
 var Model = require("../model/prestataire");
+const vitrineQuery = require("../Query/vitrine.query")
 const pool = require ("../db");
 
 const vitrine = (callback) => {
@@ -10,7 +11,7 @@ const map = (callback) => {
 }
 
 const listePrestataire = async (callback) => {
-    await pool.query("SELECT * FROM prestataires")
+    await pool.query(vitrineQuery.selectAll)
     .then(results=>{
         return callback(null, results.rows)
     })
@@ -20,7 +21,7 @@ const listePrestataire = async (callback) => {
 }
 
 const idPrestataire = async (id, callback) => {
-    await pool.query("SELECT * FROM prestataires WHERE idprestataire = $1", [id])
+    await pool.query(vitrineQuery.selectById, [id])
     .then(results=>{
         return callback(null, results.rows)
     })
@@ -30,7 +31,7 @@ const idPrestataire = async (id, callback) => {
 }
 
 const listeStand = async (callback) => {
-    await pool.query("SELECT * FROM emplacements")
+    await pool.query(vitrineQuery.selectEmplacement)
     .then(results=>{
         return callback(null, results.rows)
     })
@@ -40,7 +41,7 @@ const listeStand = async (callback) => {
 }
 
 const idStand = async (id,callback) => {
-    await pool.query("SELECT * FROM prestataires WHERE idprestataire = $1", [id])
+    await pool.query(vitrineQuery.selectStand, [id])
     .then(results=>{
         return callback(null, results.rows)
     })

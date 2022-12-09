@@ -80,6 +80,7 @@ CREATE TABLE IF NOT EXISTS  categorieComptes
 CREATE TABLE IF NOT EXISTS  prestataires
 (
     idPrestataire    SERIAL,
+    prenom           VARCHAR(255),
     nom              VARCHAR(255),
     presenceHoraire  TIMESTAMP,
     textePrestataire TEXT,
@@ -107,6 +108,7 @@ CREATE TABLE IF NOT EXISTS  utilisateurs
     login         VARCHAR(255),
     age           INT,
     nom           VARCHAR(255),
+    prenom        VARCHAR(255),
     typeCompte    INT NOT NULL,
     PRIMARY KEY (idUtilisateur),
     FOREIGN KEY (typeCompte) REFERENCES categorieComptes (typeCompte)

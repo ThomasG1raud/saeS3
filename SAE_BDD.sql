@@ -4,16 +4,16 @@ DROP TABLE IF EXISTS accedes;
 DROP TABLE IF EXISTS situes;
 DROP TABLE IF EXISTS modifys;
 DROP TABLE IF EXISTS produits;
+DROP TABLE IF EXISTS categorieBillets;
 DROP TABLE IF EXISTS billets;
 DROP TABLE IF EXISTS panier;
 DROP TABLE IF EXISTS goodies;
 DROP TABLE IF EXISTS livreDOr;
+DROP TABLE IF EXISTS categorieComptes;
 DROP TABLE IF EXISTS utilisateurs;
 DROP TABLE IF EXISTS emplacements;
 DROP TABLE IF EXISTS prestataires;
-DROP TABLE IF EXISTS categorieComptes;
 DROP TABLE IF EXISTS entreprises;
-DROP TABLE IF EXISTS categorieBillets;
 DROP TABLE IF EXISTS caracteristiques;
 DROP TABLE IF EXISTS statistiques;
 DROP TABLE IF EXISTS services;
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS  prestataires
     FOREIGN KEY (idCategorie) REFERENCES categoriePrestations (idCategorie)
 );
 
-CREATE TABLE IF NOT EXISTS  emplacements
+CREATE TABLE IF NOT EXISTS emplacements
 (
     idEmplacement      SERIAL,
     libelleEmplacement VARCHAR(255),

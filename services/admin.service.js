@@ -1,4 +1,3 @@
-const model = require("../model/index")
 const adminQuery = require("../Query/admin.query")
 const pool = require("../db")
 

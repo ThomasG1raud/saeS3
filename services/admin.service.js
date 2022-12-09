@@ -9,23 +9,22 @@ const panel = (callback) => {
 
 const listPrestataires = async (callback) => {
     await pool.query(adminQuery.selectPrestataire)
-        .then(results=>{
-            return callback(null, results.rows)
-        })
-        .catch(error=>{
-            return callback(error, null)
-        })
+    .then(results=>{
+        return callback(null, results.rows)
+    })
+    .catch(error=>{
+        return callback(error, null)
+    })
 }
 
 const idPrestataires = async (id, callback) => {
     await pool.query(adminQuery.selectById, [id])
-        .then(results=>{
-            return callback(null, results.rows)
-        })
-        .catch(error=>{
-            return callback(error, null)
-        })
-
+    .then(results=>{
+        return callback(null, results.rows)
+    })
+    .catch(error=>{
+        return callback(error, null)
+    })
 }
 
 const addPrestataires = async (news,callback) => {
@@ -35,12 +34,12 @@ const addPrestataires = async (news,callback) => {
     const siren = image;
     const idCat = news.idCategory
     await pool.query(adminQuery.addPrestataire,[nom, texte, image, siren, idCat])
-        .then(results=>{
-            return callback(null, results.rows)
-        })
-        .catch(error=>{
-            return callback(error, null)
-        })
+    .then(results=>{
+        return callback(null, results.rows)
+    })
+    .catch(error=>{
+        return callback(error, null)
+    })
 }
 
 const updatePrestataires = async (news,callback) => {
@@ -48,12 +47,12 @@ const updatePrestataires = async (news,callback) => {
     const image = news.imagePrestaire;
     const id = news.idPrestataire;
     await pool.query(adminQuery.updatePrestataires,[texte, image, id])
-        .then(results=>{
-            return callback(null, results.rows)
-        })
-        .catch(error=>{
-            return callback(error, null)
-        })
+    .then(results=>{
+        return callback(null, results.rows)
+    })
+    .catch(error=>{
+        return callback(error, null)
+    })
 }
 
 const deletePrestataires = async (id,callback) => {
@@ -73,44 +72,44 @@ const deletePrestataires = async (id,callback) => {
         }
     }));
     await pool.query(adminQuery.deletePrestataire,[id])
-        .then(results=>{
-            return callback(null, results.rows)
-        })
-        .catch(error=>{
-            return callback(error, null)
-        })
+    .then(results=>{
+        return callback(null, results.rows)
+    })
+    .catch(error=>{
+        return callback(error, null)
+    })
 }
 
 const listStands = async (callback) => {
     await pool.query(adminQuery.listStand)
-        .then(results=>{
-            return callback(null, results.rows)
-        })
-        .catch(error=>{
-            return callback(error, null)
-        })
+    .then(results=>{
+        return callback(null, results.rows)
+    })
+    .catch(error=>{
+        return callback(error, null)
+    })
 }
 
 const idStands = async (id,callback) => {
     await pool.query(adminQuery.selectStand,[id])
-        .then(results=>{
-            return callback(null, results.rows)
-        })
-        .catch(error=>{
-            return callback(error, null)
-        })
+    .then(results=>{
+        return callback(null, results.rows)
+    })
+    .catch(error=>{
+        return callback(error, null)
+    })
 }
 
 const addStands = async (news, callback) => {
     const libelle = news.libelle;
     const idLoc = news.localisation;
     await pool.query(adminQuery.addStand,[libelle, idLoc])
-        .then(results=>{
-            return callback(null, results.rows)
-        })
-        .catch(error=>{
-            return callback(error, null)
-        })
+    .then(results=>{
+        return callback(null, results.rows)
+    })
+    .catch(error=>{
+        return callback(error, null)
+    })
 }
 
 const updateStands = async (news, callback) => {
@@ -119,12 +118,12 @@ const updateStands = async (news, callback) => {
     const fin = news.horaireFin;
     const prestataire = news.idPrestataire;
     await pool.query(adminQuery.updateStand,[emplacement, debut, fin, prestataire])
-        .then(results=>{
-            return callback(null, results.rows)
-        })
-        .catch(error=>{
-            return callback(error, null)
-        })
+    .then(results=>{
+        return callback(null, results.rows)
+    })
+    .catch(error=>{
+        return callback(error, null)
+    })
 }
 
 const deleteStands = async (id,callback) => {
@@ -139,12 +138,12 @@ const deleteStands = async (id,callback) => {
         }
     }));
     await pool.query(adminQuery.deleteStand,[id])
-        .then(results=>{
-            return callback(null, results.rows)
-        })
-        .catch(error=>{
-            return callback(error, null)
-        })
+    .then(results=>{
+        return callback(null, results.rows)
+    })
+    .catch(error=>{
+        return callback(error, null)
+    })
 }
 
 const getMap = (callback) => {

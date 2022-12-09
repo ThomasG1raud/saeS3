@@ -1,8 +1,8 @@
-const db = require('./model');
+//const db = require('./model');
 var express = require('express');
 require('dotenv').config()
 var app = express();
-const {Sequelize} = require('sequelize');
+//const {Sequelize} = require('sequelize');
 
 const AppError = require("./utils/appError");
 const adminRouter = require('./routes/admin.router');
@@ -13,7 +13,7 @@ app.use("/admin", adminRouter);
 app.use("/prestataire", prestataireRouter);
 app.use("/", vitrineRouter);
 
-db.sequelize.sync()
+/*db.sequelize.sync()
     .then(() => {
         (console.log("bdd OK"));
         (console.log("http://localhost:3000/admin/"));
@@ -21,7 +21,7 @@ db.sequelize.sync()
     .catch((error) => {
         console.log(error);
     });
-
+*/
 
 
 app.use(express.json());

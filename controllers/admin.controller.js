@@ -27,7 +27,7 @@ exports.listPrestataires = (req,res) => {
 }
 
 exports.idPrestataires = (req,res) => {
-    const id = req.params.id;
+    let id = req.params.id;
     adminService.idPrestataires(id,(error, results) => {
         if (error) {
             console.log(error);

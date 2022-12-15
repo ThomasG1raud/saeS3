@@ -168,7 +168,7 @@ router.post('/stands/add', adminController.addStands);
  *          - admin
  *      responses:
  *          '200':
- *              description: Resource listed successfully
+ *              description: Resource added successfully
  *          '500':
  *              description: Internal server error
  *          '400':
@@ -189,7 +189,7 @@ router.put('/stands/update/:id', adminController.updateStands);
  *            required: false
  *      responses:
  *          '200':
- *              description: Resource listed successfully
+ *              description: Resource updated successfully
  *          '500':
  *              description: Internal server error
  *          '400':
@@ -210,7 +210,7 @@ router.delete('/stands/delete/:id', adminController.deleteStands);
  *            required: false
  *      responses:
  *          '200':
- *              description: Resource listed successfully
+ *              description: Resource deleted successfully
  *          '500':
  *              description: Internal server error
  *          '400':

@@ -1,8 +1,10 @@
 //const db = require('./model');
-var express = require('express');
+const express = require('express');
 require('dotenv').config()
-var app = express();
+const app = express();
 //const {Sequelize} = require('sequelize');
+const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 
 const AppError = require("./utils/appError");
 const adminRouter = require('./routes/admin.router');
@@ -28,6 +30,24 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
+
+/** Swagger Initialization - START */
+const swaggerOption = {
+    swaggerDefinition: (swaggerJsdoc.Options = {
+        info: {
+            title: "API REST",
+            description: "API documentation",
+            contact: {
+                name: "Thomas GIRAUD",
+            },
+            servers: ["http://localhost:3001/"],
+        },
+    }),
+    apis: ["app.js", "./routes/*.js"],
+};
+
+const swaggerDocs = swaggerJsdoc(swaggerOption);
+app.use("/api-docs", swaggerUi.serve,swaggerUi.setup(swaggerDocs));
 app.use('/admin', adminRouter);
 
 app.all("*", (req, res,next) => {

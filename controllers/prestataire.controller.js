@@ -28,7 +28,11 @@ exports.idStatistiques = (req, res) => {
 }
 
 exports.selfEdit = (req, res) => {
-    const news = req.body;
+    const news = {
+        texte: req.body.nom,
+        image: req.body.idLoc,
+        id: req.body.id
+    }
     prestataireService.selfEdit(news,(error, results) => {
         if (error) {
             console.log(error);
@@ -55,7 +59,10 @@ exports.compteVisiteurs = (req, res) => {
 }
 
 exports.livreDOr = (req, res)=>{
-    const news = req.body
+    const news = {
+        idClient: req.body.idClient,
+        comment: req.body.comment
+    }
     prestataireService.livreDOr(news, (error, results)=>{
         if (error) {
             console.log(error);
@@ -69,7 +76,11 @@ exports.livreDOr = (req, res)=>{
 }
 
 exports.achatBillet = (req, res) => {
-    const news = req.body
+    const news = {
+        prix: req.body.prix,
+        idUtilisateur: req.body.idUtilisateur,
+        idCategory: req.body.idCategory
+    }
     prestataireService.achatBillet(news, (error, results)=>{
         if (error) {
             console.log(error);
@@ -97,7 +108,10 @@ exports.showGoodies = (req, res) => {
 }
 
 exports.selectGoodies = (req, res) =>{
-    const news = req.body
+    const news = {
+        idGoodies: req.body.idGoodies,
+        idUtilisateur: req.body.idUtilisateur
+    }
     prestataireService.selectGoodies(news, (error, results)=>{
         if (error) {
             console.log(error);
@@ -111,7 +125,10 @@ exports.selectGoodies = (req, res) =>{
 }
 
 exports.buyGoodies = (req, res) => {
-    const news = req.body
+    const news = {
+        idGoodies: req.body.idGoodies,
+        idUtilisateur: req.body.idUtilisateur
+    }
     prestataireService.buyGoodies(news, (error, results)=>{
         if (error) {
             console.log(error);

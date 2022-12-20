@@ -29,8 +29,8 @@ const idPrestataires = async (id, callback) => {
 const addPrestataires = async (news,callback) => {
     const nom = news.nom;
     const texte = news.texte;
-    const image = image;
-    const siren = image;
+    const image = news.image;
+    const siren = news.siren;
     const idCat = news.idCategory
     await pool.query(adminQuery.addPrestataire,[nom, texte, image, siren, idCat])
     .then(results=>{

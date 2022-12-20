@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/NexFord0/saeS3#readme",
   "dependencies": {
+    "body-parser": "^1.20.1",
     "csv-sequelize": "^1.0.3",
     "dotenv": "^16.0.3",
     "env": "^0.0.2",

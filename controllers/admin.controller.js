@@ -41,7 +41,13 @@ exports.idPrestataires = (req,res) => {
 }
 
 exports.addPrestataires = (req,res) => {
-    const news = req.body;
+    const news = {
+        nom: req.body.nom,
+        texte: req.body.texte,
+        image: req.body.image,
+        siren: req.body.siren,
+        idCategory: req.body.idCategory
+    }
     adminService.addPrestataires(news,(error, results) => {
         if (error) {
             console.log(error);
@@ -55,7 +61,13 @@ exports.addPrestataires = (req,res) => {
 }
 
 exports.updatePrestataires = (req,res) => {
-    const news = req.body;
+    const news = {
+        nom: req.body.nom,
+        texte: req.body.texte,
+        image: req.body.image,
+        siren: req.body.siren,
+        idCategory: req.body.idCategory
+    }
     adminService.updatePrestataires(news,(error, results) => {
         if (error) {
             console.log(error);
@@ -110,7 +122,10 @@ exports.idStands = (req,res) => {
 }
 
 exports.addStands = (req,res) => {
-    const news = req.body;
+    const news = {
+        libelle: req.body.nom,
+        idLoc: req.body.idLoc
+    }
     adminService.addStands(news,(error, results) => {
         if (error) {
             console.log(error);
@@ -124,7 +139,10 @@ exports.addStands = (req,res) => {
 }
 
 exports.updateStands = (req,res) => {
-    const news = req.body;
+    const news = {
+        libelle: req.body.nom,
+        idLoc: req.body.idLoc
+    }
     adminService.updateStands(news,(error, results) => {
         if (error) {
             console.log(error);

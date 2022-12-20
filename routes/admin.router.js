@@ -2,7 +2,6 @@ const adminController = require("../controllers/admin.controller");
 const express = require('express');
 const router = express.Router();
 
-
 router.get("/", adminController.panel)
 /**
  * @swagger
@@ -39,7 +38,7 @@ router.get('/prestataires', adminController.listPrestataires);
 router.post('/prestataires/add', adminController.addPrestataires);
 /**
  * @swagger
- * /prestataires/add:
+ * /admin/prestataires/add:
  *   post:
  *      description: Add a new personn to the prestataire table
  *      tags:
@@ -98,10 +97,10 @@ router.delete('/prestataires/delete/:id', adminController.deletePrestataires);
  *          '400':
  *              description: Bad request
  */
-router.get('/prestataires/:id', adminController.idPrestataires);
+router.get('/getPrestataires/:id', adminController.idPrestataires);
 /**
  * @swagger
- * /prestataires/{id}:
+ * /getPrestataires/{id}:
  *   get:
  *      description: Used to get the specified prestataire
  *      tags:

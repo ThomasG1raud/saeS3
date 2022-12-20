@@ -2,6 +2,7 @@
 const express = require('express');
 require('dotenv').config()
 const app = express();
+const bodyParser = require('body-parser');
 //const {Sequelize} = require('sequelize');
 const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
@@ -10,7 +11,6 @@ const AppError = require("./utils/appError");
 const adminRouter = require('./routes/admin.router');
 const prestataireRouter = require("./routes/prestataire.router");
 const vitrineRouter = require("./routes/vitrine.router");
-
 app.use("/admin", adminRouter);
 app.use("/prestataire", prestataireRouter);
 app.use("/", vitrineRouter);

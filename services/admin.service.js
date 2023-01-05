@@ -70,6 +70,11 @@ const deletePrestataires = async (id,callback) => {
             pool.query(adminQuery.deleteRepond, [id]);
         }
     }));
+    if(pool.query(adminQuery.selectSitue, [id], (error, results)=>{
+        if(results.rows.length){
+            pool.query(adminQuery.deleteSitue, [id])
+        }
+    }))
     await pool.query(adminQuery.deletePrestataire,[id])
     .then(results=>{
         return callback(null, results.rows)

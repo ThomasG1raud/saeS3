@@ -31,7 +31,7 @@ const addPrestataires = async (news,callback) => {
     const texte = news.texte;
     const image = news.image;
     const siren = news.siren;
-    const idCat = news.idCategorie
+    const idCat = news.idCategory
     await pool.query(adminQuery.addPrestataire,[nom, texte, image, siren, idCat])
     .then(results=>{
         return callback(null, results.rows)
@@ -145,107 +145,24 @@ const deleteStands = async (id,callback) => {
     })
 }
 
-const getMap = async (callback) => {
+const getMap = (callback) => {
     return callback(null, "ok");
 }
 
-const idMap = async (callback) => {
+const idMap = (callback) => {
     return callback(null, "ok");
 }
 
-const addMap = async (callback) => {
+const addMap = (callback) => {
     return callback(null, "ok");
 }
 
-const updateMap = async (callback) => {
+const updateMap = (callback) => {
     return callback(null, "ok");
 }
 
-const deleteMap = async (callback) => {
+const deleteMap = (callback) => {
     return callback(null, "ok");
-}
-
-const showCalendrier = async (callback) =>{
-    await pool.query(adminQuery.showCalendar)
-        .then(results=>{
-            return callback(null, results.rows)
-        })
-        .catch(error=>{
-            return callback(error, null)
-        })
-}
-
-const addCalendrier = async (tab, callback) =>{
-    const date = tab.date;
-    const hDebut = tab.horaireDebut;
-    const hFin = tab.horaireFin;
-    const idPrestataire = tab.idPrestataire;
-    const idStand = tab.idStand;
-    await pool.query(adminQuery.addCalendar, [date, hDebut, hFin, idPrestataire, idStand])
-        .then(results=>{
-            return callback(null, results.rows)
-        })
-        .catch(error=>{
-            return callback(error, null)
-        })
-}
-
-const updateCalendrier = async (tab, callback) =>{
-    const date = tab.date;
-    const hDebut = tab.horaireDebut;
-    const hFin = tab.horaireFin;
-    const idPrestataire = tab.idPrestataire;
-    const idStand = tab.idStand;
-    await pool.query(adminQuery.updateCalendar, [date, hDebut, hFin, idPrestataire, idStand])
-        .then(results=>{
-            return callback(null, results.rows)
-        })
-        .catch(error=>{
-            return callback(error, null)
-        })
-}
-
-const deleteCalendrier = async (tab, callback) =>{
-    const date = tab.date;
-    const idPrestataire = tab.idPrestataire;
-    const idStand = tab.idStand;
-    await pool.query(adminQuery.deleteCalendar, [date, idPrestataire, idStand])
-        .then(results=>{
-            return callback(null, results.rows)
-        })
-        .catch(error=>{
-            return callback(error, null)
-        })
-}
-
-const showPrestataire = async (callback) =>{
-    await pool.query(adminQuery.showPrestataire)
-        .then(results=>{
-            return callback(null, results.rows)
-        })
-        .catch(error=>{
-            return callback(error, null)
-        })
-}
-
-const showListBillet = async (callback) =>{
-    await pool.query(adminQuery.showListBillet)
-        .then(results=>{
-            return callback(null, results.rows)
-        })
-        .catch(error=>{
-            return callback(error, null)
-        })
-}
-
-const showPrestataireByStand = async (callback) =>{
-    await pool.query(adminQuery.showPrestataireByStand)
-        .then(results=>{
-            return callback(null, results.rows)
-        })
-        .catch(error=>{
-            return callback(error, null)
-        })
 }
 
 module.exports = {
@@ -264,12 +181,5 @@ module.exports = {
     idMap:idMap,
     addMap:addMap,
     updateMap:updateMap,
-    deleteMap: deleteMap,
-    addCalendrier: addCalendrier,
-    showCalendrier: showCalendrier,
-    updateCalendrier: updateCalendrier,
-    deleteCalendrier: deleteCalendrier,
-    showPrestataire: showPrestataire,
-    showListBillet: showListBillet,
-    showPrestataireByStand: showPrestataireByStand
+    deleteMap: deleteMap
 }

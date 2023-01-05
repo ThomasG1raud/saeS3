@@ -2,18 +2,17 @@ const adminController = require("../controllers/admin.controller");
 const express = require('express');
 const router = express.Router();
 
-router.get("/admin", adminController.panel)
+router.get("/", adminController.panel)
 /**
  * @swagger
  * /admin:
  *   get:
- *      description: List all the information for an admin
+ *      description: JSP
  *      tags:
  *          - admin
- *      parameters: none
  *      responses:
  *          '200':
- *              description: Resource listed successfully
+ *              description: Resource added successfully
  *          '500':
  *              description: Internal server error
  *          '400':
@@ -23,14 +22,14 @@ router.get("/admin", adminController.panel)
 router.get('/prestataires', adminController.listPrestataires);
 /**
  * @swagger
- * /prestataires:
+ * /admin/prestataires:
  *   get:
- *      description: List all informations contained in the prestataire table
+ *      description: Liste les prestataires
  *      tags:
  *          - admin
  *      responses:
  *          '200':
- *              description: Resource listed successfully
+ *              description: Resource added successfully
  *          '500':
  *              description: Internal server error
  *          '400':
@@ -41,10 +40,25 @@ router.post('/prestataires/add', adminController.addPrestataires);
  * @swagger
  * /admin/prestataires/add:
  *   post:
- *      description: Add a new personn to the prestataire table
+ *      description: Ajoute un prestataire
  *      tags:
  *          - admin
- *          - prestataires
+ *      parameters:
+ *          - in: body
+ *            description: Prestataire à créer
+ *            schema:
+ *             type: object
+ *             properties:
+ *               nom:
+ *                 type: string
+ *               texte:
+ *                 type: string
+ *               image:
+ *                 type: string
+ *               siren:
+ *                 type: integer
+ *               idCategory:
+ *                 type: integer
  *      responses:
  *          '200':
  *              description: Resource added successfully
@@ -57,12 +71,11 @@ router.post('/prestataires/add', adminController.addPrestataires);
 router.put('/prestataires/update/:id', adminController.updatePrestataires);
 /**
  * @swagger
- * /prestataires/update/{id}:
+ * /admin/prestataires/update/{id}:
  *   put:
  *      description: Update the information of a given prestataire
  *      tags:
  *          - admin
- *          - prestataires
  *      parameters:
  *          - in: path
  *            name: id
@@ -79,12 +92,11 @@ router.put('/prestataires/update/:id', adminController.updatePrestataires);
 router.delete('/prestataires/delete/:id', adminController.deletePrestataires);
 /**
  * @swagger
- * /prestataires/delete{id}:
+ * admin/prestataires/delete/{id}:
  *   delete:
  *      description: Delete a given personn from the table prestataire
  *      tags:
  *          - admin
- *          - prestataires
  *      parameters:
  *          - in: path
  *            name: id
@@ -98,15 +110,14 @@ router.delete('/prestataires/delete/:id', adminController.deletePrestataires);
  *          '400':
  *              description: Bad request
  */
-router.get('/getPrestataires/:id', adminController.idPrestataires);
+router.get('/prestataire/:id', adminController.idPrestataires);
 /**
  * @swagger
- * /getPrestataires/{id}:
+ * admin/prestataire/{id}:
  *   get:
  *      description: Used to get the specified prestataire
  *      tags:
  *          - admin
- *          - prestataires
  *      parameters:
  *          - in: path
  *            name: id
@@ -124,7 +135,7 @@ router.get('/getPrestataires/:id', adminController.idPrestataires);
 router.get('/stands', adminController.listStands);
 /**
  * @swagger
- * /stands:
+ * admin/stands:
  *   get:
  *      description: list all the informations about the stands
  *      tags:
@@ -137,10 +148,10 @@ router.get('/stands', adminController.listStands);
  *          '400':
  *              description: Bad request
  */
-router.get('/stands/:id', adminController.idStands);
+router.get('/stand/:id', adminController.idStands);
 /**
  * @swagger
- * /stands/{id}:
+ * admin/stand/{id}:
  *   get:
  *      description: list all the informations about the selected stands
  *      tags:
@@ -158,10 +169,10 @@ router.get('/stands/:id', adminController.idStands);
  *          '400':
  *              description: Bad request
  */
-router.post('/stands/add', adminController.addStands);
+router.post('/stand/add', adminController.addStands);
 /**
  * @swagger
- * /stands/add:
+ * admin/stand/add:
  *   post:
  *      description: Add a new stand to the table stand
  *      tags:
@@ -174,10 +185,10 @@ router.post('/stands/add', adminController.addStands);
  *          '400':
  *              description: Bad request
  */
-router.put('/stands/update/:id', adminController.updateStands);
+router.put('/stand/update/:id', adminController.updateStands);
 /**
  * @swagger
- * /stands/update/{id}:
+ * /admin/stand/update/{id}:
  *   put:
  *      description: Add a new stand to the table stand
  *      tags:
@@ -195,10 +206,10 @@ router.put('/stands/update/:id', adminController.updateStands);
  *          '400':
  *              description: Bad request
  */
-router.delete('/stands/delete/:id', adminController.deleteStands);
+router.delete('/stand/delete/:id', adminController.deleteStands);
 /**
  * @swagger
- * /stands/delete/{id}:
+ * /admin/stands/delete/{id}:
  *   delete:
  *      description: Delete the selected stand from the Table stand
  *      tags:

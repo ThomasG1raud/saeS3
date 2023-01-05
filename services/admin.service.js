@@ -142,8 +142,8 @@ const deleteStands = async (id,callback) => {
         }
     }));
     await pool.query(adminQuery.deleteStand,[id])
-    .then(results=>{
-        return callback(null, results.rows)
+    .then(()=>{
+        return callback(null, "deleted succesfully")
     })
     .catch(error=>{
         return callback(error, null)

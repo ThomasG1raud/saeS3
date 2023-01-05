@@ -222,4 +222,127 @@ router.post('/map/add', adminController.addMap)
 router.put('/map/update/:id', adminController.updateMap)
 router.delete('/map/delete/:id', adminController.deleteMap)
 
+router.get('/calendrier', adminController.showCalendar)
+/**
+ * @swagger
+ * /calendrier
+ *   get:
+ *      description: Show the calendar and the event in it
+ *      tags:
+ *          - admin
+ *      responses:
+ *          '200':
+ *              description: Resource showed successfully
+ *          '500':
+ *              description: Internal server error
+ *          '400':
+ *              description: Bad request
+ */
+router.post('/calendrier/add', adminController.addCalendar)
+/**
+ * @swagger
+ * /calendrier/add
+ *   post:
+ *      description: add an event to the calendar
+ *      tags:
+ *          - admin
+ *      responses:
+ *          '200':
+ *              description: Resource added successfully
+ *          '500':
+ *              description: Internal server error
+ *          '400':
+ *              description: Bad request
+ */
+router.put('/calendrier/update/:id', adminController.updateCalendar)
+/**
+ * @swagger
+ * /calendrier/update/{id}:
+ *   put:
+ *      description: update the selected event
+ *      tags:
+ *          - admin
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            type: integer
+ *            required: false
+ *      responses:
+ *          '200':
+ *              description: Resource updated successfully
+ *          '500':
+ *              description: Internal server error
+ *          '400':
+ *              description: Bad request
+ */
+router.delete('/calendrier/delete/:id', adminController.deleteCalendar)
+/**
+ * @swagger
+ * /calendrier/delete/{id}:
+ *   delete:
+ *      description: Delete the selected event from the calendar
+ *      tags:
+ *          - admin
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            type: integer
+ *            required: false
+ *      responses:
+ *          '200':
+ *              description: Resource deleted successfully
+ *          '500':
+ *              description: Internal server error
+ *          '400':
+ *              description: Bad request
+ */
+router.get('/showPrestataire', adminController.listPrestataires)
+/**
+ * @swagger
+ * /showPrestataire
+ *   get:
+ *      description: show all the content from the prestataire table with the name of their category
+ *      tags:
+ *          - admin
+ *      responses:
+ *          '200':
+ *              description: Resource showed successfully
+ *          '500':
+ *              description: Internal server error
+ *          '400':
+ *              description: Bad request
+ */
+router.get('/showListBillet', adminController.showListBillet)
+/**
+ * @swagger
+ * /showListBillet
+ *   get:
+ *      description: show all the content from the billets table with the name of their category and the users who bought it
+ *      tags:
+ *          - admin
+ *      responses:
+ *          '200':
+ *              description: Resource showed successfully
+ *          '500':
+ *              description: Internal server error
+ *          '400':
+ *              description: Bad request
+ */
+router.get('/listStandPrestataire', adminController.showPrestataireByStand)/**
+ * @swagger
+ * /listStandPrestataire
+ *   get:
+ *      description: show all the content from the stand table with the associated prestataire
+ *      tags:
+ *          - admin
+ *      responses:
+ *          '200':
+ *              description: Resource showed successfully
+ *          '500':
+ *              description: Internal server error
+ *          '400':
+ *              description: Bad request
+ */
+
+
 module.exports = router;

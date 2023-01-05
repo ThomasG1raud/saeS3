@@ -46,7 +46,7 @@ exports.addPrestataires = (req,res) => {
         texte: req.body.texte,
         image: req.body.image,
         siren: req.body.siren,
-        idCategory: req.body.idCategory
+        idCategorie: req.body.idCategorie
     }
     adminService.addPrestataires(news,(error, results) => {
         if (error) {
@@ -223,6 +223,97 @@ exports.updateMap = (req,res) => {
 
 exports.deleteMap = (req,res) => {
     adminService.deleteMap((error, results) => {
+        if (error) {
+            console.log(error);
+            return res.status(400).send({ success: 0, data: error });
+        }
+        return res.status(200).send({
+            success: 1,
+            data: results,
+        });
+    });
+}
+
+exports.showCalendar = (req, res) =>{
+    adminService.showCalendrier((error, results)=>{
+        if (error) {
+            console.log(error);
+            return res.status(400).send({ success: 0, data: error });
+        }
+        return res.status(200).send({
+            success: 1,
+            data: results,
+        });
+    });
+}
+
+exports.addCalendar = (req, res) =>{
+    adminService.addCalendrier((error, results)=>{
+        if (error) {
+            console.log(error);
+            return res.status(400).send({ success: 0, data: error });
+        }
+        return res.status(200).send({
+            success: 1,
+            data: results,
+        });
+    });
+}
+
+exports.updateCalendar = (req, res) =>{
+    adminService.updateCalendrier((error, results)=>{
+        if (error) {
+            console.log(error);
+            return res.status(400).send({ success: 0, data: error });
+        }
+        return res.status(200).send({
+            success: 1,
+            data: results,
+        });
+    });
+}
+
+exports.deleteCalendar = (req, res) =>{
+    adminService.deleteCalendrier((error, results)=>{
+        if (error) {
+            console.log(error);
+            return res.status(400).send({ success: 0, data: error });
+        }
+        return res.status(200).send({
+            success: 1,
+            data: results,
+        });
+    });
+}
+
+exports.showPrestataire = (req, res) =>{
+    adminService.showPrestataire((error, results)=>{
+        if (error) {
+            console.log(error);
+            return res.status(400).send({ success: 0, data: error });
+        }
+        return res.status(200).send({
+            success: 1,
+            data: results,
+        });
+    });
+}
+
+exports.showListBillet = (req, res) =>{
+    adminService.showListBillet((error, results)=>{
+        if (error) {
+            console.log(error);
+            return res.status(400).send({ success: 0, data: error });
+        }
+        return res.status(200).send({
+            success: 1,
+            data: results,
+        });
+    });
+}
+
+exports.showPrestataireByStand = (req, res) => {
+    adminService.showPrestataireByStand((error, results)=>{
         if (error) {
             console.log(error);
             return res.status(400).send({ success: 0, data: error });

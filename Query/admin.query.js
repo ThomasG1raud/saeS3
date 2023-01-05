@@ -1,6 +1,6 @@
 const selectPrestataire = "SELECT * FROM prestataires";
 const selectById = "SELECT * FROM prestataires WHERE idprestataire=$1";
-const addPrestataire = "INSERT INTO prestataires (nom, textePrestataire, imagePrestataire, siren, idCategory) VALUES ($1,$2,$3,$4,$5)";
+const addPrestataire = "INSERT INTO prestataires (nom, textePrestataire, imagePrestataire, siren, idCategorie) VALUES ($1,$2,$3,$4,$5)";
 const updatePrestataires = "UPDATE prestataires SET textePrestataire = $1, imagePrestataire = $2 WHERE idPrestataire = $3";
 const selectModify = "SELECT * FROM modifys WHERE idPrestataire = $1";
 const deleteModify = "DELETE FROM modifys WHERE idPrestataire = $1";

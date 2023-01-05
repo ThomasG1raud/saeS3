@@ -3,7 +3,7 @@ const pool = require("../db")
 
 
 const panel = (callback) => {
-    return callback(null, "Vous êtres bien sur la page d'administrateur");
+    return callback(null, "Vous êtes bien sur la page d'administrateur");
 }
 
 const listPrestataires = async (callback) => {
@@ -31,8 +31,8 @@ const addPrestataires = async (news,callback) => {
     const texte = news.texte;
     const image = news.image;
     const siren = news.siren;
-    const idCat = news.idCategory
-    await pool.query(adminQuery.addPrestataire,[nom, texte, image, siren, idCat])
+    const idCategory = news.idCategory;
+    await pool.query(adminQuery.addPrestataire,[nom, texte, image, siren, idCategory])
     .then(results=>{
         return callback(null, results.rows)
     })
@@ -43,7 +43,7 @@ const addPrestataires = async (news,callback) => {
 
 const updatePrestataires = async (news,callback) => {
     const texte = news.textePrestataire;
-    const image = news.imagePrestaire;
+    const image = news.imagePrestataire;
     const id = news.idPrestataire;
     await pool.query(adminQuery.updatePrestataires,[texte, image, id])
     .then(results=>{

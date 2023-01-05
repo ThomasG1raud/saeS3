@@ -17,7 +17,7 @@ const idStatistiques = (id,callback) => {
 
 const selfEdit = async (news,callback) => {
     const texte = news.textePrestataire;
-    const image = news.imagePrestaire;
+    const image = news.imagePrestataire;
     const id = news.idPrestataire;
     await pool.query(prestataireQuery.editPrestataire ,[texte, image, id])
     .then(results=>{

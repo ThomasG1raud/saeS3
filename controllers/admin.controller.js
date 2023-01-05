@@ -109,6 +109,7 @@ exports.listStands = (req,res) => {
 
 exports.idStands = (req,res) => {
     const id = req.params.id;
+    console.log(id); // a retirer un peu plus tard
     adminService.idStands(id,(error, results) => {
         if (error) {
             console.log(error);

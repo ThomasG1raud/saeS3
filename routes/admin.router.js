@@ -2,7 +2,7 @@ const adminController = require("../controllers/admin.controller");
 const express = require('express');
 const router = express.Router();
 
-router.get("/", adminController.panel)
+router.get("/", adminController.panel) // OK
 /**
  * @swagger
  * /admin:
@@ -19,7 +19,7 @@ router.get("/", adminController.panel)
  *              description: Bad request
  */
 
-router.get('/prestataires', adminController.listPrestataires);
+router.get('/prestataires', adminController.listPrestataires); //OK
 /**
  * @swagger
  * /admin/prestataires:
@@ -35,32 +35,58 @@ router.get('/prestataires', adminController.listPrestataires);
  *          '400':
  *              description: Bad request
  */
+router.get('/prestataire/:id', adminController.idPrestataires); // OK
+/**
+ * @swagger
+ * /admin/prestataire/{id}:
+ *   get:
+ *      description: Affiche le prestataire correspondant à l'id
+ *      tags:
+ *          - admin
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            type: integer
+ *            required: false
+ *      responses:
+ *          '200':
+ *              description: Resource added successfully
+ *          '500':
+ *              description: Internal server error
+ *          '400':
+ *              description: Bad request
+ */
 router.post('/prestataires/add', adminController.addPrestataires);
 /**
  * @swagger
  * /admin/prestataires/add:
  *   post:
- *      description: Ajoute un prestataire
+ *      description: Créer une prestataire
  *      tags:
- *          - admin
- *      parameters:
- *          - in: body
- *            description: Prestataire à créer
- *            schema:
- *             type: object
- *             properties:
- *               nom:
- *                 type: string
- *               texte:
- *                 type: string
- *               image:
- *                 type: string
- *               siren:
- *                 type: integer
- *               idCategory:
- *                 type: integer
+ *          - prestataire
+ *      requestBody:
+ *          content:
+ *             application/json:
+ *                schema:
+ *                    type: object
+ *                    properties:
+ *                        nom:
+ *                          type: string
+ *                          required: true
+ *                        texte:
+ *                          type: string
+ *                          required: true
+ *                        image:
+ *                          type: string
+ *                          required: true
+ *                        siren:
+ *                          type: int
+ *                          required: true
+ *                        idCategory:
+ *                          type: int
+ *                          required: true
  *      responses:
- *          '200':
+ *          '201':
  *              description: Resource added successfully
  *          '500':
  *              description: Internal server error
@@ -92,9 +118,9 @@ router.put('/prestataires/update/:id', adminController.updatePrestataires);
 router.delete('/prestataires/delete/:id', adminController.deletePrestataires);
 /**
  * @swagger
- * admin/prestataires/delete/{id}:
+ * /admin/prestataires/delete/{id}:
  *   delete:
- *      description: Delete a given personn from the table prestataire
+ *      description: Delete a given person from the table prestataire
  *      tags:
  *          - admin
  *      parameters:
@@ -110,32 +136,11 @@ router.delete('/prestataires/delete/:id', adminController.deletePrestataires);
  *          '400':
  *              description: Bad request
  */
-router.get('/prestataire/:id', adminController.idPrestataires);
-/**
- * @swagger
- * admin/prestataire/{id}:
- *   get:
- *      description: Used to get the specified prestataire
- *      tags:
- *          - admin
- *      parameters:
- *          - in: path
- *            name: id
- *            type: integer
- *            required: false
- *      responses:
- *          '200':
- *              description: Resource recupered successfully
- *          '500':
- *              description: Internal server error
- *          '400':
- *              description: Bad request
- */
 
 router.get('/stands', adminController.listStands);
 /**
  * @swagger
- * admin/stands:
+ * /admin/stands:
  *   get:
  *      description: list all the informations about the stands
  *      tags:
@@ -151,7 +156,7 @@ router.get('/stands', adminController.listStands);
 router.get('/stand/:id', adminController.idStands);
 /**
  * @swagger
- * admin/stand/{id}:
+ * /admin/stand/{id}:
  *   get:
  *      description: list all the informations about the selected stands
  *      tags:
@@ -172,7 +177,7 @@ router.get('/stand/:id', adminController.idStands);
 router.post('/stand/add', adminController.addStands);
 /**
  * @swagger
- * admin/stand/add:
+ * /admin/stand/add:
  *   post:
  *      description: Add a new stand to the table stand
  *      tags:
@@ -209,7 +214,7 @@ router.put('/stand/update/:id', adminController.updateStands);
 router.delete('/stand/delete/:id', adminController.deleteStands);
 /**
  * @swagger
- * /admin/stands/delete/{id}:
+ * /admin/stand/delete/{id}:
  *   delete:
  *      description: Delete the selected stand from the Table stand
  *      tags:

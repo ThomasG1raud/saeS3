@@ -18,6 +18,13 @@ const deleteSitue = "DELETE FROM situes WHERE idPrestataire = $1";
 const selectEmplacement = "SELECT * FROM comportes WHERE idPrestataire = $1";
 const deleteEmplacement = "DELETE FROM comportes WHERE idPrestataire = $1";
 const deleteStand = "DELETE FROM emplacements WHERE idPrestataire = $1";
+const addCalendar ="INSERT INTO calendrier(datePrestation,horaireDebut, horaireFin, idPrestataire, idStand) VALUES ($1, $2, $3, $4, $5)";
+const showCalendar = "SELECT * FROM calendrier";
+const updateCalendar = "UPDATE calendrier SET datePrestation = $1, horaireDebut = $2, horaireFin = $3 WHERE idPrestatire = $4 AND idStand = $5";
+const deleteCalendar = "DELETE FROM calendrier WHERE datePrestation = $1 AND idPrestataire = $2 AND idStand = $3";
+const showPrestataire = "SELECT prestataire.*, categorie.libelleCategorie FROM prestataire INNER JOIN categorie ON prestataire.idCategorie = categorie.idCategorie"; // joint entre prestataire et categorie
+const showListBillet = "SELECT billet.*, utilisateur.*, categorieBillet.libelleCategorie FROM billet INNER JOIN utilisateur ON billet.idUtilisateur = utilisateur.idUtilisateur INNER JOIN categorieBillet ON categorieBillet.idCategorie = billets.idCategorie"; // joint entre billet et utilisateur et categorieBillet pour l'admin
+const showPrestataireByStand = "SELECT prestataire.*, stand.* FROM stand INNER JOIN prestataire ON stand.idPrestataire = prestataire.idPrestataire"; // joint entre stand et prestataire
 
 module.exports = {selectPrestataire, selectById, addPrestataire, updatePrestataires, selectModify, deleteModify, selectAccede, deleteAccede, selectRepond, deleteRepond, deletePrestataire,
-listStand, selectStand, addStand, updateStand, selectSitue, deleteSitue, selectEmplacement, deleteEmplacement, deleteStand}
+listStand, selectStand, addStand, updateStand, selectSitue, deleteSitue, selectEmplacement, deleteEmplacement, deleteStand, addCalendar, showCalendar, updateCalendar, deleteCalendar, showPrestataire, showListBillet, showPrestataireByStand}

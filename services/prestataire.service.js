@@ -6,7 +6,7 @@ const panel = (callback) => {
 }
 
 const idStatistiques = (id,callback) => {
-    pool.query(prestataireQuery.selectPrestataireById)
+    pool.query(prestataireQuery.selectPrestataireById, [id])
     .then(results=>{
         return callback(null, results.rows)
     })

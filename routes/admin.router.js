@@ -2,14 +2,15 @@ const adminController = require("../controllers/admin.controller");
 const express = require('express');
 const router = express.Router();
 
-router.get("/", adminController.panel)
+router.get("/admin", adminController.panel)
 /**
  * @swagger
- * /:
+ * /admin:
  *   get:
  *      description: List all the information for an admin
  *      tags:
  *          - admin
+ *      parameters: none
  *      responses:
  *          '200':
  *              description: Resource listed successfully

@@ -2,6 +2,8 @@ const prestataireController = require("../controllers/prestataire.controller");
 const express = require('express');
 const router = express.Router();
 
+
+router.get("/", prestataireController.panel);
 /**
  * @swagger
  * / :
@@ -18,7 +20,8 @@ const router = express.Router();
  *          '400':
  *              description: Bad request
  */
-router.get("/", prestataireController.panel);
+
+router.get("/statistiques/:id", prestataireController.idStatistiques);
 /**
  * @swagger
  * /statistiques/{id} :
@@ -38,7 +41,8 @@ router.get("/", prestataireController.panel);
  *          '400':
  *              description: Bad request
  */
-router.get("/statistiques/:id", prestataireController.idStatistiques);
+
+router.put("/self_edit", prestataireController.selfEdit);
 /**
  * @swagger
  * /self_edit :
@@ -55,7 +59,8 @@ router.get("/statistiques/:id", prestataireController.idStatistiques);
  *          '400':
  *              description: Bad request
  */
-router.put("/self_edit", prestataireController.selfEdit);
+
+router.post("/livreDOR", prestataireController.livreDOr);
 /**
  * @swagger
  * /livreDOr :
@@ -72,7 +77,8 @@ router.put("/self_edit", prestataireController.selfEdit);
  *          '400':
  *              description: Bad request
  */
-router.post("/livreDOR", prestataireController.livreDOr);
+
+router.post("/achatBillet", prestataireController.achatBillet);
 /**
  * @swagger
  * /achatBillet :
@@ -81,7 +87,10 @@ router.post("/livreDOR", prestataireController.livreDOr);
  *          tags :
  *              - prestataire
  *          parameters :
- *              - id wich represent the id of the selected stats for the corresponding prestataire
+ *              -  in: path
+ *                 name: id
+ *                 type: integer
+ *                 required: false
  *          responses :
  *          '200':
  *              description: Resource added successfully
@@ -90,7 +99,8 @@ router.post("/livreDOR", prestataireController.livreDOr);
  *          '400':
  *              description: Bad request
  */
-router.post("/achatBillet", prestataireController.achatBillet);
+
+router.get("/showGoodies", prestataireController.showGoodies);
 /**
  * @swagger
  * /showGoodies :
@@ -107,11 +117,12 @@ router.post("/achatBillet", prestataireController.achatBillet);
  *          '400':
  *              description: Bad request
  */
-router.get("/showGoodies", prestataireController.showGoodies);
+
+router.post("/selectGoodie", prestataireController.selectGoodies);
 /**
  * @swagger
  * /selectGoodie :
- *      get :
+ *      post :
  *          description : Used to add the selected goodie to the table panier
  *          tags :
  *              - prestataire
@@ -124,7 +135,8 @@ router.get("/showGoodies", prestataireController.showGoodies);
  *          '400':
  *              description: Bad request
  */
-router.post("/selectGoodie", prestataireController.selectGoodies);
+
+router.get("/buyGoodies", prestataireController.buyGoodies);
 /**
  * @swagger
  * /buyGoodies :
@@ -141,6 +153,5 @@ router.post("/selectGoodie", prestataireController.selectGoodies);
  *          '400':
  *              description: Bad request
  */
-router.get("/buyGoodies", prestataireController.buyGoodies);
 
 module.exports = router;

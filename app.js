@@ -11,9 +11,7 @@ const AppError = require("./utils/appError");
 const adminRouter = require('./routes/admin.router');
 const prestataireRouter = require("./routes/prestataire.router");
 const vitrineRouter = require("./routes/vitrine.router");
-app.use("/admin", adminRouter);
-app.use("/prestataire", prestataireRouter);
-app.use("/", vitrineRouter);
+
 
 /*db.sequelize.sync()
     .then(() => {
@@ -48,7 +46,9 @@ const swaggerOption = {
 
 const swaggerDocs = swaggerJsdoc(swaggerOption);
 app.use("/api-docs", swaggerUi.serve,swaggerUi.setup(swaggerDocs));
-app.use('/admin', adminRouter);
+app.use("/admin", adminRouter);
+app.use("/prestataire", prestataireRouter);
+app.use("/", vitrineRouter);
 
 app.all("*", (req, res,next) => {
     throw new AppError(`Requested URL ${req.path} not found !`, 404)

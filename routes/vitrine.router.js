@@ -3,10 +3,10 @@ const express = require('express');
 const router = express.Router();
 
 
-router.get("/", vitrineController.vitrine)
+router.get("/vitrine", vitrineController.vitrine)
 /**
  * @swagger
- * /:
+ * /vitrine:
  *   get:
  *      description: JSP
  *      tags:

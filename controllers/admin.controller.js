@@ -124,7 +124,7 @@ exports.idStands = (req,res) => {
 
 exports.addStands = (req,res) => {
     const news = {
-        libelle: req.body.nom,
+        libelle: req.body.libelle,
         idLoc: req.body.idLoc
     }
     adminService.addStands(news,(error, results) => {

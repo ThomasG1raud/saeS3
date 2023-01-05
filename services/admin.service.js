@@ -106,7 +106,7 @@ const idStands = async (id,callback) => {
 
 const addStands = async (news, callback) => {
     const libelle = news.libelle;
-    const idLoc = news.localisation;
+    const idLoc = news.idLoc;
     await pool.query(adminQuery.addStand,[libelle, idLoc])
     .then(results=>{
         return callback(null, results.rows)

@@ -36,9 +36,9 @@ const swaggerOption = {
             title: "API REST",
             description: "API documentation",
             contact: {
-                name: "Thomas GIRAUD",
+                name: "Groupe 13",
             },
-            servers: ["http://localhost:3001/"],
+            servers: ["http://localhost:3000/"],
         },
     }),
     apis: ["app.js", "./routes/*.js"],

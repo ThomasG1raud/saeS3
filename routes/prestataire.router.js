@@ -6,7 +6,7 @@ const router = express.Router();
 router.get("/", prestataireController.panel);
 /**
  * @swagger
- * / :
+ * /:
  *      get :
  *          description : Used to get general informations from the prestataire table
  *          tags :

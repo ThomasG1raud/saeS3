@@ -77,7 +77,7 @@ const showCalendrier = async (callback) =>{
 }
 
 const addCommentaire = async (news, callback)=>{
-    await pool.query(vitrineQuery.addCommentaire, [news[0],news[1]])
+    await pool.query(vitrineQuery.addCommentaire, [news[0],news[1],news[2]])
         .then(()=>{
             return callback(null, "commentaire ajouté avec succès")
         })

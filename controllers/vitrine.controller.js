@@ -113,7 +113,8 @@ exports.prestataireByIdCategory = (req, res) => {
 exports.addCommentaire = (req, res) =>{
     const news = {
         commentaire: req.body.commetaire,
-        id: req.body.id
+        idUser: req.body.idUser,
+        idPrestataire: req.params.id
     }
     vitrineService.addCommentaire(news, (error, results)=>{
         if(error) {

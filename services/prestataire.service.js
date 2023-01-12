@@ -16,9 +16,9 @@ const idStatistiques = (id,callback) => {
 }
 
 const selfEdit = async (news,callback) => {
-    const texte = news.textePrestataire;
-    const image = news.imagePrestataire;
-    const id = news.idPrestataire;
+    const texte = news.texte;
+    const image = news.image;
+    const id = news.id;
     await pool.query(prestataireQuery.editPrestataire ,[texte, image, id])
     .then(results=>{
         return(callback(null, results.rows))
@@ -39,7 +39,7 @@ const compteVisisteurs = async (callback) =>{
 }
 
 const livreDOr = async (news, callback) =>{
-    await pool.query(prestataireQuery.livreDor, [news[0], news[1]])
+    await pool.query(prestataireQuery.livreDor, [news[0], news[1], news[2]])
     .then(results=>{
         return callback(null, results.rows)
     })
@@ -126,8 +126,8 @@ const deleteCalendrier = async (tab, callback) =>{
         })
 }
 
-const showCommentaire = async (callback) =>{
-    await pool.query(prestataireQuery.showCommentaire)
+const showCommentaire = async (id,callback) =>{
+    await pool.query(prestataireQuery.showCommentaire, [id])
         .then(results=>{
             return callback(null, results.rows)
         })

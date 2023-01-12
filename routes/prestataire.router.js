@@ -63,7 +63,7 @@ router.post("/commentaire", prestataireController.livreDOr); // OK
 router.post("/billet", prestataireController.achatBillet); // pas OK mais normal
 
 
-router.get("/commentaire", prestataireController.showCommentaire);
+router.get("/commentaire/:id", prestataireController.showCommentaire);
 
 router.get("/prestataire/:id", prestataireController.selectById);
 

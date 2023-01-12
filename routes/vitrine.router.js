@@ -21,21 +21,6 @@ router.get("/vitrine", vitrineController.vitrine) // OK
  */
 
 router.get('/map', vitrineController.map); // pas OK mais normal
-/**
- * @swagger
- * /map:
- *   get:
- *      description: JSP
- *      tags:
- *          - vitrine
- *      responses:
- *          '200':
- *              description: Resource added successfully
- *          '500':
- *              description: Internal server error
- *          '400':
- *              description: Bad request
- */
 
 router.get('/prestataires', vitrineController.listePrestataire); // OK
 /**
@@ -113,9 +98,42 @@ router.get('/stands/:id', vitrineController.idStand); // OK
  *              description: Bad request
  */
 router.get('/category', vitrineController.selectCategories); // OK
-
+/**
+ * @swagger
+ * /category:
+ *   get:
+ *      description: Liste les catégories de prestation
+ *      tags:
+ *          - vitrine
+ *      responses:
+ *          '200':
+ *              description: Resource added successfully
+ *          '500':
+ *              description: Internal server error
+ *          '400':
+ *              description: Bad request
+ */
 router.get('/category/:id', vitrineController.prestataireByIdCategory); // OK
-
+/**
+ * @swagger
+ * /category/{id}:
+ *   get:
+ *      description: Affiche les prestataires par id de categorie de prestation
+ *      tags:
+ *          - vitrine
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            type: integer
+ *            required: false
+ *      responses:
+ *          '200':
+ *              description: Resource added successfully
+ *          '500':
+ *              description: Internal server error
+ *          '400':
+ *              description: Bad request
+ */
 router.post('/commentaire', vitrineController.addCommentaire); //OK
 
 

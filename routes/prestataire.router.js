@@ -7,12 +7,11 @@ router.get("/", prestataireController.panel); // OK
 /**
  * @swagger
  * /prestataire:
- *      get :
- *          description : Used to get general informations from the prestataire table
- *          tags :
- *              - prestataire
- *          parameters : none
- *          responses :
+ *   get:
+ *      description: JSP
+ *      tags:
+ *          - prestataire
+ *      responses:
  *          '200':
  *              description: Resource added successfully
  *          '500':
@@ -24,15 +23,24 @@ router.get("/", prestataireController.panel); // OK
 router.get("/statistiques/:id", prestataireController.idStatistiques); // pas OK mais normal
 
 
-router.put("/", prestataireController.selfEdit); // OK
+router.put("/:id", prestataireController.selfEdit); // OK
 /**
  * @swagger
- * /self_edit :
+ * /prestataire/{id} :
  *      put :
- *          description : Used by a prestataire to edit himself
+ *          description : Modifie le prestataire courant
  *          tags :
  *              - prestataire
- *          parameters : none
+ *          parameters :
+ *          - in: body
+ *            name: data
+ *            schema:
+ *              type: object
+ *              properties:
+ *                texte:
+ *                  type: string
+ *                image:
+ *                  type: string
  *          responses :
  *          '200':
  *              description: Resource added successfully
@@ -45,7 +53,7 @@ router.put("/", prestataireController.selfEdit); // OK
 router.post("/commentaire", prestataireController.livreDOr); // OK
 /**
  * @swagger
- * /livreDOr :
+ * /prestataire/commentaire :
  *      post :
  *          description : Used to add a comment to the livreDOr
  *          tags :
@@ -63,16 +71,46 @@ router.post("/commentaire", prestataireController.livreDOr); // OK
 router.post("/billet", prestataireController.achatBillet); // pas OK mais normal
 
 
-router.get("/commentaire/:id", prestataireController.showCommentaire); // OK
-
-router.get("/prestataire/:id", prestataireController.selectById); // OK
-
-router.get("/calendrier", prestataireController.showCalendrier); // OK
-
-router.post("/calendrier", prestataireController.addCalendrier); // retour OK mais pas de resultat visible avec le get
-
-router.put("/calendrier", prestataireController.updateCalendrier); // retour OK mais pas de resultat visible avec le get
-
-router.delete("/calendrier", prestataireController.deleteCalendrier); // retour OK mais pas de resultat visible avec le get
-
+//router.get("/commentaire/:id", prestataireController.showCommentaire);
+/**
+ * @swagger
+ * /prestataire/commentaire/{id}:
+ *   get:
+ *      description: Affiche le commentaire correspondant à l'id
+ *      tags:
+ *          - prestataire
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            type: integer
+ *            required: false
+ *      responses:
+ *          '200':
+ *              description: Resource added successfully
+ *          '500':
+ *              description: Internal server error
+ *          '400':
+ *              description: Bad request
+ */
+router.get("/prestataire/:id", prestataireController.selectById);
+/**
+ * @swagger
+ * /prestataire/{id}:
+ *   get:
+ *      description: Affiche le prestataire correspondant à l'id
+ *      tags:
+ *          - prestataire
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            type: integer
+ *            required: false
+ *      responses:
+ *          '200':
+ *              description: Resource added successfully
+ *          '500':
+ *              description: Internal server error
+ *          '400':
+ *              description: Bad request
+ */
 module.exports = router;

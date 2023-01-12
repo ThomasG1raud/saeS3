@@ -55,7 +55,7 @@ exports.addPrestataires = (req,res) => {
         }
         return res.status(200).send({
             success: 1,
-            data: results,
+            data: "Prestataire ajouté",
         });
     });
 }
@@ -73,7 +73,7 @@ exports.updatePrestataires = (req,res) => {
         }
         return res.status(200).send({
             success: 1,
-            data: results,
+            data: "Prestataire modifié",
         });
     });
 }
@@ -87,7 +87,7 @@ exports.deletePrestataires = (req,res) => {
         }
         return res.status(200).send({
             success: 1,
-            data: results,
+            data: "Prestataire supprimé",
         });
     });
 }
@@ -132,7 +132,7 @@ exports.addStands = (req,res) => {
         }
         return res.status(200).send({
             success: 1,
-            data: results,
+            data: "Stand ajouté",
         });
     });
 }
@@ -149,7 +149,7 @@ exports.updateStands = (req,res) => {
         }
         return res.status(200).send({
             success: 1,
-            data: results,
+            data: "Stand modifié",
         });
     });
 }
@@ -163,7 +163,7 @@ exports.deleteStands = (req,res) => {
         }
         return res.status(200).send({
             success: 1,
-            data: results,
+            data: "Stand supprimé",
         });
     });
 }

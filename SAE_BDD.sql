@@ -336,5 +336,5 @@ values ('2023-04-19 11:00:00', '2023-04-19 12:30:00', 2, 1);
 insert into calendrier(debut, fin, idPrestataire, idStand)
 values ('2023-11-11 20:30:00', '2023-11-11 22:30:00', 3, 2);
 
-
+select * from livreDOr
 

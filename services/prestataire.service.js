@@ -39,7 +39,11 @@ const compteVisisteurs = async (callback) =>{
 }
 
 const livreDOr = async (news, callback) =>{
-    await pool.query(prestataireQuery.livreDor, [news[0], news[1], news[2]])
+    const commentaire = news.comment;
+    const nom = news.nom;
+    const prenom = news.prenom;
+    const idPrestataire = news.idPrestataire;
+    await pool.query(prestataireQuery.livreDor, [nom, prenom, commentaire, idPrestataire])
     .then(results=>{
         return callback(null, results.rows)
     })

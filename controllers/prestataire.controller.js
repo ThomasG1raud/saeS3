@@ -60,7 +60,8 @@ exports.compteVisiteurs = (req, res) => {
 
 exports.livreDOr = (req, res)=>{
     const news = {
-        idClient: req.body.idClient,
+        nom: req.body.nom,
+        prenom: req.body.prenom,
         comment: req.body.comment,
         idPrestataire: req.body.idPrestataire
     }

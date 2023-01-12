@@ -71,7 +71,7 @@ router.post("/commentaire", prestataireController.livreDOr); // OK
 router.post("/billet", prestataireController.achatBillet); // pas OK mais normal
 
 
-//router.get("/commentaire/:id", prestataireController.showCommentaire);
+router.get("/commentaire/:id", prestataireController.showCommentaire); // OK
 /**
  * @swagger
  * /prestataire/commentaire/{id}:
@@ -92,7 +92,7 @@ router.post("/billet", prestataireController.achatBillet); // pas OK mais normal
  *          '400':
  *              description: Bad request
  */
-router.get("/prestataire/:id", prestataireController.selectById);
+router.get("/prestataire/:id", prestataireController.selectById); // OK
 /**
  * @swagger
  * /prestataire/{id}:
@@ -113,4 +113,12 @@ router.get("/prestataire/:id", prestataireController.selectById);
  *          '400':
  *              description: Bad request
  */
+
+router.get("/calendrier", prestataireController.showCalendrier); // OK
+
+router.post("/calendrier", prestataireController.addCalendrier); // retour OK mais pas de resultat visible avec le get
+
+router.put("/calendrier", prestataireController.updateCalendrier); // retour OK mais pas de resultat visible avec le get
+
+router.delete("/calendrier", prestataireController.deleteCalendrier); // retour OK mais pas de resultat visible avec le get
 module.exports = router;

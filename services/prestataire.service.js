@@ -84,12 +84,11 @@ const showCalendrier = async (callback) =>{
 }
 
 const addCalendrier = async (tab, callback) =>{
-    const date = tab.date;
     const hDebut = tab.horaireDebut;
     const hFin = tab.horaireFin;
     const idPrestataire = tab.idPrestataire;
     const idStand = tab.idStand;
-    await pool.query(prestataireQuery.addCalendar, [date, hDebut, hFin, idPrestataire, idStand])
+    await pool.query(prestataireQuery.addCalendar, [hDebut, hFin, idPrestataire, idStand])
         .then(results=>{
             return callback(null, results.rows)
         })
@@ -99,12 +98,11 @@ const addCalendrier = async (tab, callback) =>{
 }
 
 const updateCalendrier = async (tab, callback) =>{
-    const date = tab.date;
     const hDebut = tab.horaireDebut;
     const hFin = tab.horaireFin;
     const idPrestataire = tab.idPrestataire;
     const idStand = tab.idStand;
-    await pool.query(prestataireQuery.updateCalendar, [date, hDebut, hFin, idPrestataire, idStand])
+    await pool.query(prestataireQuery.updateCalendar, [hDebut, hFin, idPrestataire, idStand])
         .then(results=>{
             return callback(null, results.rows)
         })
@@ -114,10 +112,11 @@ const updateCalendrier = async (tab, callback) =>{
 }
 
 const deleteCalendrier = async (tab, callback) =>{
-    const date = tab.date;
     const idPrestataire = tab.idPrestataire;
     const idStand = tab.idStand;
-    await pool.query(prestataireQuery.deleteCalendar, [date, idPrestataire, idStand])
+    const hDebut = tab.horaireDebut;
+    const hFin = tab.horaireFin;
+    await pool.query(prestataireQuery.deleteCalendar, [hDebut, hFin, idPrestataire, idStand])
         .then(results=>{
             return callback(null, results.rows)
         })

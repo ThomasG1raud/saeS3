@@ -17,7 +17,7 @@ const deleteStand = "DELETE FROM stands WHERE idstand = $1";
 const addCalendar ="INSERT INTO calendrier(debut,fin, idPrestataire, idStand) VALUES ($1, $2, $3, $4)";
 const showCalendar = "SELECT * FROM calendrier";
 const updateCalendar = "UPDATE calendrier SET debut = $1, fin = $2 WHERE idprestataire = $3 AND idStand = $4";
-const deleteCalendar = "DELETE FROM calendrier WHERE debut = $1 AND idPrestataire = $2 AND idStand = $3";
+const deleteCalendar = "DELETE FROM calendrier WHERE debut = $1 AND fin = $2 AND idPrestataire = $3 AND idStand = $4";
 const showPrestataire = "SELECT prestataires.*, categoriePrestations.libelleCategorie FROM prestataires INNER JOIN categorieprestations ON prestataires.idCategorie = categorieprestations.idCategorie"; // joint entre prestataire et categorie
 const showListBillet = "SELECT billets.*, utilisateurs.*, categorieBillets.libelleCategorie FROM billets INNER JOIN utilisateurs ON billets.idUtilisateur = utilisateurs.idUtilisateur INNER JOIN categorieBillets ON categorieBillets.idCategorie = billets.idCategorie"; // joint entre billet et utilisateur et categorieBillet pour l'admin
 const showPrestataireByStand = "SELECT prestataires.*, stands.* FROM situe INNER JOIN stands ON situe.idstand = stands.idstand INNER JOIN prestataires ON situe.idPrestataire = prestataires.idPrestataire"; // joint entre stand et prestataire

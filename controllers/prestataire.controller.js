@@ -137,7 +137,6 @@ exports.showCalendrier = (req, res) => {
 
 exports.addCalendrier = (req, res) => {
     const tab = {
-        date: req.body.date,
         hDebut: req.body.horaireDebut,
         hFin: req.body.horaireFin,
         idStand: req.body.idStand,
@@ -157,7 +156,8 @@ exports.addCalendrier = (req, res) => {
 
 exports.deleteCalendrier = (req, res) => {
     const tab = {
-        date: req.body.date,
+        hDebut: req.body.horaireDebut,
+        hFin: req.body.horaireFin,
         idStand: req.body.idStand,
         idPrestataire: req.body.idPrestataire
     }
@@ -175,7 +175,6 @@ exports.deleteCalendrier = (req, res) => {
 
 exports.updateCalendrier = (req, res) => {
     const tab = {
-        date: req.body.date,
         hDebut: req.body.horaireDebut,
         hFin: req.body.horaireFin,
         idStand: req.body.idStand,

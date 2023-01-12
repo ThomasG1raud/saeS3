@@ -4,21 +4,7 @@ const router = express.Router();
 
 
 router.get("/", prestataireController.panel); // OK
-/**
- * @swagger
- * /prestataire:
- *   get:
- *      description: JSP
- *      tags:
- *          - prestataire
- *      responses:
- *          '200':
- *              description: Resource added successfully
- *          '500':
- *              description: Internal server error
- *          '400':
- *              description: Bad request
- */
+
 
 router.get("/statistiques/:id", prestataireController.idStatistiques); // pas OK mais normal
 
@@ -77,7 +63,7 @@ router.get("/commentaire/:id", prestataireController.showCommentaire);
  *          '400':
  *              description: Bad request
  */
-router.get("/prestataire/:id", prestataireController.selectById);
+router.get("/:id", prestataireController.selectById);
 /**
  * @swagger
  * /prestataire/{id}:

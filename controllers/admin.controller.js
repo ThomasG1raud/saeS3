@@ -260,7 +260,7 @@ exports.addCalendar = (req, res) =>{
         }
         return res.status(200).send({
             success: 1,
-            data: results,
+            data: "Evénement ajouté",
         });
     });
 }
@@ -300,7 +300,7 @@ exports.deleteCalendar = (req, res) =>{
         }
         return res.status(200).send({
             success: 1,
-            data: results,
+            data: "Evenement modifié",
         });
     });
 }

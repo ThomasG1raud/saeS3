@@ -4,21 +4,7 @@ const router = express.Router();
 
 
 router.get("/vitrine", vitrineController.vitrine) // OK
-/**
- * @swagger
- * /vitrine:
- *   get:
- *      description: JSP
- *      tags:
- *          - vitrine
- *      responses:
- *          '200':
- *              description: Resource added successfully
- *          '500':
- *              description: Internal server error
- *          '400':
- *              description: Bad request
- */
+
 
 router.get('/map', vitrineController.map); // pas OK mais normal
 

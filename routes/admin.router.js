@@ -3,21 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get("/", adminController.panel) // OK
-/**
- * @swagger
- * /admin:
- *   get:
- *      description: JSP
- *      tags:
- *          - admin
- *      responses:
- *          '200':
- *              description: Resource added successfully
- *          '500':
- *              description: Internal server error
- *          '400':
- *              description: Bad request
- */
+
 
 router.get('/prestataires', adminController.listPrestataires); //OK
 /**
@@ -283,6 +269,20 @@ router.post('/calendrier', adminController.addCalendar) // OK
  *      description: Ajoute un événement au calendrier
  *      tags:
  *          - admin
+ *      parameters:
+ *          - in: body
+ *            name: data
+ *            schema:
+ *              type: object
+ *              properties:
+ *                hDebut:
+ *                  type: string
+ *                hFin:
+ *                  type: string
+ *                idStand:
+ *                  type: integer
+ *                idPrestataire:
+ *                  type: integer
  *      responses:
  *          '200':
  *              description: Resource added successfully
@@ -300,10 +300,6 @@ router.put('/calendrier/:id', adminController.updateCalendar) // OK mais pas OK
  *      tags:
  *          - admin
  *      parameters:
- *          - in: path
- *            name: id
- *            type: integer
- *            required: false
  *      responses:
  *          '200':
  *              description: Resource updated successfully
@@ -321,10 +317,19 @@ router.delete('/calendrier/:id', adminController.deleteCalendar) // OK mais pas 
  *      tags:
  *          - admin
  *      parameters:
- *          - in: path
- *            name: id
- *            type: integer
- *            required: false
+ *          - in: body
+ *            name: data
+ *            schema:
+ *              type: object
+ *              properties:
+ *                hDebut:
+ *                  type: string
+ *                hFin:
+ *                  type: string
+ *                idStand:
+ *                  type: integer
+ *                idPrestataire:
+ *                  type: integer
  *      responses:
  *          '200':
  *              description: Resource deleted successfully

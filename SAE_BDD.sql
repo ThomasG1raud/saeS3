@@ -1,15 +1,16 @@
-DROP TABLE IF EXISTS reponds;
-DROP TABLE IF EXISTS comportes;
-DROP TABLE IF EXISTS accedes;
-DROP TABLE IF EXISTS situes;
-DROP TABLE IF EXISTS modifier;
-DROP TABLE IF EXISTS produits;
+DROP TABLE IF EXISTS repond;
+DROP TABLE IF EXISTS comporte;
+DROP TABLE IF EXISTS accede;
+DROP TABLE IF EXISTS situe;
+DROP TABLE IF EXISTS modifie;
+DROP TABLE IF EXISTS produit;
 DROP TABLE IF EXISTS billets;
 DROP TABLE IF EXISTS categorieBillets;
 DROP TABLE IF EXISTS livreDOr;
 DROP TABLE IF EXISTS utilisateurs;
 DROP TABLE IF EXISTS categorieComptes;
-DROP TABLE IF EXISTS emplacements;
+DROP TABLE IF EXISTS calendrier;
+DROP TABLE IF EXISTS stands;
 DROP TABLE IF EXISTS prestataires;
 DROP TABLE IF EXISTS entreprises;
 DROP TABLE IF EXISTS caracteristiques;
@@ -17,6 +18,7 @@ DROP TABLE IF EXISTS statistiques;
 DROP TABLE IF EXISTS services;
 DROP TABLE IF EXISTS categoriePrestations;
 DROP TABLE IF EXISTS localisations;
+
 
 CREATE TABLE IF NOT EXISTS localisations
 (
@@ -89,12 +91,12 @@ CREATE TABLE IF NOT EXISTS  prestataires
     FOREIGN KEY (idCategorie) REFERENCES categoriePrestations (idCategorie) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS emplacements
+CREATE TABLE IF NOT EXISTS stands
 (
-    idEmplacement      SERIAL,
-    libelleEmplacement VARCHAR(255),
+    idStand      SERIAL,
+    libelleStand VARCHAR(255),
     idLocalisation     INT NOT NULL,
-    PRIMARY KEY (idEmplacement),
+    PRIMARY KEY (idStand),
     FOREIGN KEY (idLocalisation) REFERENCES localisations (idLocalisation)
 );
 
@@ -122,7 +124,7 @@ CREATE TABLE IF NOT EXISTS  billets
     FOREIGN KEY (idCategorie) REFERENCES categorieBillets (idCategorie)
 );
 
-CREATE TABLE IF NOT EXISTS  produits
+CREATE TABLE IF NOT EXISTS  produit
 (
     idService     INT,
     idStatistique INT,
@@ -131,7 +133,7 @@ CREATE TABLE IF NOT EXISTS  produits
     FOREIGN KEY (idStatistique) REFERENCES statistiques (idStatistique)
 );
 
-CREATE TABLE IF NOT EXISTS  modifier
+CREATE TABLE IF NOT EXISTS  modifie
 (
     idPrestataire INT,
     idUtilisateur INT,
@@ -141,18 +143,18 @@ CREATE TABLE IF NOT EXISTS  modifier
     FOREIGN KEY (idUtilisateur) REFERENCES utilisateurs (idUtilisateur)
 );
 
-CREATE TABLE  IF NOT EXISTS situes
+CREATE TABLE  IF NOT EXISTS situe
 (
-    idEmplacement INT,
+    idStand INT,
     horaireDebut  TIMESTAMP,
     horaireFin    TIMESTAMP,
-    idPrestataire INT NOT NULL,
-    PRIMARY KEY (idEmplacement),
-    FOREIGN KEY (idEmplacement) REFERENCES emplacements (idEmplacement) ON DELETE CASCADE,
+    idPrestataire INT,
+    PRIMARY KEY (idStand),
+    FOREIGN KEY (idStand) REFERENCES stands (idStand) ON DELETE CASCADE,
     FOREIGN KEY (idPrestataire) REFERENCES prestataires (idPrestataire) ON DELETE CASCADE
 );
 
-CREATE TABLE  IF NOT EXISTS accedes
+CREATE TABLE  IF NOT EXISTS accede
 (
     idPrestataire INT,
     idService     INT,
@@ -161,16 +163,16 @@ CREATE TABLE  IF NOT EXISTS accedes
     FOREIGN KEY (idService) REFERENCES services (idService)
 );
 
-CREATE TABLE  IF NOT EXISTS comportes
+CREATE TABLE  IF NOT EXISTS comporte
 (
-    idEmplacement     INT,
+    idStand     INT,
     idCaracteristique INT,
-    PRIMARY KEY (idEmplacement, idCaracteristique),
-    FOREIGN KEY (idEmplacement) REFERENCES emplacements (idEmplacement) ON DELETE CASCADE,
+    PRIMARY KEY (idStand, idCaracteristique),
+    FOREIGN KEY (idStand) REFERENCES stands (idStand) ON DELETE CASCADE,
     FOREIGN KEY (idCaracteristique) REFERENCES caracteristiques (idCaracteristique) ON DELETE CASCADE
 );
 
-CREATE TABLE  IF NOT EXISTS reponds
+CREATE TABLE  IF NOT EXISTS repond
 (
     idPrestataire     INT,
     idCaracteristique INT,
@@ -181,9 +183,20 @@ CREATE TABLE  IF NOT EXISTS reponds
 
 CREATE TABLE IF NOT EXISTS livreDOr(
     idCommentaire SERIAL PRIMARY KEY ,
+    nom VARCHAR,
+    prenom VARCHAR,
     commentaire VARCHAR,
     idUtilisateur INT,
     FOREIGN KEY (idUtilisateur) REFERENCES utilisateurs(idUtilisateur)
+);
+
+CREATE TABLE IF NOT EXISTS calendrier(
+    debut TIMESTAMP,
+    fin TIMESTAMP,
+    idPrestataire INT NOT NULL,
+    idStand INT NOT NULL ,
+    FOREIGN KEY (idPrestataire) REFERENCES prestataires(idPrestataire),
+    FOREIGN KEY (idStand) REFERENCES stands(idStand)
 );
 
 
@@ -250,12 +263,12 @@ values ('prestataires 2', 'texte 2', 'image 1', 2, '2');
 insert into prestataires(nom, textePrestataire, imagePrestataire, siren, idCategorie)
 values ('prestataires 3', 'texte 3', 'image 1', 3, '3');
 
-insert into emplacements(libelleEmplacement, idLocalisation)
-values ('emplacements 1', 1);
-insert into emplacements(libelleEmplacement, idLocalisation)
-values ('emplacements 2', 2);
-insert into emplacements(libelleEmplacement, idLocalisation)
-values ('emplacements 3', 3);
+insert into stands(libelleStand, idLocalisation)
+values ('stands 1', 1);
+insert into stands(libelleStand, idLocalisation)
+values ('stands 2', 2);
+insert into stands(libelleStand, idLocalisation)
+values ('stands 3', 3);
 
 insert into utilisateurs(mdp, login, age, nom, typeCompte)
 values ('mdp 1', 'login 1', 1, 'nom 1', '1');
@@ -271,48 +284,64 @@ values (64, 2, 2);
 insert into billets(prix, idUtilisateur, idCategorie)
 values (128, 3, 3);
 
-insert into produits(idService, idStatistique)
+insert into produit(idService, idStatistique)
 values (1, 1);
-insert into produits(idService, idStatistique)
+insert into produit(idService, idStatistique)
 values (2, 2);
-insert into produits(idService, idStatistique)
+insert into produit(idService, idStatistique)
 values (3, 3);
 
-insert into modifier(idPrestataire, idUtilisateur, heureVisite)
+insert into modifie(idPrestataire, idUtilisateur, heureVisite)
 values (1, 1, '23/12/01');
-insert into modifier(idPrestataire, idUtilisateur, heureVisite)
+insert into modifie(idPrestataire, idUtilisateur, heureVisite)
 values (2, 2, '23/12/02');
-insert into modifier(idPrestataire, idUtilisateur, heureVisite)
+insert into modifie(idPrestataire, idUtilisateur, heureVisite)
 values (3, 3, '23/12/03');
 
-insert into situes(idEmplacement, horaireDebut, horaireFin, idPrestataire)
+insert into situe(idStand, horaireDebut, horaireFin, idPrestataire)
 values (1, '15/01/2001', '16/12/2001', 1);
-insert into situes(idEmplacement, horaireDebut, horaireFin, idPrestataire)
+insert into situe(idStand, horaireDebut, horaireFin, idPrestataire)
 values (2, '15/01/2002', '16/12/2002', 2);
-insert into situes(idEmplacement, horaireDebut, horaireFin, idPrestataire)
+insert into situe(idStand, horaireDebut, horaireFin, idPrestataire)
 values (3, '15/01/2003', '16/12/2003', 3);
 
 
-insert into accedes(idPrestataire, idService)
+insert into accede(idPrestataire, idService)
 values (1, 1);
-insert into accedes(idPrestataire, idService)
+insert into accede(idPrestataire, idService)
 values (2, 2);
-insert into accedes(idPrestataire, idService)
+insert into accede(idPrestataire, idService)
 values (3, 3);
 
-insert into comportes(idEmplacement, idCaracteristique)
+insert into comporte(idStand, idCaracteristique)
 values (1, 1);
-insert into comportes(idEmplacement, idCaracteristique)
+insert into comporte(idStand, idCaracteristique)
 values (2, 2);
-insert into comportes(idEmplacement, idCaracteristique)
+insert into comporte(idStand, idCaracteristique)
 values (3, 3);
 
-insert into reponds(idPrestataire, idCaracteristique)
+insert into repond(idPrestataire, idCaracteristique)
 values (1, 1);
-insert into reponds(idPrestataire, idCaracteristique)
+insert into repond(idPrestataire, idCaracteristique)
 values (2, 2);
-insert into reponds(idPrestataire, idCaracteristique)
+insert into repond(idPrestataire, idCaracteristique)
 values (3, 3);
+
+insert into calendrier(debut, fin, idPrestataire, idStand)
+values ('2023-04-10 16:30:00', '2023-04-10 17:30:00', 1, 3);
+insert into calendrier(debut, fin, idPrestataire, idStand)
+values ('2023-04-19 11:00:00', '2023-04-19 12:30:00', 2, 1);
+insert into calendrier(debut, fin, idPrestataire, idStand)
+values ('2023-11-11 20:30:00', '2023-11-11 22:30:00', 3, 2);
+
+SELECT * FROM calendrier;
+SELECT prestataires.*, stands.libelleStand, calendrier.*, categoriePrestations.libelleCategorie
+FROM prestataires
+INNER JOIN calendrier ON calendrier.idPrestataire = prestataires.idPrestataire
+INNER JOIN situe ON situe.idPrestataire = prestataires.idPrestataire
+INNER JOIN stands ON stands.idStand = situe.idStand
+INNER JOIN categoriePrestations ON categoriePrestations.idCategorie = prestataires.idCategorie
+WHERE prestataires.idPrestataire = 1;
 
 -- LOAD DATA LOCAL INFILE './BDD/admin.csv' INTO TABLE admin CHARACTER SET utf8 FIELDS TERMINATED BY ',';
 -- LOAD DATA LOCAL INFILE './BDD/client.csv' INTO TABLE client CHARACTER SET utf8 FIELDS TERMINATED BY ',';

@@ -187,7 +187,9 @@ CREATE TABLE IF NOT EXISTS livreDOr(
     prenom VARCHAR,
     commentaire VARCHAR,
     idUtilisateur INT,
-    FOREIGN KEY (idUtilisateur) REFERENCES utilisateurs(idUtilisateur)
+    idPrestataire INT,
+    FOREIGN KEY (idUtilisateur) REFERENCES utilisateurs(idUtilisateur),
+    FOREIGN KEY (idPrestataire) REFERENCES prestataires(idPrestataire)
 );
 
 CREATE TABLE IF NOT EXISTS calendrier(

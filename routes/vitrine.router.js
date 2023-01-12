@@ -116,7 +116,7 @@ router.get('/category', vitrineController.selectCategories); // OK
 
 router.get('/category/:id', vitrineController.prestataireByIdCategory); // OK
 
-router.post('/addComm', vitrineController.addCommentaire); //OK
+router.post('/commentaire', vitrineController.addCommentaire); //OK
 
 
 module.exports = router;

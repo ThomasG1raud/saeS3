@@ -22,25 +22,7 @@ router.get("/", prestataireController.panel); // OK
  */
 
 router.get("/statistiques/:id", prestataireController.idStatistiques); // pas OK mais normal
-/**
- * @swagger
- * /statistiques/{id} :
- *      get :
- *          description : Used to show the selected stats
- *          tags :
- *              - prestataire
- *          parameters :
- *          - in: path
- *            name: id
- *            type: integer
- *            required: false
- *          '200':
- *              description: Resource added successfully
- *          '500':
- *              description: Internal server error
- *          '400':
- *              description: Bad request
- */
+
 
 router.put("/", prestataireController.selfEdit); // OK
 /**
@@ -60,7 +42,7 @@ router.put("/", prestataireController.selfEdit); // OK
  *              description: Bad request
  */
 
-router.post("/avis", prestataireController.livreDOr); // OK
+router.post("/commentaire", prestataireController.livreDOr); // OK
 /**
  * @swagger
  * /livreDOr :
@@ -79,28 +61,9 @@ router.post("/avis", prestataireController.livreDOr); // OK
  */
 
 router.post("/billet", prestataireController.achatBillet); // pas OK mais normal
-/**
- * @swagger
- * /achatBillet :
- *      post :
- *          description : Used to add a billet in the table billet with the corresponding user
- *          tags :
- *              - prestataire
- *          parameters :
- *              -  in: path
- *                 name: id
- *                 type: integer
- *                 required: false
- *          responses :
- *          '200':
- *              description: Resource added successfully
- *          '500':
- *              description: Internal server error
- *          '400':
- *              description: Bad request
- */
 
-router.get("/showCommentaire", prestataireController.showCommentaire);
+
+router.get("/commentaire", prestataireController.showCommentaire);
 
 router.get("/prestataire/:id", prestataireController.selectById);
 

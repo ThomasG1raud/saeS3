@@ -129,12 +129,11 @@ const showCalendrier = async (callback) =>{
 }
 
 const addCalendrier = async (tab, callback) =>{
-    const date = tab.date;
     const hDebut = tab.horaireDebut;
     const hFin = tab.horaireFin;
     const idPrestataire = tab.idPrestataire;
     const idStand = tab.idStand;
-    await pool.query(adminQuery.addCalendar, [date, hDebut, hFin, idPrestataire, idStand])
+    await pool.query(adminQuery.addCalendar, [ hDebut, hFin, idPrestataire, idStand])
         .then(results=>{
             return callback(null, results.rows)
         })

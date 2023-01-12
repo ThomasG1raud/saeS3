@@ -61,32 +61,27 @@ router.post('/prestataire', adminController.addPrestataires); // OK
  * @swagger
  * /admin/prestataire:
  *   post:
- *      description: Créer une prestataire
+ *      description: Créer un prestataire
  *      tags:
- *          - prestataire
- *      requestBody:
- *          content:
- *             application/json:
- *                schema:
- *                    type: object
- *                    properties:
- *                        nom:
- *                          type: string
- *                          required: true
- *                        texte:
- *                          type: string
- *                          required: true
- *                        image:
- *                          type: string
- *                          required: true
- *                        siren:
- *                          type: int
- *                          required: true
- *                        idCategory:
- *                          type: int
- *                          required: true
+ *          - admin
+ *      parameters:
+ *          - in: body
+ *            name: data
+ *            schema:
+ *              type: object
+ *              properties:
+ *                nom:
+ *                  type: string
+ *                texte:
+ *                  type: string
+ *                image:
+ *                  type: string
+ *                siren:
+ *                  type: integer
+ *                idCategory:
+ *                  type: integer
  *      responses:
- *          '201':
+ *          '200':
  *              description: Resource added successfully
  *          '500':
  *              description: Internal server error
@@ -99,7 +94,7 @@ router.put('/prestataire/:id', adminController.updatePrestataires); // OK
  * @swagger
  * /admin/prestataire/{id}:
  *   put:
- *      description: Update the information of a given prestataire
+ *      description: Modifie un prestataire
  *      tags:
  *          - admin
  *      parameters:
@@ -107,6 +102,15 @@ router.put('/prestataire/:id', adminController.updatePrestataires); // OK
  *            name: id
  *            type: integer
  *            required: false
+ *          - in: body
+ *            name: data
+ *            schema:
+ *              type: object
+ *              properties:
+ *                texte:
+ *                  type: string
+ *                image:
+ *                  type: string
  *      responses:
  *          '200':
  *              description: Resource updated successfully
@@ -120,7 +124,7 @@ router.delete('/prestataire/:id', adminController.deletePrestataires); // OK
  * @swagger
  * /admin/prestataire/{id}:
  *   delete:
- *      description: Delete a given person from the table prestataire
+ *      description: Supprime un prestataire
  *      tags:
  *          - admin
  *      parameters:
@@ -142,7 +146,7 @@ router.get('/stands', adminController.listStands); // OK
  * @swagger
  * /admin/stands:
  *   get:
- *      description: list all the informations about the stands
+ *      description: Liste les stands
  *      tags:
  *          - admin
  *      responses:
@@ -158,7 +162,7 @@ router.get('/stand/:id', adminController.idStands); // OK
  * @swagger
  * /admin/stand/{id}:
  *   get:
- *      description: list all the informations about the selected stands
+ *      description: Affiche le stand correspondant à l'id
  *      tags:
  *          - admin
  *      parameters:
@@ -179,9 +183,19 @@ router.post('/stand', adminController.addStands); // OK
  * @swagger
  * /admin/stand:
  *   post:
- *      description: Add a new stand to the table stand
+ *      description: Ajoute une stand
  *      tags:
  *          - admin
+ *      parameters:
+ *          - in: body
+ *            name: data
+ *            schema:
+ *              type: object
+ *              properties:
+ *                libelle:
+ *                  type: string
+ *                idLoc:
+ *                  type: integer
  *      responses:
  *          '200':
  *              description: Resource added successfully
@@ -195,7 +209,7 @@ router.put('/stand/:id', adminController.updateStands); // OK
  * @swagger
  * /admin/stand/{id}:
  *   put:
- *      description: Add a new stand to the table stand
+ *      description: Modifie un stand
  *      tags:
  *          - admin
  *      parameters:
@@ -203,6 +217,13 @@ router.put('/stand/:id', adminController.updateStands); // OK
  *            name: id
  *            type: integer
  *            required: false
+ *          - in: body
+ *            name: data
+ *            schema:
+ *              type: object
+ *              properties:
+ *                libelle:
+ *                  type: string
  *      responses:
  *          '200':
  *              description: Resource updated successfully
@@ -216,7 +237,7 @@ router.delete('/stand/:id', adminController.deleteStands); // OK
  * @swagger
  * /admin/stand/{id}:
  *   delete:
- *      description: Delete the selected stand from the Table stand
+ *      description: Supprime une stand
  *      tags:
  *          - admin
  *      parameters:
@@ -241,14 +262,14 @@ router.delete('/map/delete/:id', adminController.deleteMap)
 router.get('/calendrier', adminController.showCalendar)
 /**
  * @swagger
- * /calendrier
+ * /admin/calendrier:
  *   get:
- *      description: Show the calendar and the event in it
+ *      description: Affiche les événements du calendrier
  *      tags:
  *          - admin
  *      responses:
  *          '200':
- *              description: Resource showed successfully
+ *              description: Resource added successfully
  *          '500':
  *              description: Internal server error
  *          '400':
@@ -257,9 +278,9 @@ router.get('/calendrier', adminController.showCalendar)
 router.post('/calendrier', adminController.addCalendar)
 /**
  * @swagger
- * /calendrier:
+ * /admin/calendrier:
  *   post:
- *      description: add an event to the calendar
+ *      description: Ajoute un événement au calendrier
  *      tags:
  *          - admin
  *      responses:
@@ -273,9 +294,9 @@ router.post('/calendrier', adminController.addCalendar)
 router.put('/calendrier/:id', adminController.updateCalendar)
 /**
  * @swagger
- * /calendrier/{id}:
+ * /admin/calendrier/{id}:
  *   put:
- *      description: update the selected event
+ *      description: Modifie un événement du calendrier
  *      tags:
  *          - admin
  *      parameters:
@@ -294,9 +315,9 @@ router.put('/calendrier/:id', adminController.updateCalendar)
 router.delete('/calendrier/:id', adminController.deleteCalendar)
 /**
  * @swagger
- * /calendrier/{id}:
+ * /admin/calendrier/{id}:
  *   delete:
- *      description: Delete the selected event from the calendar
+ *      description: Supprime un événement du calendrier
  *      tags:
  *          - admin
  *      parameters:
@@ -312,10 +333,10 @@ router.delete('/calendrier/:id', adminController.deleteCalendar)
  *          '400':
  *              description: Bad request
  */
-router.get('/showPrestataire', adminController.listPrestataires)
+router.get('/prestataire/categorie', adminController.listPrestataires)
 /**
  * @swagger
- * /showPrestataire
+ * /admin/prestataire/categorie
  *   get:
  *      description: show all the content from the prestataire table with the name of their category
  *      tags:
@@ -329,24 +350,10 @@ router.get('/showPrestataire', adminController.listPrestataires)
  *              description: Bad request
  */
 router.get('/showListBillet', adminController.showListBillet)
-/**
+
+router.get('/stand/prestataire', adminController.showPrestataireByStand)/**
  * @swagger
- * /showListBillet
- *   get:
- *      description: show all the content from the billets table with the name of their category and the users who bought it
- *      tags:
- *          - admin
- *      responses:
- *          '200':
- *              description: Resource showed successfully
- *          '500':
- *              description: Internal server error
- *          '400':
- *              description: Bad request
- */
-router.get('/listStandPrestataire', adminController.showPrestataireByStand)/**
- * @swagger
- * /listStandPrestataire
+ * /admin/stand/prestataire
  *   get:
  *      description: show all the content from the stand table with the associated prestataire
  *      tags:

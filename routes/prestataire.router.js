@@ -26,12 +26,16 @@ router.get("/statistiques/:id", prestataireController.idStatistiques); // pas OK
 router.put("/:id", prestataireController.selfEdit); // OK
 /**
  * @swagger
- * /prestataire/{id} :
- *      put :
- *          description : Modifie le prestataire courant
- *          tags :
- *              - prestataire
- *          parameters :
+ * /prestataire/{id}:
+ *   put:
+ *      description: Modifie un prestataire
+ *      tags:
+ *          - prestataire
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            type: integer
+ *            required: false
  *          - in: body
  *            name: data
  *            schema:
@@ -41,7 +45,7 @@ router.put("/:id", prestataireController.selfEdit); // OK
  *                  type: string
  *                image:
  *                  type: string
- *          responses :
+ *      responses:
  *          '200':
  *              description: Resource added successfully
  *          '500':
@@ -53,13 +57,13 @@ router.put("/:id", prestataireController.selfEdit); // OK
 router.post("/commentaire", prestataireController.livreDOr); // OK
 /**
  * @swagger
- * /prestataire/commentaire :
- *      post :
- *          description : Used to add a comment to the livreDOr
- *          tags :
- *              - prestataire
- *          parameters :
- *           - in: body
+ * /prestataire/commentaire:
+ *   post:
+ *      description: Ajoute un commentaire
+ *      tags:
+ *          - prestataire
+ *      parameters:
+ *          - in: body
  *            name: data
  *            schema:
  *              type: object
@@ -71,8 +75,8 @@ router.post("/commentaire", prestataireController.livreDOr); // OK
  *                comment:
  *                  type: string
  *                idPrestataire:
- *                  type: int
- *          responses :
+ *                  type: integer
+ *      responses:
  *          '200':
  *              description: Resource added successfully
  *          '500':
@@ -84,7 +88,7 @@ router.post("/commentaire", prestataireController.livreDOr); // OK
 router.post("/billet", prestataireController.achatBillet); // pas OK mais normal
 
 
-router.get("/commentaire/:id", prestataireController.showCommentaire); // OK
+router.get("/commentaire/:id", prestataireController.showCommentaire);
 /**
  * @swagger
  * /prestataire/commentaire/{id}:
@@ -105,7 +109,7 @@ router.get("/commentaire/:id", prestataireController.showCommentaire); // OK
  *          '400':
  *              description: Bad request
  */
-router.get("/prestataire/:id", prestataireController.selectById); // OK
+router.get("/prestataire/:id", prestataireController.selectById);
 /**
  * @swagger
  * /prestataire/{id}:
@@ -127,12 +131,13 @@ router.get("/prestataire/:id", prestataireController.selectById); // OK
  *              description: Bad request
  */
 
-router.get("/calendrier", prestataireController.showCalendrier); // OK
+router.get("/calendrier", prestataireController.showCalendrier);
 
-router.post("/calendrier", prestataireController.addCalendrier); // OK
+router.put("/calendrier", prestataireController.updateCalendrier);
 
-router.put("/calendrier", prestataireController.updateCalendrier); // erreur
+router.post("/calendrier", prestataireController.addCalendrier);
 
-router.delete("/calendrier", prestataireController.deleteCalendrier); // OK
+router.delete("/calendrier", prestataireController.deleteCalendrier);
+
 
 module.exports = router;

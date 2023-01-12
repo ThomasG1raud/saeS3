@@ -135,6 +135,35 @@ router.get('/category/:id', vitrineController.prestataireByIdCategory); // OK
  *              description: Bad request
  */
 router.post('/commentaire', vitrineController.addCommentaire); //OK
+/**
+ * @swagger
+ * /commentaire:
+ *   post:
+ *      description: Ajoute un commentaire
+ *      tags:
+ *          - vitrine
+ *      parameters:
+ *          - in: body
+ *            name: data
+ *            schema:
+ *              type: object
+ *              properties:
+ *                nom:
+ *                  type: string
+ *                prenom:
+ *                  type: string
+ *                comment:
+ *                  type: string
+ *                idPrestataire:
+ *                  type: integer
+ *      responses:
+ *          '200':
+ *              description: Resource added successfully
+ *          '500':
+ *              description: Internal server error
+ *          '400':
+ *              description: Bad request
+ */
 
 
 module.exports = router;

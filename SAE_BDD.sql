@@ -82,7 +82,6 @@ CREATE TABLE IF NOT EXISTS  prestataires
     idPrestataire    SERIAL,
     prenom           VARCHAR(255),
     nom              VARCHAR(255),
-    presenceHoraire  TIMESTAMP,
     textePrestataire TEXT,
     imagePrestataire VARCHAR(255),
     siren            INT NOT NULL,

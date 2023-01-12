@@ -46,7 +46,7 @@ exports.addPrestataires = (req,res) => {
         texte: req.body.texte,
         image: req.body.image,
         siren: req.body.siren,
-        idCategorie: req.body.idCategorie
+        idCategory: req.body.idCategory
     }
     adminService.addPrestataires(news,(error, results) => {
         if (error) {

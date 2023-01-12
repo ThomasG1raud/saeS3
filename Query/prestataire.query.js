@@ -8,7 +8,7 @@ const addBillet = "INSERT INTO billets(prix,idutilisateur, idcategorie) VALUES (
 const addUser = "INSERT INTO utilisateurs(nom) VALUES ($1) RETURNING idUtilisateur";
 const addCalendar ="INSERT INTO calendrier(debut, fin, idPrestataire, idStand) VALUES ($2, $3, $4, $5)";
 const showCalendar = "SELECT * FROM calendrier";
-const updateCalendar = "UPDATE calendrier SET debut = $1, fin = $2 WHERE idPrestatire = $3 AND idStand = $4";
+const updateCalendar = "UPDATE calendrier SET debut = $1, fin = $2 WHERE idPrestataire = $3 AND idStand = $4";
 const deleteCalendar = "DELETE FROM calendrier WHERE debut = $1 AND fin = $2 AND idPrestataire = $3 AND idStand = $4";
 const showCommentaire= "SELECT * FROM livreDOr WHERE idPrestataire = $1";
 

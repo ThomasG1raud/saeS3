@@ -56,10 +56,10 @@ router.get('/prestataire/:id', adminController.idPrestataires); // OK
  *          '400':
  *              description: Bad request
  */
-router.post('/prestataires/add', adminController.addPrestataires); // OK
+router.post('/prestataire', adminController.addPrestataires); // OK
 /**
  * @swagger
- * /admin/prestataires/add:
+ * /admin/prestataire:
  *   post:
  *      description: Créer une prestataire
  *      tags:
@@ -94,10 +94,10 @@ router.post('/prestataires/add', adminController.addPrestataires); // OK
  *              description: Bad request
  */
 
-router.put('/prestataires/update/:id', adminController.updatePrestataires); // OK
+router.put('/prestataire/:id', adminController.updatePrestataires); // OK
 /**
  * @swagger
- * /admin/prestataires/update/{id}:
+ * /admin/prestataire/{id}:
  *   put:
  *      description: Update the information of a given prestataire
  *      tags:
@@ -115,10 +115,10 @@ router.put('/prestataires/update/:id', adminController.updatePrestataires); // O
  *          '400':
  *              description: Bad request
  */
-router.delete('/prestataires/delete/:id', adminController.deletePrestataires); // OK
+router.delete('/prestataire/:id', adminController.deletePrestataires); // OK
 /**
  * @swagger
- * /admin/prestataires/delete/{id}:
+ * /admin/prestataire/{id}:
  *   delete:
  *      description: Delete a given person from the table prestataire
  *      tags:
@@ -174,10 +174,10 @@ router.get('/stand/:id', adminController.idStands); // OK
  *          '400':
  *              description: Bad request
  */
-router.post('/stand/add', adminController.addStands); // OK
+router.post('/stand', adminController.addStands); // OK
 /**
  * @swagger
- * /admin/stand/add:
+ * /admin/stand:
  *   post:
  *      description: Add a new stand to the table stand
  *      tags:
@@ -190,10 +190,10 @@ router.post('/stand/add', adminController.addStands); // OK
  *          '400':
  *              description: Bad request
  */
-router.put('/stand/update/:id', adminController.updateStands); // OK
+router.put('/stand/:id', adminController.updateStands); // OK
 /**
  * @swagger
- * /admin/stand/update/{id}:
+ * /admin/stand/{id}:
  *   put:
  *      description: Add a new stand to the table stand
  *      tags:
@@ -211,10 +211,10 @@ router.put('/stand/update/:id', adminController.updateStands); // OK
  *          '400':
  *              description: Bad request
  */
-router.delete('/stand/delete/:id', adminController.deleteStands); // OK
+router.delete('/stand/:id', adminController.deleteStands); // OK
 /**
  * @swagger
- * /admin/stand/delete/{id}:
+ * /admin/stand/{id}:
  *   delete:
  *      description: Delete the selected stand from the Table stand
  *      tags:
@@ -254,10 +254,10 @@ router.get('/calendrier', adminController.showCalendar)
  *          '400':
  *              description: Bad request
  */
-router.post('/calendrier/add', adminController.addCalendar)
+router.post('/calendrier', adminController.addCalendar)
 /**
  * @swagger
- * /calendrier/add
+ * /calendrier:
  *   post:
  *      description: add an event to the calendar
  *      tags:
@@ -270,10 +270,10 @@ router.post('/calendrier/add', adminController.addCalendar)
  *          '400':
  *              description: Bad request
  */
-router.put('/calendrier/update/:id', adminController.updateCalendar)
+router.put('/calendrier/:id', adminController.updateCalendar)
 /**
  * @swagger
- * /calendrier/update/{id}:
+ * /calendrier/{id}:
  *   put:
  *      description: update the selected event
  *      tags:
@@ -291,10 +291,10 @@ router.put('/calendrier/update/:id', adminController.updateCalendar)
  *          '400':
  *              description: Bad request
  */
-router.delete('/calendrier/delete/:id', adminController.deleteCalendar)
+router.delete('/calendrier/:id', adminController.deleteCalendar)
 /**
  * @swagger
- * /calendrier/delete/{id}:
+ * /calendrier/{id}:
  *   delete:
  *      description: Delete the selected event from the calendar
  *      tags:

@@ -6,7 +6,7 @@ const router = express.Router();
 router.get("/", prestataireController.panel);
 /**
  * @swagger
- * /:
+ * /prestataire:
  *      get :
  *          description : Used to get general informations from the prestataire table
  *          tags :
@@ -42,7 +42,7 @@ router.get("/statistiques/:id", prestataireController.idStatistiques);
  *              description: Bad request
  */
 
-router.put("/self_edit", prestataireController.selfEdit);
+router.put("/", prestataireController.selfEdit);
 /**
  * @swagger
  * /self_edit :
@@ -60,7 +60,7 @@ router.put("/self_edit", prestataireController.selfEdit);
  *              description: Bad request
  */
 
-router.post("/livreDOR", prestataireController.livreDOr);
+router.post("/avis", prestataireController.livreDOr);
 /**
  * @swagger
  * /livreDOr :
@@ -78,7 +78,7 @@ router.post("/livreDOR", prestataireController.livreDOr);
  *              description: Bad request
  */
 
-router.post("/achatBillet", prestataireController.achatBillet);
+router.post("/billet", prestataireController.achatBillet);
 /**
  * @swagger
  * /achatBillet :

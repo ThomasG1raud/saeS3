@@ -189,7 +189,7 @@ CREATE TABLE IF NOT EXISTS livreDOr(
     idUtilisateur INT,
     idPrestataire INT,
     FOREIGN KEY (idUtilisateur) REFERENCES utilisateurs(idUtilisateur),
-    FOREIGN KEY (idPrestataire) REFERENCES prestataires(idPrestataire)
+    FOREIGN KEY (idPrestataire) REFERENCES prestataires(idPrestataire) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS calendrier(
@@ -197,8 +197,8 @@ CREATE TABLE IF NOT EXISTS calendrier(
     fin TIMESTAMP,
     idPrestataire INT NOT NULL,
     idStand INT NOT NULL ,
-    FOREIGN KEY (idPrestataire) REFERENCES prestataires(idPrestataire),
-    FOREIGN KEY (idStand) REFERENCES stands(idStand)
+    FOREIGN KEY (idPrestataire) REFERENCES prestataires(idPrestataire) ON DELETE CASCADE,
+    FOREIGN KEY (idStand) REFERENCES stands(idStand) ON DELETE CASCADE
 );
 
 

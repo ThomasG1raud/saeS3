@@ -31,7 +31,7 @@ exports.selfEdit = (req, res) => {
     const news = {
         texte: req.body.texte,
         image: req.body.image,
-        id: req.body.id
+        id: req.params.id
     }
     prestataireService.selfEdit(news,(error, results) => {
         if (error) {
@@ -162,6 +162,8 @@ exports.deleteCalendrier = (req, res) => {
         idStand: req.body.idStand,
         idPrestataire: req.body.idPrestataire
     }
+    console.log(tab.hDebut);
+    console.log(tab.hFin);
     prestataireService.deleteCalendrier(tab,(error, results)=> {
         if (error) {
             console.log(error);
@@ -179,7 +181,9 @@ exports.updateCalendrier = (req, res) => {
         hDebut: req.body.horaireDebut,
         hFin: req.body.horaireFin,
         idStand: req.body.idStand,
-        idPrestataire: req.body.idPrestataire
+        idPrestataire: req.body.idPrestataire,
+        newhDebut: req.body.newhoraireDebut,
+        newhFin: req.body.newhoraireDebut
     }
     prestataireService.updateCalendrier(tab,(error, results)=>{
         if (error) {

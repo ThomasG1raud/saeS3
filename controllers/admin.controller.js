@@ -248,8 +248,8 @@ exports.showCalendar = (req, res) =>{
 
 exports.addCalendar = (req, res) =>{
     const tab = {
-        horaireDebut: req.body.debut,
-        horaireFin: req.body.fin,
+        horaireDebut: req.body.horaireDebut,
+        horaireFin: req.body.horaireFin,
         idPrestataire: req.body.idPrestataire,
         idStand: req.body.idStand
     }
@@ -267,11 +267,11 @@ exports.addCalendar = (req, res) =>{
 
 exports.updateCalendar = (req, res) =>{
     const tab = {
-        newhoraireDebut: req.body.newdebut,
-        newhoraireFin: req.body.newfin,
+        newhoraireDebut: req.body.newhoraireDebut,
+        newhoraireFin: req.body.newhoraireFin,
         newidStand: req.body.newidStand,
-        horaireDebut: req.body.debut,
-        horaireFin: req.body.fin,
+        horaireDebut: req.body.horaireDebut,
+        horaireFin: req.body.horaireFin,
         idPrestataire: req.params.idPrestataire,
         idStand: req.body.idStand
     }

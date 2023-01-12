@@ -6,9 +6,9 @@ const livreDor = "INSERT INTO livreDOr ( nom, prenom, commentaire, idPrestataire
 const selectUserByName = "SELECT * FROM utilisateurs WHERE nom = $1";
 const addBillet = "INSERT INTO billets(prix,idutilisateur, idcategorie) VALUES ($1, $2, $3)";
 const addUser = "INSERT INTO utilisateurs(nom) VALUES ($1) RETURNING idUtilisateur";
-const addCalendar ="INSERT INTO calendrier(fin, debut, idPrestataire, idStand) VALUES ($2, $3, $4, $5)";
+const addCalendar ="INSERT INTO calendrier(debut, fin, idPrestataire, idStand) VALUES ($1,$2, $3, $4)";
 const showCalendar = "SELECT * FROM calendrier";
-const updateCalendar = "UPDATE calendrier SET debut = $1, fin = $2 WHERE idprestataire = $3 AND idStand = $4";
+const updateCalendar = "UPDATE calendrier SET debut = $1, fin = $2 WHERE idPrestataire = $3 AND idStand = $4 and debut = $5 and fin = $6";
 const deleteCalendar = "DELETE FROM calendrier WHERE debut = $1 AND fin = $2 AND idPrestataire = $3 AND idStand = $4";
 const showCommentaire= "SELECT * FROM livreDOr WHERE idPrestataire = $1";
 

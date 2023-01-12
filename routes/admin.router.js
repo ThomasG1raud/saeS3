@@ -275,7 +275,7 @@ router.get('/calendrier', adminController.showCalendar) // OK
  *          '400':
  *              description: Bad request
  */
-router.post('/calendrier', adminController.addCalendar) // OK mais pas de résultat visible ==> lié aux date ?
+router.post('/calendrier', adminController.addCalendar) // OK
 /**
  * @swagger
  * /admin/calendrier:
@@ -291,7 +291,7 @@ router.post('/calendrier', adminController.addCalendar) // OK mais pas de résul
  *          '400':
  *              description: Bad request
  */
-router.put('/calendrier/:id', adminController.updateCalendar) // OK mais pas de résultat visible ==> lié aux date ?
+router.put('/calendrier/:id', adminController.updateCalendar) // OK mais pas OK
 /**
  * @swagger
  * /admin/calendrier/{id}:

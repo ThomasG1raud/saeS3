@@ -193,8 +193,8 @@ CREATE TABLE IF NOT EXISTS livreDOr(
 );
 
 CREATE TABLE IF NOT EXISTS calendrier(
-    debut TIMESTAMP,
-    fin TIMESTAMP,
+    debut VARCHAR,
+    fin VARCHAR,
     idPrestataire INT NOT NULL,
     idStand INT NOT NULL ,
     FOREIGN KEY (idPrestataire) REFERENCES prestataires(idPrestataire) ON DELETE CASCADE,
@@ -335,6 +335,4 @@ insert into calendrier(debut, fin, idPrestataire, idStand)
 values ('2023-04-19 11:00:00', '2023-04-19 12:30:00', 2, 1);
 insert into calendrier(debut, fin, idPrestataire, idStand)
 values ('2023-11-11 20:30:00', '2023-11-11 22:30:00', 3, 2);
-
-select * from livreDOr
 

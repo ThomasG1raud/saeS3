@@ -58,7 +58,20 @@ router.post("/commentaire", prestataireController.livreDOr); // OK
  *          description : Used to add a comment to the livreDOr
  *          tags :
  *              - prestataire
- *          parameters : none
+ *          parameters :
+ *           - in: body
+ *            name: data
+ *            schema:
+ *              type: object
+ *              properties:
+ *                nom:
+ *                  type: string
+ *                prenom:
+ *                  type: string
+ *                comment:
+ *                  type: string
+ *                idPrestataire:
+ *                  type: int
  *          responses :
  *          '200':
  *              description: Resource added successfully
@@ -71,7 +84,7 @@ router.post("/commentaire", prestataireController.livreDOr); // OK
 router.post("/billet", prestataireController.achatBillet); // pas OK mais normal
 
 
-router.get("/commentaire/:id", prestataireController.showCommentaire);
+router.get("/commentaire/:id", prestataireController.showCommentaire); // OK
 /**
  * @swagger
  * /prestataire/commentaire/{id}:
@@ -92,7 +105,7 @@ router.get("/commentaire/:id", prestataireController.showCommentaire);
  *          '400':
  *              description: Bad request
  */
-router.get("/prestataire/:id", prestataireController.selectById);
+router.get("/prestataire/:id", prestataireController.selectById); // OK
 /**
  * @swagger
  * /prestataire/{id}:
@@ -113,4 +126,13 @@ router.get("/prestataire/:id", prestataireController.selectById);
  *          '400':
  *              description: Bad request
  */
+
+router.get("/calendrier", prestataireController.showCalendrier); // OK
+
+router.post("/calendrier", prestataireController.addCalendrier); // OK
+
+router.put("/calendrier", prestataireController.updateCalendrier); // erreur
+
+router.delete("/calendrier", prestataireController.deleteCalendrier); // OK
+
 module.exports = router;

@@ -88,10 +88,12 @@ const showCalendrier = async (callback) =>{
 }
 
 const addCalendrier = async (tab, callback) =>{
-    const hDebut = tab.horaireDebut;
-    const hFin = tab.horaireFin;
+    const hDebut = tab.hDebut;
+    const hFin = tab.hFin;
     const idPrestataire = tab.idPrestataire;
     const idStand = tab.idStand;
+    console.log(hDebut);
+    console.log(hFin);
     await pool.query(prestataireQuery.addCalendar, [hDebut, hFin, idPrestataire, idStand])
         .then(results=>{
             return callback(null, results.rows)
@@ -102,11 +104,14 @@ const addCalendrier = async (tab, callback) =>{
 }
 
 const updateCalendrier = async (tab, callback) =>{
-    const hDebut = tab.horaireDebut;
-    const hFin = tab.horaireFin;
+    const hDebut = tab.hDebut;
+    const hFin = tab.hFin;
     const idPrestataire = tab.idPrestataire;
     const idStand = tab.idStand;
-    await pool.query(prestataireQuery.updateCalendar, [hDebut, hFin, idPrestataire, idStand])
+    const newDebut = tab.newhDebut;
+    const newFin = tab.newhFin;
+    console.log(idPrestataire);
+    await pool.query(prestataireQuery.updateCalendar, [newDebut, newFin, idPrestataire, idStand, hDebut, hFin])
         .then(results=>{
             return callback(null, results.rows)
         })
@@ -118,8 +123,8 @@ const updateCalendrier = async (tab, callback) =>{
 const deleteCalendrier = async (tab, callback) =>{
     const idPrestataire = tab.idPrestataire;
     const idStand = tab.idStand;
-    const hDebut = tab.horaireDebut;
-    const hFin = tab.horaireFin;
+    const hDebut = tab.hDebut;
+    const hFin = tab.hFin;
     await pool.query(prestataireQuery.deleteCalendar, [hDebut, hFin, idPrestataire, idStand])
         .then(results=>{
             return callback(null, results.rows)

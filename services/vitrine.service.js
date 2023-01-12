@@ -16,8 +16,8 @@ const listePrestataire = async (callback) => {
     })
 }
 
-const listePrestataireByCategory = async (callback) => {
-    await pool.query(vitrineQuery.selectByCategory)
+const listePrestataireByCategory = async (id,callback) => {
+    await pool.query(vitrineQuery.selectCategoryByID, [id])
         .then(results=>{
             return callback(null, results.rows)
         })
@@ -27,7 +27,7 @@ const listePrestataireByCategory = async (callback) => {
 }
 
 const listCategory = async (callback) =>{
-    await pool.query(vitrineQuery.listCategory)
+    await pool.query(vitrineQuery.selectCategories)
         .then(results=>{
             return callback(null, results.rows)
         })

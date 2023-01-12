@@ -112,6 +112,10 @@ router.get('/stands/:id', vitrineController.idStand);
  *          '400':
  *              description: Bad request
  */
+router.get('/category', vitrineController.selectCategories);
+
+router.get('/category/:id', vitrineController.prestataireByIdCategory);
+
 
 
 module.exports = router;

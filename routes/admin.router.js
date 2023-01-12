@@ -351,7 +351,8 @@ router.get('/prestataire/categorie', adminController.listPrestataires)
  */
 router.get('/showListBillet', adminController.showListBillet)
 
-router.get('/stand/prestataire', adminController.showPrestataireByStand)/**
+router.get('/stand/prestataire', adminController.showPrestataireByStand)
+/**
  * @swagger
  * /admin/stand/prestataire
  *   get:

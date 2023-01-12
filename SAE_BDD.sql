@@ -2,12 +2,10 @@ DROP TABLE IF EXISTS reponds;
 DROP TABLE IF EXISTS comportes;
 DROP TABLE IF EXISTS accedes;
 DROP TABLE IF EXISTS situes;
-DROP TABLE IF EXISTS modifys;
+DROP TABLE IF EXISTS modifier;
 DROP TABLE IF EXISTS produits;
 DROP TABLE IF EXISTS categorieBillets;
 DROP TABLE IF EXISTS billets;
-DROP TABLE IF EXISTS panier;
-DROP TABLE IF EXISTS goodies;
 DROP TABLE IF EXISTS livreDOr;
 DROP TABLE IF EXISTS categorieComptes;
 DROP TABLE IF EXISTS utilisateurs;
@@ -133,7 +131,7 @@ CREATE TABLE IF NOT EXISTS  produits
     FOREIGN KEY (idStatistique) REFERENCES statistiques (idStatistique)
 );
 
-CREATE TABLE IF NOT EXISTS  modifys
+CREATE TABLE IF NOT EXISTS  modifier
 (
     idPrestataire INT,
     idUtilisateur INT,
@@ -188,24 +186,6 @@ CREATE TABLE IF NOT EXISTS livreDOr(
     FOREIGN KEY (idUtilisateur) REFERENCES utilisateurs(idUtilisateur)
 );
 
-CREATE TABLE IF NOT EXISTS goodies(
-    idGoodies SERIAL PRIMARY KEY ,
-    libelleGoodies VARCHAR,
-    prixGoodies FLOAT,
-    imageGoodies VARCHAR,
-    stock INT,
-    idPrestataire INT,
-    FOREIGN KEY (idPrestataire) REFERENCES prestataires(idPrestataire)
-);
-
-CREATE TABLE IF NOT EXISTS panier(
-    idGoodies INT,
-    idUtilisateur INT,
-    quantite INT,
-    PRIMARY KEY (idGoodies, idUtilisateur),
-    FOREIGN KEY (idGoodies) REFERENCES goodies(idGoodies),
-    FOREIGN KEY (idUtilisateur) REFERENCES utilisateurs(idUtilisateur)
-);
 
 insert into localisations(libelleLocalisation)
 values ('localisation 1');
@@ -263,12 +243,12 @@ values ('categorieComptes 3');
 insert into categorieComptes(libelleCompte)
 values ('categorieComptes 2');
 
-insert into prestataires(nom, presenceHoraire, textePrestataire, imagePrestataire, siren, idCategorie)
-values ('prestataires 1', '21/12/2001', 'texte 1', 'image 1', 1, '1');
-insert into prestataires(nom, presenceHoraire, textePrestataire, imagePrestataire, siren, idCategorie)
-values ('prestataires 2', '21/12/2002', 'texte 2', 'image 1', 2, '2');
-insert into prestataires(nom, presenceHoraire, textePrestataire, imagePrestataire, siren, idCategorie)
-values ('prestataires 3', '21/12/2003', 'texte 3', 'image 1', 3, '3');
+insert into prestataires(nom, textePrestataire, imagePrestataire, siren, idCategorie)
+values ('prestataires 1', 'texte 1', 'image 1', 1, '1');
+insert into prestataires(nom, textePrestataire, imagePrestataire, siren, idCategorie)
+values ('prestataires 2', 'texte 2', 'image 1', 2, '2');
+insert into prestataires(nom, textePrestataire, imagePrestataire, siren, idCategorie)
+values ('prestataires 3', 'texte 3', 'image 1', 3, '3');
 
 insert into emplacements(libelleEmplacement, idLocalisation)
 values ('emplacements 1', 1);
@@ -298,11 +278,11 @@ values (2, 2);
 insert into produits(idService, idStatistique)
 values (3, 3);
 
-insert into modifys(idPrestataire, idUtilisateur, heureVisite)
+insert into modifier(idPrestataire, idUtilisateur, heureVisite)
 values (1, 1, '23/12/01');
-insert into modifys(idPrestataire, idUtilisateur, heureVisite)
+insert into modifier(idPrestataire, idUtilisateur, heureVisite)
 values (2, 2, '23/12/02');
-insert into modifys(idPrestataire, idUtilisateur, heureVisite)
+insert into modifier(idPrestataire, idUtilisateur, heureVisite)
 values (3, 3, '23/12/03');
 
 insert into situes(idEmplacement, horaireDebut, horaireFin, idPrestataire)

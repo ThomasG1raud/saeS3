@@ -62,11 +62,9 @@ exports.addPrestataires = (req,res) => {
 
 exports.updatePrestataires = (req,res) => {
     const news = {
-        nom: req.body.nom,
-        texte: req.body.texte,
-        image: req.body.image,
-        siren: req.body.siren,
-        idCategory: req.body.idCategory
+        idPrestataire: req.params.id,
+        textePrestataire: req.body.texte,
+        imagePrestataire: req.body.image,
     }
     adminService.updatePrestataires(news,(error, results) => {
         if (error) {

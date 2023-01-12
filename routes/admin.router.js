@@ -56,7 +56,7 @@ router.get('/prestataire/:id', adminController.idPrestataires); // OK
  *          '400':
  *              description: Bad request
  */
-router.post('/prestataires/add', adminController.addPrestataires);
+router.post('/prestataires/add', adminController.addPrestataires); // OK
 /**
  * @swagger
  * /admin/prestataires/add:

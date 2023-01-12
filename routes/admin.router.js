@@ -259,7 +259,7 @@ router.post('/map/add', adminController.addMap)
 router.put('/map/update/:id', adminController.updateMap)
 router.delete('/map/delete/:id', adminController.deleteMap)
 
-router.get('/calendrier', adminController.showCalendar)
+router.get('/calendrier', adminController.showCalendar) // OK
 /**
  * @swagger
  * /admin/calendrier:
@@ -275,7 +275,7 @@ router.get('/calendrier', adminController.showCalendar)
  *          '400':
  *              description: Bad request
  */
-router.post('/calendrier', adminController.addCalendar)
+router.post('/calendrier', adminController.addCalendar) // OK mais pas de résultat visible ==> lié aux date ?
 /**
  * @swagger
  * /admin/calendrier:
@@ -291,7 +291,7 @@ router.post('/calendrier', adminController.addCalendar)
  *          '400':
  *              description: Bad request
  */
-router.put('/calendrier/:id', adminController.updateCalendar)
+router.put('/calendrier/:id', adminController.updateCalendar) // OK mais pas de résultat visible ==> lié aux date ?
 /**
  * @swagger
  * /admin/calendrier/{id}:
@@ -312,7 +312,7 @@ router.put('/calendrier/:id', adminController.updateCalendar)
  *          '400':
  *              description: Bad request
  */
-router.delete('/calendrier/:id', adminController.deleteCalendar)
+router.delete('/calendrier/:id', adminController.deleteCalendar) // OK mais pas de résultat visible ==> lié aux date ?
 /**
  * @swagger
  * /admin/calendrier/{id}:

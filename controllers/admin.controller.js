@@ -247,7 +247,13 @@ exports.showCalendar = (req, res) =>{
 }
 
 exports.addCalendar = (req, res) =>{
-    adminService.addCalendrier((error, results)=>{
+    const tab = {
+        horaireDebut: req.body.debut,
+        horaireFin: req.body.fin,
+        idPrestataire: req.body.idPrestataire,
+        idStand: req.body.idStand
+    }
+    adminService.addCalendrier(tab,(error, results)=>{
         if (error) {
             console.log(error);
             return res.status(400).send({ success: 0, data: error });
@@ -260,7 +266,16 @@ exports.addCalendar = (req, res) =>{
 }
 
 exports.updateCalendar = (req, res) =>{
-    adminService.updateCalendrier((error, results)=>{
+    const tab = {
+        newhoraireDebut: req.body.newdebut,
+        newhoraireFin: req.body.newfin,
+        newidStand: req.body.newidStand,
+        horaireDebut: req.body.debut,
+        horaireFin: req.body.fin,
+        idPrestataire: req.params.idPrestataire,
+        idStand: req.body.idStand
+    }
+    adminService.updateCalendrier(tab,(error, results)=>{
         if (error) {
             console.log(error);
             return res.status(400).send({ success: 0, data: error });
@@ -273,7 +288,13 @@ exports.updateCalendar = (req, res) =>{
 }
 
 exports.deleteCalendar = (req, res) =>{
-    adminService.deleteCalendrier((error, results)=>{
+    const tab = {
+        hDebut: req.body.debut,
+        hFin: req.body.fin,
+        idPrestataire: req.params.idPrestataire,
+        idStand: req.body.idStand
+    }
+    adminService.deleteCalendrier(tab,(error, results)=>{
         if (error) {
             console.log(error);
             return res.status(400).send({ success: 0, data: error });

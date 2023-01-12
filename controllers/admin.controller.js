@@ -269,10 +269,9 @@ exports.updateCalendar = (req, res) =>{
     const tab = {
         newhoraireDebut: req.body.newhoraireDebut,
         newhoraireFin: req.body.newhoraireFin,
-        newidStand: req.body.newidStand,
         horaireDebut: req.body.horaireDebut,
         horaireFin: req.body.horaireFin,
-        idPrestataire: req.params.idPrestataire,
+        idPrestataire: req.params.id,
         idStand: req.body.idStand
     }
     adminService.updateCalendrier(tab,(error, results)=>{
@@ -289,9 +288,9 @@ exports.updateCalendar = (req, res) =>{
 
 exports.deleteCalendar = (req, res) =>{
     const tab = {
-        hDebut: req.body.debut,
-        hFin: req.body.fin,
-        idPrestataire: req.params.idPrestataire,
+        hDebut: req.body.horaireDebut,
+        hFin: req.body.horaireFin,
+        idPrestataire: req.params.id,
         idStand: req.body.idStand
     }
     adminService.deleteCalendrier(tab,(error, results)=>{

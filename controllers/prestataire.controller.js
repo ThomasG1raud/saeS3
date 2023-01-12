@@ -183,8 +183,9 @@ exports.updateCalendrier = (req, res) => {
         idStand: req.body.idStand,
         idPrestataire: req.body.idPrestataire,
         newhDebut: req.body.newhoraireDebut,
-        newhFin: req.body.newhoraireDebut
+        newhFin: req.body.newhoraireFin
     }
+    console.log(tab.idPrestataire);
     prestataireService.updateCalendrier(tab,(error, results)=>{
         if (error) {
             console.log(error);

@@ -110,7 +110,6 @@ const updateCalendrier = async (tab, callback) =>{
     const idStand = tab.idStand;
     const newDebut = tab.newhDebut;
     const newFin = tab.newhFin;
-    console.log(idPrestataire);
     await pool.query(prestataireQuery.updateCalendar, [newDebut, newFin, idPrestataire, idStand, hDebut, hFin])
         .then(results=>{
             return callback(null, results.rows)

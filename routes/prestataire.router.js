@@ -22,38 +22,6 @@ router.get("/", prestataireController.panel); // OK
 
 router.get("/statistiques/:id", prestataireController.idStatistiques); // pas OK mais normal
 
-
-router.put("/:id", prestataireController.selfEdit); // OK
-/**
- * @swagger
- * /prestataire/{id}:
- *   put:
- *      description: Modifie un prestataire
- *      tags:
- *          - prestataire
- *      parameters:
- *          - in: path
- *            name: id
- *            type: integer
- *            required: false
- *          - in: body
- *            name: data
- *            schema:
- *              type: object
- *              properties:
- *                texte:
- *                  type: string
- *                image:
- *                  type: string
- *      responses:
- *          '200':
- *              description: Resource added successfully
- *          '500':
- *              description: Internal server error
- *          '400':
- *              description: Bad request
- */
-
 router.post("/commentaire", prestataireController.livreDOr); // OK
 /**
  * @swagger
@@ -138,6 +106,37 @@ router.put("/calendrier", prestataireController.updateCalendrier);
 router.post("/calendrier", prestataireController.addCalendrier);
 
 router.delete("/calendrier", prestataireController.deleteCalendrier);
+
+router.put("/:id", prestataireController.selfEdit); // OK
+/**
+ * @swagger
+ * /prestataire/{id}:
+ *   put:
+ *      description: Modifie un prestataire
+ *      tags:
+ *          - prestataire
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            type: integer
+ *            required: false
+ *          - in: body
+ *            name: data
+ *            schema:
+ *              type: object
+ *              properties:
+ *                texte:
+ *                  type: string
+ *                image:
+ *                  type: string
+ *      responses:
+ *          '200':
+ *              description: Resource added successfully
+ *          '500':
+ *              description: Internal server error
+ *          '400':
+ *              description: Bad request
+ */
 
 
 module.exports = router;

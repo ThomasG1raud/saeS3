@@ -94,7 +94,7 @@ router.post('/prestataires/add', adminController.addPrestataires); // OK
  *              description: Bad request
  */
 
-router.put('/prestataires/update/:id', adminController.updatePrestataires);
+router.put('/prestataires/update/:id', adminController.updatePrestataires); // OK
 /**
  * @swagger
  * /admin/prestataires/update/{id}:
@@ -115,7 +115,7 @@ router.put('/prestataires/update/:id', adminController.updatePrestataires);
  *          '400':
  *              description: Bad request
  */
-router.delete('/prestataires/delete/:id', adminController.deletePrestataires);
+router.delete('/prestataires/delete/:id', adminController.deletePrestataires); // OK
 /**
  * @swagger
  * /admin/prestataires/delete/{id}:
@@ -137,7 +137,7 @@ router.delete('/prestataires/delete/:id', adminController.deletePrestataires);
  *              description: Bad request
  */
 
-router.get('/stands', adminController.listStands);
+router.get('/stands', adminController.listStands); // OK
 /**
  * @swagger
  * /admin/stands:
@@ -153,7 +153,7 @@ router.get('/stands', adminController.listStands);
  *          '400':
  *              description: Bad request
  */
-router.get('/stand/:id', adminController.idStands);
+router.get('/stand/:id', adminController.idStands); // OK
 /**
  * @swagger
  * /admin/stand/{id}:
@@ -174,7 +174,7 @@ router.get('/stand/:id', adminController.idStands);
  *          '400':
  *              description: Bad request
  */
-router.post('/stand/add', adminController.addStands);
+router.post('/stand/add', adminController.addStands); // OK
 /**
  * @swagger
  * /admin/stand/add:
@@ -190,7 +190,7 @@ router.post('/stand/add', adminController.addStands);
  *          '400':
  *              description: Bad request
  */
-router.put('/stand/update/:id', adminController.updateStands);
+router.put('/stand/update/:id', adminController.updateStands); // OK
 /**
  * @swagger
  * /admin/stand/update/{id}:
@@ -211,7 +211,7 @@ router.put('/stand/update/:id', adminController.updateStands);
  *          '400':
  *              description: Bad request
  */
-router.delete('/stand/delete/:id', adminController.deleteStands);
+router.delete('/stand/delete/:id', adminController.deleteStands); // OK
 /**
  * @swagger
  * /admin/stand/delete/{id}:

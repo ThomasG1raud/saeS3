@@ -7,8 +7,8 @@ DROP TABLE IF EXISTS produits;
 DROP TABLE IF EXISTS billets;
 DROP TABLE IF EXISTS categorieBillets;
 DROP TABLE IF EXISTS livreDOr;
-DROP TABLE IF EXISTS utilisateurs;
 DROP TABLE IF EXISTS categorieComptes;
+DROP TABLE IF EXISTS utilisateurs;
 DROP TABLE IF EXISTS emplacements;
 DROP TABLE IF EXISTS prestataires;
 DROP TABLE IF EXISTS entreprises;
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS  prestataires
     idCategorie      INT NOT NULL,
     PRIMARY KEY (idPrestataire),
     FOREIGN KEY (siren) REFERENCES entreprises (siren),
-    FOREIGN KEY (idCategorie) REFERENCES categoriePrestations (idCategorie)
+    FOREIGN KEY (idCategorie) REFERENCES categoriePrestations (idCategorie) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS emplacements
@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS  modifier
     idUtilisateur INT,
     heureVisite   TIMESTAMP,
     PRIMARY KEY (idPrestataire, idUtilisateur),
-    FOREIGN KEY (idPrestataire) REFERENCES prestataires (idPrestataire),
+    FOREIGN KEY (idPrestataire) REFERENCES prestataires (idPrestataire) ON DELETE CASCADE,
     FOREIGN KEY (idUtilisateur) REFERENCES utilisateurs (idUtilisateur)
 );
 
@@ -148,8 +148,8 @@ CREATE TABLE  IF NOT EXISTS situes
     horaireFin    TIMESTAMP,
     idPrestataire INT NOT NULL,
     PRIMARY KEY (idEmplacement),
-    FOREIGN KEY (idEmplacement) REFERENCES emplacements (idEmplacement),
-    FOREIGN KEY (idPrestataire) REFERENCES prestataires (idPrestataire)
+    FOREIGN KEY (idEmplacement) REFERENCES emplacements (idEmplacement) ON DELETE CASCADE,
+    FOREIGN KEY (idPrestataire) REFERENCES prestataires (idPrestataire) ON DELETE CASCADE
 );
 
 CREATE TABLE  IF NOT EXISTS accedes
@@ -157,7 +157,7 @@ CREATE TABLE  IF NOT EXISTS accedes
     idPrestataire INT,
     idService     INT,
     PRIMARY KEY (idPrestataire, idService),
-    FOREIGN KEY (idPrestataire) REFERENCES prestataires (idPrestataire),
+    FOREIGN KEY (idPrestataire) REFERENCES prestataires (idPrestataire) ON DELETE CASCADE,
     FOREIGN KEY (idService) REFERENCES services (idService)
 );
 
@@ -166,8 +166,8 @@ CREATE TABLE  IF NOT EXISTS comportes
     idEmplacement     INT,
     idCaracteristique INT,
     PRIMARY KEY (idEmplacement, idCaracteristique),
-    FOREIGN KEY (idEmplacement) REFERENCES emplacements (idEmplacement),
-    FOREIGN KEY (idCaracteristique) REFERENCES caracteristiques (idCaracteristique)
+    FOREIGN KEY (idEmplacement) REFERENCES emplacements (idEmplacement) ON DELETE CASCADE,
+    FOREIGN KEY (idCaracteristique) REFERENCES caracteristiques (idCaracteristique) ON DELETE CASCADE
 );
 
 CREATE TABLE  IF NOT EXISTS reponds
@@ -175,8 +175,8 @@ CREATE TABLE  IF NOT EXISTS reponds
     idPrestataire     INT,
     idCaracteristique INT,
     PRIMARY KEY (idPrestataire, idCaracteristique),
-    FOREIGN KEY (idPrestataire) REFERENCES prestataires (idPrestataire),
-    FOREIGN KEY (idCaracteristique) REFERENCES caracteristiques (idCaracteristique)
+    FOREIGN KEY (idPrestataire) REFERENCES prestataires (idPrestataire) ON DELETE CASCADE,
+    FOREIGN KEY (idCaracteristique) REFERENCES caracteristiques (idCaracteristique) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS livreDOr(

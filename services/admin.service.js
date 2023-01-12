@@ -55,26 +55,6 @@ const updatePrestataires = async (news,callback) => {
 }
 
 const deletePrestataires = async (id,callback) => {
-    if(pool.query(adminQuery.selectModify, [id], (error, results)=>{
-        if(results.rows.length){
-            pool.query(adminQuery.deleteModify, [id]);
-        }
-    }));
-    if(pool.query(adminQuery.selectAccede, [id], (error, results)=>{
-        if(results.rows.length){
-            pool.query(adminQuery.deleteAccede, [id]);
-        }
-    }));
-    if(pool.query(adminQuery.selectRepond, [id], (error, results)=>{
-        if(results.rows.length){
-            pool.query(adminQuery.deleteRepond, [id]);
-        }
-    }));
-    if(pool.query(adminQuery.selectSitue, [id], (error, results)=>{
-        if(results.rows.length){
-            pool.query(adminQuery.deleteSitue, [id])
-        }
-    }))
     await pool.query(adminQuery.deletePrestataire,[id])
     .then(results=>{
         return callback(null, results.rows)
@@ -117,11 +97,9 @@ const addStands = async (news, callback) => {
 }
 
 const updateStands = async (news, callback) => {
-    const emplacement = news.idEmplacement;
-    const debut = news.horaireDebut;
-    const fin = news.horaireFin;
-    const prestataire = news.idPrestataire;
-    await pool.query(adminQuery.updateStand,[emplacement, debut, fin, prestataire])
+    const libelle = news.libelle;
+    const stand = news.idStands;
+    await pool.query(adminQuery.updateStand,[libelle, stand])
     .then(results=>{
         return callback(null, results.rows)
     })
@@ -131,16 +109,6 @@ const updateStands = async (news, callback) => {
 }
 
 const deleteStands = async (id,callback) => {
-    if(pool.query(adminQuery.selectSitue, [id], (error, results)=>{
-        if(results.rows.length){
-            pool.query(adminQuery.deleteSitue, [id]);
-        }
-    }));
-    if(pool.query(adminQuery.selectEmplacement, [id], (error, results)=>{
-        if(results.rows.length){
-            pool.query(adminQuery.deleteEmplacement, [id]);
-        }
-    }));
     await pool.query(adminQuery.deleteStand,[id])
     .then(()=>{
         return callback(null, "deleted succesfully")

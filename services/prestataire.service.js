@@ -74,7 +74,7 @@ const achatBillet = async (news, callback)=>{
 }
 
 const showCalendrier = async (callback) =>{
-    await pool.query(adminQuery.showCalendar)
+    await pool.query(prestataireQuery.showCalendar)
         .then(results=>{
             return callback(null, results.rows)
         })
@@ -89,7 +89,7 @@ const addCalendrier = async (tab, callback) =>{
     const hFin = tab.horaireFin;
     const idPrestataire = tab.idPrestataire;
     const idStand = tab.idStand;
-    await pool.query(adminQuery.addCalendar, [date, hDebut, hFin, idPrestataire, idStand])
+    await pool.query(prestataireQuery.addCalendar, [date, hDebut, hFin, idPrestataire, idStand])
         .then(results=>{
             return callback(null, results.rows)
         })
@@ -104,7 +104,7 @@ const updateCalendrier = async (tab, callback) =>{
     const hFin = tab.horaireFin;
     const idPrestataire = tab.idPrestataire;
     const idStand = tab.idStand;
-    await pool.query(adminQuery.updateCalendar, [date, hDebut, hFin, idPrestataire, idStand])
+    await pool.query(prestataireQuery.updateCalendar, [date, hDebut, hFin, idPrestataire, idStand])
         .then(results=>{
             return callback(null, results.rows)
         })
@@ -117,7 +117,27 @@ const deleteCalendrier = async (tab, callback) =>{
     const date = tab.date;
     const idPrestataire = tab.idPrestataire;
     const idStand = tab.idStand;
-    await pool.query(adminQuery.deleteCalendar, [date, idPrestataire, idStand])
+    await pool.query(prestataireQuery.deleteCalendar, [date, idPrestataire, idStand])
+        .then(results=>{
+            return callback(null, results.rows)
+        })
+        .catch(error=>{
+            return callback(error, null)
+        })
+}
+
+const showCommentaire = async (callback) =>{
+    await pool.query(prestataireQuery.showCommentaire)
+        .then(results=>{
+            return callback(null, results.rows)
+        })
+        .catch(error=>{
+            return callback(error, null)
+        })
+}
+
+const selectById = async (id, callback) => {
+    await pool.query(prestataireQuery.selectPrestataireById, [id])
         .then(results=>{
             return callback(null, results.rows)
         })
@@ -135,5 +155,7 @@ module.exports = {
     deleteCalendrier:deleteCalendrier,
     addCalendrier:addCalendrier,
     updateCalendrier:updateCalendrier,
-    achatBillet:achatBillet
+    achatBillet:achatBillet,
+    showCommentaire:showCommentaire,
+    selectById:selectById
 }

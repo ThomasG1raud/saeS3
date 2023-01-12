@@ -10,6 +10,6 @@ const addCalendar ="INSERT INTO calendrier(datePrestation,horaireDebut, horaireF
 const showCalendar = "SELECT * FROM calendrier";
 const updateCalendar = "UPDATE calendrier SET datePrestation = $1, horaireDebut = $2, horaireFin = $3 WHERE idPrestatire = $4 AND idStand = $5";
 const deleteCalendar = "DELETE FROM calendrier WHERE datePrestation = $1 AND idPrestataire = $2 AND idStand = $3";
+const showCommentaire= "SELECT * FROM livreDOr WHERE idPrestataire = $1";
 
-
-module.exports= {selectPrestataire, selectPrestataireById, editPrestataire, countClient, livreDor, selectUserByName, addBillet, addUser}
+module.exports= {showCommentaire,addCalendar, showCalendar, deleteCalendar, updateCalendar, selectPrestataireById, editPrestataire, countClient, livreDor, selectUserByName, addBillet, addUser}

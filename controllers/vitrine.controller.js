@@ -110,3 +110,19 @@ exports.prestataireByIdCategory = (req, res) => {
     });
 }
 
+exports.addCommentaire = (req, res) =>{
+    const news = {
+        commentaire: req.body.commetaire,
+        id: req.body.id
+    }
+    vitrineService.addCommentaire(news, (error, results)=>{
+        if(error) {
+            console.log(error);
+            return res.status(400).send({success: 0, data: error});
+        }
+        return res.status(200).send({
+            success: 1,
+            data: results,
+        });
+    });
+}

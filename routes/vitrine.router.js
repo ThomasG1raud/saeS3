@@ -116,8 +116,7 @@ router.get('/category', vitrineController.selectCategories); // OK
 
 router.get('/category/:id', vitrineController.prestataireByIdCategory); // OK
 
-
-// modifier show de prestataire avec nom de stand, horaire et nom categorie
+router.post('/addComm', vitrineController.addCommentaire); //OK
 
 
 module.exports = router;

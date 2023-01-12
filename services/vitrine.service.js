@@ -67,9 +67,19 @@ const idStand = async (id,callback) => {
 }
 
 const showCalendrier = async (callback) =>{
-    await pool.query(adminQuery.showCalendar)
+    await pool.query(vitrineQuery.showCalendar)
         .then(results=>{
             return callback(null, results.rows)
+        })
+        .catch(error=>{
+            return callback(error, null)
+        })
+}
+
+const addCommentaire = async (news, callback)=>{
+    await pool.query(vitrineQuery.addCommentaire, [news[0],news[1]])
+        .then(()=>{
+            return callback(null, "commentaire ajouté avec succès")
         })
         .catch(error=>{
             return callback(error, null)
@@ -87,4 +97,5 @@ module.exports = {
     listCategory:listCategory,
     listePrestataireByCategory:listePrestataireByCategory,
     showCalendrier:showCalendrier,
+    addCommentaire:addCommentaire
 }

@@ -92,3 +92,30 @@ exports.achatBillet = (req, res) => {
         });
     })
 }
+
+exports.showCommentaire = (req, res) => {
+    prestataireService.showCommentaire((error, results)=>{
+        if (error) {
+            console.log(error);
+            return res.status(400).send({ success: 0, data: error });
+        }
+        return res.status(200).send({
+            success: 1,
+            data: results,
+        });
+    })
+}
+
+exports.selectById = (req, res) => {
+    const id = req.params.id;
+    prestataireService.selectById(id,(error, results)=>{
+        if (error) {
+            console.log(error);
+            return res.status(400).send({ success: 0, data: error });
+        }
+        return res.status(200).send({
+            success: 1,
+            data: results,
+        });
+    })
+}

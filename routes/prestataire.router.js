@@ -78,7 +78,7 @@ router.post("/avis", prestataireController.livreDOr); // OK
  *              description: Bad request
  */
 
-router.post("/billet", prestataireController.achatBillet); // pas OK
+router.post("/billet", prestataireController.achatBillet); // pas OK mais normal
 /**
  * @swagger
  * /achatBillet :
@@ -100,5 +100,8 @@ router.post("/billet", prestataireController.achatBillet); // pas OK
  *              description: Bad request
  */
 
-// ajouté showLivre d'or et selectPrestataireById
+router.get("/showCommentaire", prestataireController.showCommentaire);
+
+router.get("/prestataire/:id", prestataireController.selectById);
+
 module.exports = router;

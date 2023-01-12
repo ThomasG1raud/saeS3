@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 
-router.get("/", prestataireController.panel);
+router.get("/", prestataireController.panel); // OK
 /**
  * @swagger
  * /prestataire:
@@ -21,7 +21,7 @@ router.get("/", prestataireController.panel);
  *              description: Bad request
  */
 
-router.get("/statistiques/:id", prestataireController.idStatistiques);
+router.get("/statistiques/:id", prestataireController.idStatistiques); // pas OK mais normal
 /**
  * @swagger
  * /statistiques/{id} :
@@ -42,7 +42,7 @@ router.get("/statistiques/:id", prestataireController.idStatistiques);
  *              description: Bad request
  */
 
-router.put("/", prestataireController.selfEdit);
+router.put("/", prestataireController.selfEdit); // OK
 /**
  * @swagger
  * /self_edit :
@@ -60,7 +60,7 @@ router.put("/", prestataireController.selfEdit);
  *              description: Bad request
  */
 
-router.post("/avis", prestataireController.livreDOr);
+router.post("/avis", prestataireController.livreDOr); // OK
 /**
  * @swagger
  * /livreDOr :
@@ -78,7 +78,7 @@ router.post("/avis", prestataireController.livreDOr);
  *              description: Bad request
  */
 
-router.post("/billet", prestataireController.achatBillet);
+router.post("/billet", prestataireController.achatBillet); // pas OK
 /**
  * @swagger
  * /achatBillet :
@@ -100,4 +100,5 @@ router.post("/billet", prestataireController.achatBillet);
  *              description: Bad request
  */
 
+// ajouté showLivre d'or et selectPrestataireById
 module.exports = router;

@@ -135,4 +135,5 @@ module.exports = {
     deleteCalendrier:deleteCalendrier,
     addCalendrier:addCalendrier,
     updateCalendrier:updateCalendrier,
+    achatBillet:achatBillet
 }

@@ -29,8 +29,8 @@ exports.idStatistiques = (req, res) => {
 
 exports.selfEdit = (req, res) => {
     const news = {
-        texte: req.body.nom,
-        image: req.body.idLoc,
+        texte: req.body.texte,
+        image: req.body.image,
         id: req.body.id
     }
     prestataireService.selfEdit(news,(error, results) => {

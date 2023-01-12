@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 
-router.get("/vitrine", vitrineController.vitrine)
+router.get("/vitrine", vitrineController.vitrine) // OK
 /**
  * @swagger
  * /vitrine:
@@ -20,7 +20,7 @@ router.get("/vitrine", vitrineController.vitrine)
  *              description: Bad request
  */
 
-router.get('/map', vitrineController.map);
+router.get('/map', vitrineController.map); // pas OK mais normal
 /**
  * @swagger
  * /map:
@@ -37,7 +37,7 @@ router.get('/map', vitrineController.map);
  *              description: Bad request
  */
 
-router.get('/prestataires', vitrineController.listePrestataire);
+router.get('/prestataires', vitrineController.listePrestataire); // OK
 /**
  * @swagger
  * /prestataires:
@@ -53,7 +53,7 @@ router.get('/prestataires', vitrineController.listePrestataire);
  *          '400':
  *              description: Bad request
  */
-router.get('/prestataires/:id', vitrineController.idPrestataire);
+router.get('/prestataires/:id', vitrineController.idPrestataire); // OK
 /**
  * @swagger
  * /prestataires/{id}:
@@ -75,7 +75,7 @@ router.get('/prestataires/:id', vitrineController.idPrestataire);
  *              description: Bad request
  */
 
-router.get('/stands', vitrineController.listeStand);
+router.get('/stands', vitrineController.listeStand); // OK
 /**
  * @swagger
  * /stands:
@@ -91,7 +91,7 @@ router.get('/stands', vitrineController.listeStand);
  *          '400':
  *              description: Bad request
  */
-router.get('/stands/:id', vitrineController.idStand);
+router.get('/stands/:id', vitrineController.idStand); // OK
 /**
  * @swagger
  * /stands/{id}:
@@ -112,10 +112,12 @@ router.get('/stands/:id', vitrineController.idStand);
  *          '400':
  *              description: Bad request
  */
-router.get('/category', vitrineController.selectCategories);
+router.get('/category', vitrineController.selectCategories); // OK
 
-router.get('/category/:id', vitrineController.prestataireByIdCategory);
+router.get('/category/:id', vitrineController.prestataireByIdCategory); // OK
 
+
+// modifier show de prestataire avec nom de stand, horaire et nom categorie
 
 
 module.exports = router;

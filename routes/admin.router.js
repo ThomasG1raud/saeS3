@@ -86,8 +86,8 @@ router.post('/prestataire', adminController.addPrestataires); // OK
  *              example:
  *                  texte: un texte de description
  *                  image: une image reprrésentant le préstataire
- *                  siren: 2
- *                  idCategory: 2
+ *                  siren: 0
+ *                  idCategory: 0
  *      responses:
  *          '200':
  *              description: Resource added successfully
@@ -227,7 +227,7 @@ router.post('/stand', adminController.addStands); // OK
  *                  type: integer
  *              example:
  *                  libelle: nom du stand
- *                  idLoc: 2
+ *                  idLoc: 0
  *      responses:
  *          '200':
  *              description: Resource added successfully
@@ -334,8 +334,8 @@ router.post('/calendrier', adminController.addCalendar) // OK
  *              example:
  *                  horaireDebut: yyyy-mm-dd hour:min:sec
  *                  horaireFin: yyyy-mm-dd hour:min:sec
- *                  idStand: 2
- *                  idPrestataire: 2
+ *                  idStand: 0
+ *                  idPrestataire: 0
  *      responses:
  *          '200':
  *              description: Resource added successfully
@@ -375,8 +375,8 @@ router.put('/calendrier/:id', adminController.updateCalendar) // OK mais pas OK
  *              example:
  *                  newhoraireDebut: yyyy-mm-dd hour:min:sec
  *                  newshoraireFin: yyyy-mm-dd hour:min:sec
- *                  idStand: 2
- *                  idPrestataire: 2
+ *                  idStand: 0
+ *                  idPrestataire: 0
  *                  horaireDebut: yyyy-mm-dd hour:min:sec
  *                  horaireFin: yyyy-mm-dd hour:min:sec
  *      responses:
@@ -414,8 +414,8 @@ router.delete('/calendrier/:id', adminController.deleteCalendar) // OK mais pas 
  *              example:
  *                  horaireDebut: yyyy-mm-dd hour:min:sec
  *                  shoraireFin: yyyy-mm-dd hour:min:sec
- *                  idStand: 2
- *                  idPrestataire: 2
+ *                  idStand: 0
+ *                  idPrestataire: 0
  *      responses:
  *          '200':
  *              description: Resource deleted successfully

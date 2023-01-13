@@ -30,6 +30,11 @@ router.post("/commentaire", prestataireController.livreDOr); // OK
  *                  type: string
  *                idPrestataire:
  *                  type: integer
+ *              example:
+ *                  nom: un nom de prestataire
+ *                  prenom: un prenom
+ *                  comment: un commentaire donnant un avis sur le prestataire et son activité
+ *                  idPrestataire: 0
  *      responses:
  *          '200':
  *              description: Resource added successfully
@@ -109,6 +114,12 @@ router.put("/calendrier/:id", prestataireController.updateCalendrier);
  *                  type: string
  *                newhoraireFin:
  *                  type: string
+ *              example:
+ *                  horaireDebut: yyyy-mm-dd hour:min:sec début actuel
+ *                  horaireFin: yyyy-mm-dd hour:min:sec fin actuel
+ *                  idStand: 0
+ *                  newHoraireDebut: yyyy-mm-dd hour:min:sec nouvel horaire de départ
+ *                  newHoraireFin: yyyy-mm-dd hour:min:sec nouvel horaire de fin
  *      responses:
  *          '200':
  *              description: Resource updated successfully
@@ -139,6 +150,11 @@ router.post("/calendrier", prestataireController.addCalendrier);
  *                  type: integer
  *                idStand:
  *                  type: integer
+ *              example:
+ *                  horaireDebut: yyyy-mm-dd hour:min:sec
+ *                  horaireFin: yyyy-mm-dd hour:min:sec
+ *                  idPrestataire: 0
+ *                  idStand: 0
  *      responses:
  *          '200':
  *              description: Resource added successfully
@@ -171,6 +187,10 @@ router.delete("/calendrier/:id", prestataireController.deleteCalendrier);
  *                  type: string
  *                idStand:
  *                  type: integer
+ *              example:
+ *                  horaireDebut: yyyy-mm-dd hour:min:sec
+ *                  horaireFin: yyyy-mm-dd hour:min:sec
+ *                  idStand: 0
  *      responses:
  *          '200':
  *              description: Resource deleted successfully
@@ -201,6 +221,9 @@ router.put("/:id", prestataireController.selfEdit); // OK
  *                  type: string
  *                image:
  *                  type: string
+ *              example:
+ *                  texte: un nouveau texte de prestataire
+ *                  image: une nouvelle image de prestataire
  *      responses:
  *          '200':
  *              description: Resource added successfully

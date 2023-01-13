@@ -143,6 +143,11 @@ router.post('/commentaire', vitrineController.addCommentaire); //OK
  *                  type: string
  *                idPrestataire:
  *                  type: integer
+ *              example:
+ *                  nom: un nom de prestataire
+ *                  prenom: un prenom
+ *                  comment: un commentaire donnant un avis sur le prestataire et son activité
+ *                  idPrestataire: 0
  *      responses:
  *          '200':
  *              description: Resource added successfully

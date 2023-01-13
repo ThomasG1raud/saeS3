@@ -404,9 +404,8 @@ router.delete('/calendrier/:id', adminController.deleteCalendar) // OK
  *                  type: integer
  *              example:
  *                  horaireDebut: yyyy-mm-dd hour:min:sec
- *                  shoraireFin: yyyy-mm-dd hour:min:sec
+ *                  horaireFin: yyyy-mm-dd hour:min:sec
  *                  idStand: 0
- *                  idPrestataire: 0
  *      responses:
  *          '200':
  *              description: Resource deleted successfully

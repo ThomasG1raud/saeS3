@@ -209,7 +209,6 @@ const showCommentaire = async (id,callback) =>{
 }
 
 module.exports = {
-    panel: panel,
     listPrestataires:listPrestataires,
     idPrestataires:idPrestataires,
     addPrestataires:addPrestataires,

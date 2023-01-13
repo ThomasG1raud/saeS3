@@ -438,7 +438,7 @@ router.delete('/commentaire/:id', adminController.deleteCommentaire)
  *              description: Bad request
  */
 
-router.get("/commentaire/:id", vitrineController.showCommentaire);
+router.get("/commentaire/:id", adminController.showCommentaire);
 /**
  * @swagger
  * /admin/commentaire/{id}:

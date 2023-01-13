@@ -83,6 +83,11 @@ router.post('/prestataire', adminController.addPrestataires); // OK
  *                  type: integer
  *                idCategory:
  *                  type: integer
+ *              example:
+ *                  texte: un texte de description
+ *                  image: une image reprrésentant le préstataire
+ *                  siren: 2
+ *                  idCategory: 2
  *      responses:
  *          '200':
  *              description: Resource added successfully
@@ -114,6 +119,9 @@ router.put('/prestataire/:id', adminController.updatePrestataires); // OK
  *                  type: string
  *                image:
  *                  type: string
+ *              example:
+ *                  texte: une description de prestataire
+ *                  image: une image de prestataire
  *      responses:
  *          '200':
  *              description: Resource updated successfully
@@ -217,6 +225,9 @@ router.post('/stand', adminController.addStands); // OK
  *                  type: string
  *                idLoc:
  *                  type: integer
+ *              example:
+ *                  libelle: nom du stand
+ *                  idLoc: 2
  *      responses:
  *          '200':
  *              description: Resource added successfully
@@ -245,6 +256,8 @@ router.put('/stand/:id', adminController.updateStands); // OK
  *              properties:
  *                libelle:
  *                  type: string
+ *              example:
+ *                  libelle: nom du stand
  *      responses:
  *          '200':
  *              description: Resource updated successfully
@@ -318,6 +331,11 @@ router.post('/calendrier', adminController.addCalendar) // OK
  *                  type: integer
  *                idPrestataire:
  *                  type: integer
+ *              example:
+ *                  horaireDebut: yyyy-mm-dd hour:min:sec
+ *                  horaireFin: yyyy-mm-dd hour:min:sec
+ *                  idStand: 2
+ *                  idPrestataire: 2
  *      responses:
  *          '200':
  *              description: Resource added successfully
@@ -354,6 +372,13 @@ router.put('/calendrier/:id', adminController.updateCalendar) // OK mais pas OK
  *                  type: string
  *                idStand:
  *                  type: integer
+ *              example:
+ *                  newhoraireDebut: yyyy-mm-dd hour:min:sec
+ *                  newshoraireFin: yyyy-mm-dd hour:min:sec
+ *                  idStand: 2
+ *                  idPrestataire: 2
+ *                  horaireDebut: yyyy-mm-dd hour:min:sec
+ *                  horaireFin: yyyy-mm-dd hour:min:sec
  *      responses:
  *          '200':
  *              description: Resource updated successfully
@@ -386,6 +411,11 @@ router.delete('/calendrier/:id', adminController.deleteCalendar) // OK mais pas 
  *                  type: string
  *                idStand:
  *                  type: integer
+ *              example:
+ *                  horaireDebut: yyyy-mm-dd hour:min:sec
+ *                  shoraireFin: yyyy-mm-dd hour:min:sec
+ *                  idStand: 2
+ *                  idPrestataire: 2
  *      responses:
  *          '200':
  *              description: Resource deleted successfully

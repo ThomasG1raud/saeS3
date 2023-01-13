@@ -13,17 +13,6 @@ const prestataireRouter = require("./routes/prestataire.router");
 const vitrineRouter = require("./routes/vitrine.router");
 
 
-/*db.sequelize.sync()
-    .then(() => {
-        (console.log("bdd OK"));
-        (console.log("http://localhost:3000/admin/"));
-    })
-    .catch((error) => {
-        console.log(error);
-    });
-*/
-
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

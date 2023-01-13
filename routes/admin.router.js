@@ -80,6 +80,7 @@ router.post('/prestataire', adminController.addPrestataires); // OK
  *                idCategory:
  *                  type: integer
  *              example:
+ *                  nom: nom du prestataire
  *                  texte: un texte de description
  *                  image: une image reprrésentant le préstataire
  *                  siren: 0

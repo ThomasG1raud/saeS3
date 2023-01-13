@@ -336,7 +336,7 @@ router.post('/calendrier', adminController.addCalendar) // OK
  *          '400':
  *              description: Bad request
  */
-router.put('/calendrier/:id', adminController.updateCalendar) // OK mais pas OK
+router.put('/calendrier/:id', adminController.updateCalendar) // OK
 /**
  * @swagger
  * /admin/calendrier/{id}:
@@ -366,9 +366,8 @@ router.put('/calendrier/:id', adminController.updateCalendar) // OK mais pas OK
  *                  type: integer
  *              example:
  *                  newhoraireDebut: yyyy-mm-dd hour:min:sec
- *                  newshoraireFin: yyyy-mm-dd hour:min:sec
+ *                  newhoraireFin: yyyy-mm-dd hour:min:sec
  *                  idStand: 0
- *                  idPrestataire: 0
  *                  horaireDebut: yyyy-mm-dd hour:min:sec
  *                  horaireFin: yyyy-mm-dd hour:min:sec
  *      responses:

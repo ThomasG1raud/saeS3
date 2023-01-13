@@ -47,7 +47,7 @@ router.get("/commentaire/:id", prestataireController.showCommentaire);
  * @swagger
  * /prestataire/commentaire/{id}:
  *   get:
- *      description: Affiche le commentaire correspondant à l'id
+ *      description: Affiche le commentaire correspondant à l'id du prestataire
  *      tags:
  *          - prestataire
  *      parameters:

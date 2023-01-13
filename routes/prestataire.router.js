@@ -107,11 +107,11 @@ router.put("/calendrier/:id", prestataireController.updateCalendrier);
  *                newhoraireFin:
  *                  type: string
  *              example:
- *                  horaireDebut: yyyy-mm-dd hour:min:sec début actuel
- *                  horaireFin: yyyy-mm-dd hour:min:sec fin actuel
+ *                  horaireDebut: yyyy-mm-dd hour:min:sec
+ *                  horaireFin: yyyy-mm-dd hour:min:sec
  *                  idStand: 0
- *                  newHoraireDebut: yyyy-mm-dd hour:min:sec nouvel horaire de départ
- *                  newHoraireFin: yyyy-mm-dd hour:min:sec nouvel horaire de fin
+ *                  newhoraireDebut: yyyy-mm-dd hour:min:sec nouvel horaire de départ
+ *                  newhoraireFin: yyyy-mm-dd hour:min:sec nouvel horaire de fin
  *      responses:
  *          '200':
  *              description: Resource updated successfully
@@ -180,8 +180,8 @@ router.delete("/calendrier/:id", prestataireController.deleteCalendrier);
  *                idStand:
  *                  type: integer
  *              example:
- *                  horaireDebut: yyyy-mm-dd hour:min:sec
- *                  horaireFin: yyyy-mm-dd hour:min:sec
+ *                  horaireDebut: yyyy-mm-dd hour:min:sec nouvel horaire de debut
+ *                  horaireFin: yyyy-mm-dd hour:min:sec nouvel horaire de fin
  *                  idStand: 0
  *      responses:
  *          '200':

@@ -1,5 +1,6 @@
 const adminQuery = require("../Query/admin.query")
 const pool = require("../db")
+const vitrineQuery = require("../Query/vitrine.query");
 
 
 const panel = (callback) => {
@@ -212,6 +213,16 @@ const deleteCommentaire = async (id,callback) => {
         })
 }
 
+const showCommentaire = async (id,callback) =>{
+    await pool.query(adminQuery.showCommentaire, [id])
+        .then(results=>{
+            return callback(null, results.rows)
+        })
+        .catch(error=>{
+            return callback(error, null)
+        })
+}
+
 module.exports = {
     panel: panel,
     listPrestataires:listPrestataires,
@@ -231,5 +242,6 @@ module.exports = {
     showPrestataire:showPrestataire,
     showListBillet:showListBillet,
     showPrestataireByStand:showPrestataireByStand,
-    deleteCommentaire:deleteCommentaire
+    deleteCommentaire:deleteCommentaire,
+    showCommentaire: showCommentaire
 }

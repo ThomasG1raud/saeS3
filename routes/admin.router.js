@@ -1,5 +1,6 @@
 const adminController = require("../controllers/admin.controller");
 const express = require('express');
+const vitrineController = require("../controllers/vitrine.controller");
 const router = express.Router();
 
 router.get("/", adminController.panel) // OK
@@ -16,6 +17,22 @@ router.get('/prestataires', adminController.listPrestataires); //OK
  *      responses:
  *          '200':
  *              description: Resource added successfully
+ *          '500':
+ *              description: Internal server error
+ *          '400':
+ *              description: Bad request
+ */
+router.get('/prestataire/categorie', adminController.showPrestataire)
+/**
+ * @swagger
+ * /admin/prestataire/categorie:
+ *   get:
+ *      description: Affiche les prestataires et leur catégorie de prestation
+ *      tags:
+ *          - admin
+ *      responses:
+ *          '200':
+ *              description: Resource showed successfully
  *          '500':
  *              description: Internal server error
  *          '400':
@@ -143,6 +160,24 @@ router.get('/stands', adminController.listStands); // OK
  *          '400':
  *              description: Bad request
  */
+
+router.get('/stand/prestataire', adminController.showPrestataireByStand)
+/**
+ * @swagger
+ * /admin/stand/prestataire:
+ *   get:
+ *      description: Affiche le stand et son prestataire associé
+ *      tags:
+ *          - admin
+ *      responses:
+ *          '200':
+ *              description: Resource showed successfully
+ *          '500':
+ *              description: Internal server error
+ *          '400':
+ *              description: Bad request
+ */
+
 router.get('/stand/:id', adminController.idStands); // OK
 /**
  * @swagger
@@ -359,41 +394,52 @@ router.delete('/calendrier/:id', adminController.deleteCalendar) // OK mais pas 
  *          '400':
  *              description: Bad request
  */
-router.get('/prestataire/categorie', adminController.listPrestataires)
-/**
- * @swagger
- * /admin/prestataire/categorie
- *   get:
- *      description: show all the content from the prestataire table with the name of their category
- *      tags:
- *          - admin
- *      responses:
- *          '200':
- *              description: Resource showed successfully
- *          '500':
- *              description: Internal server error
- *          '400':
- *              description: Bad request
- */
+
 router.get('/showListBillet', adminController.showListBillet)
 
-router.get('/stand/prestataire', adminController.showPrestataireByStand)
+
+
+router.delete('/commentaire/:id', adminController.deleteCommentaire)
 /**
  * @swagger
- * /admin/stand/prestataire
- *   get:
- *      description: show all the content from the stand table with the associated prestataire
+ * /admin/commentaire/{id}:
+ *   delete:
+ *      description: Supprime un commentaire
  *      tags:
  *          - admin
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            type: integer
+ *            required: false
  *      responses:
  *          '200':
- *              description: Resource showed successfully
+ *              description: Resource added successfully
  *          '500':
  *              description: Internal server error
  *          '400':
  *              description: Bad request
  */
 
-router.delete('/commentaire/:id', adminController.deleteCommentaire)
-
+router.get("/commentaire/:id", vitrineController.showCommentaire);
+/**
+ * @swagger
+ * /admin/commentaire/{id}:
+ *   get:
+ *      description: Affiche le commentaire correspondant à l'id
+ *      tags:
+ *          - admin
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            type: integer
+ *            required: false
+ *      responses:
+ *          '200':
+ *              description: Resource added successfully
+ *          '500':
+ *              description: Internal server error
+ *          '400':
+ *              description: Bad request
+ */
 module.exports = router;

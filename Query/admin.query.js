@@ -22,6 +22,7 @@ const showPrestataire = "SELECT prestataires.*, categoriePrestations.libelleCate
 const showListBillet = "SELECT billets.*, utilisateurs.*, categorieBillets.libelleCategorie FROM billets INNER JOIN utilisateurs ON billets.idUtilisateur = utilisateurs.idUtilisateur INNER JOIN categorieBillets ON categorieBillets.idCategorie = billets.idCategorie"; // joint entre billet et utilisateur et categorieBillet pour l'admin
 const showPrestataireByStand = "SELECT prestataires.*, stands.* FROM situe INNER JOIN stands ON situe.idstand = stands.idstand INNER JOIN prestataires ON situe.idPrestataire = prestataires.idPrestataire"; // joint entre stand et prestataire
 const deleteCommentaire = "DELETE FROM livreDOr WHERE idCommentaire = $1";
+const showCommentaire= "SELECT * FROM livreDOr WHERE idPrestataire = $1";
 
 module.exports = {selectPrestataire, selectById, addPrestataire, updatePrestataires, selectModify, deleteModify, selectAccede, deleteAccede, selectRepond, deleteRepond, deletePrestataire,
-listStand, selectStand, addStand, updateStand, deleteStand, addCalendar, showCalendar, updateCalendar, deleteCalendar, showPrestataire, showListBillet, showPrestataireByStand, deleteCommentaire}
+listStand, selectStand, addStand, updateStand, deleteStand, addCalendar, showCalendar, updateCalendar, deleteCalendar, showPrestataire, showListBillet, showPrestataireByStand, deleteCommentaire, showCommentaire}

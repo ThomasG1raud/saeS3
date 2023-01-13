@@ -1,4 +1,5 @@
 const adminService = require("../services/admin.service");
+const vitrineService = require("../services/vitrine.service");
 
 exports.panel = (req, res) => {
     adminService.panel((error, results) => {
@@ -348,6 +349,20 @@ exports.deleteCommentaire = (req, res) => {
     adminService.deleteCommentaire(id, (error, results)=>{
         if(error){
             return res.status(400).send({sucess: 0, data: error});
+        }
+        return res.status(200).send({
+            success: 1,
+            data: "Commentaire supprimé",
+        });
+    })
+}
+
+exports.showCommentaire = (req, res) => {
+    const id = req.params.id;
+    adminService.showCommentaire(id,(error, results)=>{
+        if (error) {
+            console.log(error);
+            return res.status(400).send({ success: 0, data: error });
         }
         return res.status(200).send({
             success: 1,

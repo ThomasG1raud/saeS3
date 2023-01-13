@@ -1,11 +1,6 @@
-const model = require("../model/prestataire");
 const vitrineQuery = require("../Query/vitrine.query")
 const pool = require ("../db");
-const prestataireQuery = require("../Query/prestataire.query");
 
-const vitrine = (callback) => {
-    return callback(null, "ok");
-}
 
 const listePrestataire = async (callback) => {
     await pool.query(vitrineQuery.selectAll)
@@ -103,8 +98,6 @@ const showCommentaire = async (id,callback) =>{
 
 
 module.exports = {
-    vitrine: vitrine,
-    //map : map,
     listePrestataire : listePrestataire,
     idPrestataire : idPrestataire,
     listeStand : listeStand,

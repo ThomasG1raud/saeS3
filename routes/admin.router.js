@@ -1,10 +1,6 @@
 const adminController = require("../controllers/admin.controller");
 const express = require('express');
-const vitrineController = require("../controllers/vitrine.controller");
 const router = express.Router();
-
-router.get("/", adminController.panel) // OK
-
 
 router.get('/prestataires', adminController.listPrestataires); //OK
 /**
@@ -287,11 +283,6 @@ router.delete('/stand/:id', adminController.deleteStands); // OK
  *          '400':
  *              description: Bad request
  */
-router.get('/map', adminController.getMap)
-router.get('/map/:id', adminController.idMap)
-router.post('/map/add', adminController.addMap)
-router.put('/map/update/:id', adminController.updateMap)
-router.delete('/map/delete/:id', adminController.deleteMap)
 
 router.get('/calendrier', adminController.showCalendar) // OK
 /**
@@ -387,7 +378,7 @@ router.put('/calendrier/:id', adminController.updateCalendar) // OK mais pas OK
  *          '400':
  *              description: Bad request
  */
-router.delete('/calendrier/:id', adminController.deleteCalendar) // OK mais pas de résultat visible ==> lié aux date ?
+router.delete('/calendrier/:id', adminController.deleteCalendar) // OK
 /**
  * @swagger
  * /admin/calendrier/{id}:
@@ -424,10 +415,6 @@ router.delete('/calendrier/:id', adminController.deleteCalendar) // OK mais pas 
  *          '400':
  *              description: Bad request
  */
-
-router.get('/showListBillet', adminController.showListBillet)
-
-
 
 router.delete('/commentaire/:id', adminController.deleteCommentaire)
 /**

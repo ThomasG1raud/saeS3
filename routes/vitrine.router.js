@@ -1,13 +1,6 @@
 const vitrineController = require("../controllers/vitrine.controller");
 const express = require('express');
-const prestataireController = require("../controllers/prestataire.controller");
 const router = express.Router();
-
-
-router.get("/vitrine", vitrineController.vitrine) // OK
-
-
-router.get('/map', vitrineController.map); // pas OK mais normal
 
 router.get('/prestataires', vitrineController.listePrestataire); // OK
 /**

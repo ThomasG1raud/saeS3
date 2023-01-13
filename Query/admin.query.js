@@ -19,10 +19,9 @@ const showCalendar = "SELECT * FROM calendrier";
 const updateCalendar = "UPDATE calendrier SET debut = $1, fin = $2 WHERE idprestataire = $3 AND idStand = $4 AND debut = $5 and fin = $6";
 const deleteCalendar = "DELETE FROM calendrier WHERE debut = $1 AND fin = $2 AND idStand = $3 AND idPrestataire = $4 ";
 const showPrestataire = "SELECT prestataires.*, categoriePrestations.libelleCategorie FROM prestataires INNER JOIN categorieprestations ON prestataires.idCategorie = categorieprestations.idCategorie"; // joint entre prestataire et categorie
-const showListBillet = "SELECT billets.*, utilisateurs.*, categorieBillets.libelleCategorie FROM billets INNER JOIN utilisateurs ON billets.idUtilisateur = utilisateurs.idUtilisateur INNER JOIN categorieBillets ON categorieBillets.idCategorie = billets.idCategorie"; // joint entre billet et utilisateur et categorieBillet pour l'admin
 const showPrestataireByStand = "SELECT prestataires.*, stands.* FROM situe INNER JOIN stands ON situe.idstand = stands.idstand INNER JOIN prestataires ON situe.idPrestataire = prestataires.idPrestataire"; // joint entre stand et prestataire
 const deleteCommentaire = "DELETE FROM livreDOr WHERE idCommentaire = $1";
 const showCommentaire= "SELECT * FROM livreDOr WHERE idPrestataire = $1";
 
 module.exports = {selectPrestataire, selectById, addPrestataire, updatePrestataires, selectModify, deleteModify, selectAccede, deleteAccede, selectRepond, deleteRepond, deletePrestataire,
-listStand, selectStand, addStand, updateStand, deleteStand, addCalendar, showCalendar, updateCalendar, deleteCalendar, showPrestataire, showListBillet, showPrestataireByStand, deleteCommentaire, showCommentaire}
+listStand, selectStand, addStand, updateStand, deleteStand, addCalendar, showCalendar, updateCalendar, deleteCalendar, showPrestataire, showPrestataireByStand, deleteCommentaire, showCommentaire}

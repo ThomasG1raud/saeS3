@@ -3,11 +3,6 @@ const express = require('express');
 const router = express.Router();
 
 
-router.get("/", prestataireController.panel); // OK
-
-
-router.get("/statistiques/:id", prestataireController.idStatistiques); // pas OK mais normal
-
 router.post("/commentaire", prestataireController.livreDOr); // OK
 /**
  * @swagger
@@ -43,9 +38,6 @@ router.post("/commentaire", prestataireController.livreDOr); // OK
  *          '400':
  *              description: Bad request
  */
-
-router.post("/billet", prestataireController.achatBillet); // pas OK mais normal
-
 
 router.get("/commentaire/:id", prestataireController.showCommentaire);
 /**

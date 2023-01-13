@@ -1,18 +1,4 @@
 const adminService = require("../services/admin.service");
-const vitrineService = require("../services/vitrine.service");
-
-exports.panel = (req, res) => {
-    adminService.panel((error, results) => {
-        if (error) {
-            console.log(error);
-            return res.status(400).send({ success: 0, data: error });
-        }
-        return res.status(200).send({
-            success: 1,
-            data: results,
-        });
-    });
-}
 
 exports.listPrestataires = (req,res) => {
     adminService.listPrestataires((error, results) => {
@@ -169,71 +155,6 @@ exports.deleteStands = (req,res) => {
     });
 }
 
-exports.getMap = (req,res) => {
-    adminService.getMap((error, results) => {
-        if (error) {
-            console.log(error);
-            return res.status(400).send({ success: 0, data: error });
-        }
-        return res.status(200).send({
-            success: 1,
-            data: results,
-        });
-    });
-}
-
-exports.idMap = (req,res) => {
-    adminService.idMap((error, results) => {
-        if (error) {
-            console.log(error);
-            return res.status(400).send({ success: 0, data: error });
-        }
-        return res.status(200).send({
-            success: 1,
-            data: results,
-        });
-    });
-}
-
-exports.addMap = (req,res) => {
-    adminService.addMap((error, results) => {
-        if (error) {
-            console.log(error);
-            return res.status(400).send({ success: 0, data: error });
-        }
-        return res.status(200).send({
-            success: 1,
-            data: results,
-        });
-    });
-}
-
-exports.updateMap = (req,res) => {
-    adminService.updateMap((error, results) => {
-        if (error) {
-            console.log(error);
-            return res.status(400).send({ success: 0, data: error });
-        }
-        return res.status(200).send({
-            success: 1,
-            data: results,
-        });
-    });
-}
-
-exports.deleteMap = (req,res) => {
-    adminService.deleteMap((error, results) => {
-        if (error) {
-            console.log(error);
-            return res.status(400).send({ success: 0, data: error });
-        }
-        return res.status(200).send({
-            success: 1,
-            data: results,
-        });
-    });
-}
-
 exports.showCalendar = (req, res) =>{
     adminService.showCalendrier((error, results)=>{
         if (error) {
@@ -308,19 +229,6 @@ exports.deleteCalendar = (req, res) =>{
 
 exports.showPrestataire = (req, res) =>{
     adminService.showPrestataire((error, results)=>{
-        if (error) {
-            console.log(error);
-            return res.status(400).send({ success: 0, data: error });
-        }
-        return res.status(200).send({
-            success: 1,
-            data: results,
-        });
-    });
-}
-
-exports.showListBillet = (req, res) =>{
-    adminService.showListBillet((error, results)=>{
         if (error) {
             console.log(error);
             return res.status(400).send({ success: 0, data: error });

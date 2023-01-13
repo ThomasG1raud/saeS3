@@ -394,5 +394,6 @@ router.get('/stand/prestataire', adminController.showPrestataireByStand)
  *              description: Bad request
  */
 
+router.delete('/commentaire/:id', adminController.deleteCommentaire)
 
 module.exports = router;

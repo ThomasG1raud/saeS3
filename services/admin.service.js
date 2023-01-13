@@ -202,6 +202,16 @@ const showPrestataireByStand = async (callback) =>{
         })
 }
 
+const deleteCommentaire = async (id,callback) => {
+    await pool.query(adminQuery.deleteCommentaire, [id])
+        .then(results=>{
+            return callback(null, results.rows)
+        })
+        .catch(error=>{
+            return callback(error, null)
+        })
+}
+
 module.exports = {
     panel: panel,
     listPrestataires:listPrestataires,
@@ -220,5 +230,6 @@ module.exports = {
     updateCalendrier:updateCalendrier,
     showPrestataire:showPrestataire,
     showListBillet:showListBillet,
-    showPrestataireByStand:showPrestataireByStand
+    showPrestataireByStand:showPrestataireByStand,
+    deleteCommentaire:deleteCommentaire
 }

@@ -334,7 +334,6 @@ exports.showListBillet = (req, res) =>{
 exports.showPrestataireByStand = (req, res) => {
     adminService.showPrestataireByStand((error, results)=>{
         if (error) {
-            console.log(error);
             return res.status(400).send({ success: 0, data: error });
         }
         return res.status(200).send({
@@ -342,4 +341,17 @@ exports.showPrestataireByStand = (req, res) => {
             data: results,
         });
     });
+}
+
+exports.deleteCommentaire = (req, res) => {
+    const id = req.params.id;
+    adminService.deleteCommentaire(id, (error, results)=>{
+        if(error){
+            return res.status(400).send({sucess: 0, data: error});
+        }
+        return res.status(200).send({
+            success: 1,
+            data: results,
+        });
+    })
 }

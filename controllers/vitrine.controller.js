@@ -2,6 +2,7 @@ const vitrineService = require("../services/vitrine.service");
 const Model = require('../model/index');
 const sequelize = require('sequelize');
 const pool = require("../db");
+const prestataireService = require("../services/prestataire.service");
 
 exports.vitrine = (req, res) => {
     vitrineService.vitrine((error, results) => {
@@ -127,4 +128,18 @@ exports.addCommentaire = (req, res) =>{
             data: "Commentaire ajouté",
         });
     });
+}
+
+exports.showCommentaire = (req, res) => {
+    const id = req.params.id;
+    vitrineService.showCommentaire(id,(error, results)=>{
+        if (error) {
+            console.log(error);
+            return res.status(400).send({ success: 0, data: error });
+        }
+        return res.status(200).send({
+            success: 1,
+            data: results,
+        });
+    })
 }

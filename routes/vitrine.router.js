@@ -1,5 +1,6 @@
 const vitrineController = require("../controllers/vitrine.controller");
 const express = require('express');
+const prestataireController = require("../controllers/prestataire.controller");
 const router = express.Router();
 
 
@@ -150,6 +151,26 @@ router.post('/commentaire', vitrineController.addCommentaire); //OK
  *          '400':
  *              description: Bad request
  */
-
+router.get("/commentaire/:id", vitrineController.showCommentaire);
+/**
+ * @swagger
+ * /commentaire/{id}:
+ *   get:
+ *      description: Affiche le commentaire correspondant à l'id
+ *      tags:
+ *          - vitrine
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            type: integer
+ *            required: false
+ *      responses:
+ *          '200':
+ *              description: Resource added successfully
+ *          '500':
+ *              description: Internal server error
+ *          '400':
+ *              description: Bad request
+ */
 
 module.exports = router;

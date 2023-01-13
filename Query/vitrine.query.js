@@ -12,6 +12,7 @@ const selectCategories = "SELECT * FROM categorieprestations";
 const selectCategoryByID = "SELECT * FROM prestataires INNER JOIN categorieprestations c on c.idcategorie = prestataires.idcategorie WHERE prestataires.idcategorie = $1";
 const showCalendar = "SELECT * FROM calendrier";
 const addCommentaire = "INSERT INTO livreDOr ( nom, prenom, commentaire, idPrestataire) VALUES ($1, $2, $3, $4)";
+const showCommentaire= "SELECT * FROM livreDOr WHERE idPrestataire = $1";
 
 
-module.exports= {selectAll, selectById, selectEmplacement, selectStand, selectCategories, selectCategoryByID, showCalendar, addCommentaire}
+module.exports= {selectAll, selectById, selectEmplacement, selectStand, selectCategories, selectCategoryByID, showCalendar, addCommentaire, showCommentaire}

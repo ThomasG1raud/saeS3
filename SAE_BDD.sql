@@ -186,9 +186,7 @@ CREATE TABLE IF NOT EXISTS livreDOr(
     nom VARCHAR,
     prenom VARCHAR,
     commentaire VARCHAR,
-    idUtilisateur INT,
     idPrestataire INT,
-    FOREIGN KEY (idUtilisateur) REFERENCES utilisateurs(idUtilisateur),
     FOREIGN KEY (idPrestataire) REFERENCES prestataires(idPrestataire) ON DELETE CASCADE
 );
 
@@ -336,3 +334,9 @@ values ('2023-04-19 11:00:00', '2023-04-19 12:30:00', 2, 1);
 insert into calendrier(debut, fin, idPrestataire, idStand)
 values ('2023-11-11 20:30:00', '2023-11-11 22:30:00', 3, 2);
 
+insert into livreDOr(nom, prenom, commentaire, idprestataire)
+values ('Guy', 'Plante', 'bien', 1);
+insert into livreDOr(nom, prenom, commentaire, idprestataire)
+values ('Emmanuel', 'Macron', 'moyen', 2);
+insert into livreDOr(nom, prenom, commentaire, idprestataire)
+values ('Squeezie', 'leYoutuber', 'cest bon pour vous ?', 3);

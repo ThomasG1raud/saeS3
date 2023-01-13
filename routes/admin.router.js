@@ -275,9 +275,9 @@ router.post('/calendrier', adminController.addCalendar) // OK
  *            schema:
  *              type: object
  *              properties:
- *                hDebut:
+ *                horaireDebut:
  *                  type: string
- *                hFin:
+ *                horaireFin:
  *                  type: string
  *                idStand:
  *                  type: integer
@@ -300,6 +300,25 @@ router.put('/calendrier/:id', adminController.updateCalendar) // OK mais pas OK
  *      tags:
  *          - admin
  *      parameters:
+ *          - in: path
+ *            name: id
+ *            type: integer
+ *            required: false
+ *          - in: body
+ *            name: data
+ *            schema:
+ *              type: object
+ *              properties:
+ *                newhoraireDebut:
+ *                  type: string
+ *                newhoraireFin:
+ *                  type: string
+ *                horaireDebut:
+ *                  type: string
+ *                horaireFin:
+ *                  type: string
+ *                idStand:
+ *                  type: integer
  *      responses:
  *          '200':
  *              description: Resource updated successfully
@@ -317,18 +336,20 @@ router.delete('/calendrier/:id', adminController.deleteCalendar) // OK mais pas 
  *      tags:
  *          - admin
  *      parameters:
+ *          - in: path
+ *            name: id
+ *            type: integer
+ *            required: false
  *          - in: body
  *            name: data
  *            schema:
  *              type: object
  *              properties:
- *                hDebut:
+ *                horaireDebut:
  *                  type: string
- *                hFin:
+ *                horaireFin:
  *                  type: string
  *                idStand:
- *                  type: integer
- *                idPrestataire:
  *                  type: integer
  *      responses:
  *          '200':

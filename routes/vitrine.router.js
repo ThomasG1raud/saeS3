@@ -29,7 +29,7 @@ router.get('/prestataires/:id', vitrineController.idPrestataire); // OK
  * @swagger
  * /prestataires/{id}:
  *   get:
- *      description: Liste les prestataires par ID
+ *      description: Liste les infos du prestataires par son ID
  *      tags:
  *          - vitrine
  *      parameters:

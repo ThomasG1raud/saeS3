@@ -160,7 +160,7 @@ exports.deleteCalendrier = (req, res) => {
         hDebut: req.body.horaireDebut,
         hFin: req.body.horaireFin,
         idStand: req.body.idStand,
-        idPrestataire: req.body.idPrestataire
+        idPrestataire: req.params.id
     }
     console.log(tab.hDebut);
     console.log(tab.hFin);
@@ -181,7 +181,7 @@ exports.updateCalendrier = (req, res) => {
         hDebut: req.body.horaireDebut,
         hFin: req.body.horaireFin,
         idStand: req.body.idStand,
-        idPrestataire: req.body.idPrestataire,
+        idPrestataire: req.params.id,
         newhDebut: req.body.newhoraireDebut,
         newhFin: req.body.newhoraireFin
     }
